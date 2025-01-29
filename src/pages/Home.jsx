@@ -1,4 +1,4 @@
-import HeaderCarousel from "../components/headerCarousel";
+import HeaderCarousel from "../components/HeaderCarousel";
 import { useSortedPlaylists } from "../hooks/useSortedPlaylists";
 import { useMainCategories } from "../hooks/useMainCategories";
 import { useGenres } from "../hooks/useGenres";
@@ -17,7 +17,7 @@ const Home = () => {
     console.log({ genres });
     console.log({ moods });
     console.log({ regions });
-    
+
     return <div className="p-0"><HeaderCarousel/></div>;
 };
 
