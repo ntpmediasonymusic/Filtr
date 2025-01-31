@@ -6,6 +6,7 @@ import Genres from "./pages/Genres";
 import Moods from "./pages/Moods";
 import Quizzes from "./pages/Quizzes";
 import Shows from "./pages/Shows";
+import Footer from "./components/Footer ";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/shows" element={<Shows />} />
         </Routes>
       </div>
+      <Footer />
     </div>
   );
 }

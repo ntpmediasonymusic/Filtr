@@ -1,5 +1,11 @@
+import ComingSoon from "../components/ComingSoon";
+
 const Moods = () => {
-  return <div className="p-4">Bienvenido a la página de Moods</div>;
+  return (
+    <div className="p-6">
+      <ComingSoon color="#ffb901" />
+    </div>
+  );
 };
 
 export default Moods;

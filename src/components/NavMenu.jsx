@@ -24,9 +24,10 @@ const menuOptions = [
 
 // Componente NavMenuItem
 // eslint-disable-next-line react/prop-types
-const NavMenuItem = ({ name, icon, route }) => {
+const NavMenuItem = ({ name, icon, route, toggleMenu }) => {
   return (
     <NavLink
+      onClick={toggleMenu}
       to={route}
       className={({ isActive }) =>
         `flex items-center space-x-2 text-lg font-medium px-2 py-1 transition duration-300 ${
@@ -50,10 +51,10 @@ const NavMenu = () => {
   };
 
   return (
-    <nav className="bg-gray-900 text-white px-4 py-0 flex items-center justify-between relative">
+    <nav className="bg-gray-900 text-white px-4 py-2 md:py-0 flex items-center justify-between relative">
       {/* Logo */}
       <div className="flex items-center">
-        <img src={logo} alt="Logo Filtr" className="w-20" />
+        <img src={logo} alt="Logo Filtr" className="w-12 md:w-20" />
       </div>
 
       {/* Desktop Menu */}
@@ -83,6 +84,7 @@ const NavMenu = () => {
               name={option.name}
               icon={option.icon}
               route={option.route}
+              toggleMenu={toggleMenu}
             />
           ))}
         </div>
