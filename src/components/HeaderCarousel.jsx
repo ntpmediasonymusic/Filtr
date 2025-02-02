@@ -9,7 +9,7 @@ const HeaderCarousel = () => {
       showIndicators={true}
       infiniteLoop={true}
       autoPlay={true}
-      interval={6000}
+      interval={4000}
       showThumbs={false}
       showStatus={false}
       swipeable={true}

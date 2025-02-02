@@ -5,8 +5,10 @@ const MainCategoryPreview = ({ title, playlists }) => {
     <div>
       {/* Título y Botón */}
       <div className="flex justify-between items-center mb-4">
-        <h2 className="text-sm md:text-2xl sm:text-lg font-bold">{title}</h2>
-        <button className="px-4 py-2 rounded-full bg-gray-800 text-white text-xs md:text-lg sm:text-sm hover:bg-gray-600">
+        <h2 className="text-sm md:text-2xl sm:text-lg font-bold bg-gradient-to-r from-violet-600 via-pink-600 to-yellow-600 bg-clip-text text-transparent">
+          {title}
+        </h2>
+        <button className="px-4 py-2 rounded-full bg-[#ffcc00] text-black text-xs md:text-lg sm:text-sm hover:bg-[#ffeda8]">
           Mostrar todo
         </button>
       </div>
@@ -45,7 +47,7 @@ const MainCategoryPreview = ({ title, playlists }) => {
             </a>
 
             {/* Texto debajo de la imagen */}
-            <h6 className="text-xs md:text-sm font-bold my-2">
+            <h6 className="text-xs md:text-sm font-bold my-2 text-white">
               {playlist.playlistName}
             </h6>
           </div>

@@ -32,8 +32,8 @@ const NavMenuItem = ({ name, icon, route, toggleMenu }) => {
       className={({ isActive }) =>
         `flex items-center space-x-2 text-lg font-medium px-2 py-1 transition duration-300 ${
           isActive
-            ? "text-blue-500 border-b-2 border-blue-500"
-            : "text-white hover:text-blue-300"
+            ? "text-[#f8cd28] border-b-2 border-blue-[#f8cd28]"
+            : "text-white hover:text-[#ffeda8]"
         }`
       }
     >
@@ -51,7 +51,14 @@ const NavMenu = () => {
   };
 
   return (
-    <nav className="bg-gray-900 text-white px-4 py-2 md:py-0 flex items-center justify-between relative">
+    <nav
+      className="text-white px-4 py-2 md:py-0 flex items-center justify-between relative"
+      style={{
+        backgroundColor: "#0d0d0d",
+        backgroundImage:
+          "linear-gradient(225deg, rgb(255, 60, 172) -80%, rgb(13, 13, 13) 50%, rgb(43, 134, 197) 180%)",
+      }}
+    >
       {/* Logo */}
       <div className="flex items-center">
         <img src={logo} alt="Logo Filtr" className="w-12 md:w-20" />
