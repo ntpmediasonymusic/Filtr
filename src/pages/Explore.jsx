@@ -1,28 +1,37 @@
-import ComingSoon from "../components/ComingSoon";
 import GenresList from "../components/GenresList";
 import MoodsList from "../components/MoodsList";
+import QuizzesPreview from "../components/QuizzesPreview";
+import ShowsPreview from "../components/ShowsPreview";
+import PlaylistsIframePreview from "../components/PlaylistsIframePreview";
 
 const Explore = () => {
   return (
-    <div className="flex flex-col lg:flex-row w-full gap-6 p-6">
-      <div className="flex flex-col md:flex-row w-full lg:w-3/5 gap-6">
-        {/* Géneros */}
-        <div className="p-4 rounded-lg md:w-1/2 lg:w-5/10 w-full">
-          <GenresList />
+    <div className="flex flex-col gap-[50px] md:gap-[100px] px-6 py-[50px] md:py-[100px]">
+      <div className="flex flex-col lg:flex-row w-full gap-[50px] md:gap-[100px] lg:gap-[24px]">
+        <div className="flex flex-col md:flex-row w-full lg:w-3/5 gap-[50px] md:gap-[24px]">
+          {/* Géneros */}
+          <div className="md:w-1/2 lg:w-5/10 w-full">
+            <GenresList />
+          </div>
+
+          {/* Moods */}
+          <div className="md:w-1/2 lg:w-5/10 w-full">
+            <MoodsList />
+          </div>
         </div>
 
-        {/* Moods */}
-        <div className="p-4 rounded-lg md:w-1/2 lg:w-5/10 w-full">
-          <MoodsList />
+        {/* Quizzes*/}
+        <div className="md:w-full lg:w-6/10 w-full">
+          <QuizzesPreview />
         </div>
       </div>
 
-      {/* Quizzes*/}
-      <div className="p-4 rounded-lg md:w-full lg:w-6/10 w-full">
-        <h2 className="pb-3 text-sm md:text-2xl sm:text-lg font-bold bg-gradient-to-r from-pink-600 via-yellow-600 to-violet-600 bg-clip-text text-transparent">
-          Quizzes
-        </h2>
-        <ComingSoon color="#8e44ad" />
+      <div className="w-full">
+        <ShowsPreview />
+      </div>
+
+      <div className="w-full">
+        <PlaylistsIframePreview />
       </div>
     </div>
   );

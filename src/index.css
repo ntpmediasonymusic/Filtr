@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 ::-webkit-scrollbar {
-  width: 8px; /* Ancho de la scrollbar */
-  height: 8px; /* Altura en scroll horizontal */
+  width: 6px; /* Ancho de la scrollbar */
+  height: 6px; /* Altura en scroll horizontal */
 }
 
 ::-webkit-scrollbar-track {

@@ -13,7 +13,7 @@ const Home = () => {
         <HeaderCarousel />
       </div>
 
-      <div className="flex flex-col gap-[20px] md:gap-[60px] p-6">
+      <div className="flex flex-col gap-[50px] md:gap-[100px] px-6 py-[50px] md:py-[100px]">
         {/* 🔄 Iterar sobre todas las categorías y generar un MainCategoryPreview */}
         {mainCategories.map((category) => {
           // Filtrar las playlists que pertenezcan a la categoría actual

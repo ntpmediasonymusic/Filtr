@@ -66,7 +66,7 @@
       "urlCoverImage": "https://image-cdn-fa.spotifycdn.com/image/ab67706c0000da843ed9fcf2d1ba9b561266c897",
       "mainCategory": ["Playlists Recomendadas"],
       "genre": ["Baladas Románticas"],
-      "moods": ["Feliz ", "Romance"],
+      "moods": ["Feliz", "Romance"],
       "region": "Centroamérica y Caribe",
       "priority": 1
     },
@@ -76,7 +76,7 @@
       "urlCoverImage": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da8455e388c6bdfbf36428cff86c",
       "mainCategory": ["Playlists Recomendadas"],
       "genre": ["Baladas Románticas"],
-      "moods": ["Feliz ", "Romance"],
+      "moods": ["Feliz", "Romance"],
       "region": "Centroamérica y Caribe",
       "priority": 1
     },
@@ -96,7 +96,7 @@
       "urlCoverImage": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da8409f03b5216ba4570ec4a82ec",
       "mainCategory": ["Playlists Recomendadas"],
       "genre": ["Pop en Español", "Baladas Románticas"],
-      "moods": ["Feliz ", "Tranqui", "Tomar Café"],
+      "moods": ["Feliz", "Tranqui", "Tomar Café"],
       "region": "Centroamérica y Caribe",
       "priority": 1
     },

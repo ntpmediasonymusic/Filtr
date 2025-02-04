@@ -5,10 +5,10 @@ const MoodsList = () => {
 
   return (
     <>
-      <h2 className="pb-3 text-sm md:text-2xl sm:text-lg font-bold bg-gradient-to-r from-pink-600 via-yellow-600 to-violet-600 bg-clip-text text-transparent">
+      <h2 className="pb-3 text-xl md:text-2xl font-bold bg-gradient-to-r from-pink-600 via-yellow-600 to-violet-600 bg-clip-text text-transparent">
         Moods
       </h2>
-      <ul className="space-y-2">
+      <ul className="space-y-3 w-fit">
         {moods.map((mood) => (
           <li
             key={mood}
