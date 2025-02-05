@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import { useGenres } from "../hooks/useGenres";
 
 const GenresList = () => {
@@ -12,9 +13,14 @@ const GenresList = () => {
         {genres.map((genre) => (
           <li
             key={genre}
-            className="text-white transition duration-100 hover:text-[#f8cd28] hover:cursor-pointer"
+            className="text-white transition duration-100 hover:text-[#f8cd28] hover:cursor-pointer "
           >
-            {genre}
+            <NavLink
+              to={`/genres?title=${encodeURIComponent(genre)}`}
+              className="w-fit"
+            >
+              {genre}
+            </NavLink>
           </li>
         ))}
       </ul>

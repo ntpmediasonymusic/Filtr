@@ -17,7 +17,7 @@ import { useGenres } from "../hooks/useGenres";
 import { useMoods } from "../hooks/useMoods";
 
 // Componente Submenu para Desktop
-const Submenu = ({ submenu }) => {
+const Submenu = ({ submenu, name, closeSubmenu }) => {
   return (
     <div className="absolute z-4 top-full left-0 bg-gray-900 text-white p-4 rounded-lg shadow-lg w-auto h-auto flex flex-col gap-4">
       {submenu.map((item) => (
@@ -25,7 +25,14 @@ const Submenu = ({ submenu }) => {
           key={item}
           className="w-fit transition duration-100 hover:text-[#f8cd28] cursor-pointer whitespace-nowrap"
         >
-          {item}
+          <NavLink
+            onClick={closeSubmenu}
+            to={`/${
+              name == "Géneros" ? "genres" : "moods"
+            }?title=${encodeURIComponent(item)}`}
+          >
+            {item}
+          </NavLink>
         </div>
       ))}
     </div>
@@ -33,7 +40,14 @@ const Submenu = ({ submenu }) => {
 };
 
 // Componente NavMenuItem
-const NavMenuItem = ({ name, icon, route, submenu, toggleMenu }) => {
+const NavMenuItem = ({
+  name,
+  icon,
+  route,
+  submenu,
+  toggleMenu,
+  closeSubmenu,
+}) => {
   const [isSubmenuOpen, setIsSubmenuOpen] = useState(false);
   const location = useLocation();
   const isActive = route && location.pathname === route; // Detecta si la opción está activa
@@ -68,7 +82,9 @@ const NavMenuItem = ({ name, icon, route, submenu, toggleMenu }) => {
         </NavLink>
       )}
 
-      {submenu && isSubmenuOpen && <Submenu submenu={submenu} />}
+      {submenu && isSubmenuOpen && (
+        <Submenu submenu={submenu} name={name} closeSubmenu={closeSubmenu} />
+      )}
     </div>
   );
 };
@@ -82,7 +98,7 @@ const NavMenu = () => {
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
-    setActiveSubmenu(null); // Cierra submenús al abrir/cerrar menú móvil
+    setActiveSubmenu(null); 
   };
 
   const openSubmenu = (submenuName) => {
@@ -132,6 +148,7 @@ const NavMenu = () => {
             icon={option.icon}
             route={option.route}
             submenu={option.submenu}
+            closeSubmenu={closeSubmenu}
           />
         ))}
       </div>

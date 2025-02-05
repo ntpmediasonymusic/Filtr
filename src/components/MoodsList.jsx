@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import { useMoods } from "../hooks/useMoods";
 
 const MoodsList = () => {
@@ -14,7 +15,12 @@ const MoodsList = () => {
             key={mood}
             className="text-white transition duration-100 hover:text-[#f8cd28] hover:cursor-pointer"
           >
-            {mood}
+            <NavLink
+              to={`/moods?title=${encodeURIComponent(mood)}`}
+              className="w-fit"
+            >
+              {mood}
+            </NavLink>
           </li>
         ))}
       </ul>

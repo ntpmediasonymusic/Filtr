@@ -11,7 +11,7 @@ const MainCategoryPreview = ({ title, playlists }) => {
         </h2>
         <NavLink
           to={`/main-category?title=${encodeURIComponent(title)}`}
-          className="text-white text-xs md:text-lg sm:text-sm hover:text-[#ffeda8]"
+          className="text-white text-xs md:text-lg sm:text-sm hover:text-[#f8cd28]"
         >
           Mostrar todo
         </NavLink>

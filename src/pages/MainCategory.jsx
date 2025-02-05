@@ -1,10 +1,15 @@
 /* eslint-disable react/prop-types */
 import { useLocation } from "react-router-dom";
 import { useSortedPlaylists } from "../hooks/useSortedPlaylists";
+import { useEffect } from "react";
 
 const MainCategoryPage = () => {
   const location = useLocation();
   const sortedPlaylists = useSortedPlaylists();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   // Obtener el valor de title desde la query string
   const queryParams = new URLSearchParams(location.search);
