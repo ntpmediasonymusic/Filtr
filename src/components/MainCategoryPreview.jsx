@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
-// eslint-disable-next-line react/prop-types
+import { NavLink } from "react-router-dom";
+
 const MainCategoryPreview = ({ title, playlists }) => {
   return (
     <div>
@@ -8,9 +9,12 @@ const MainCategoryPreview = ({ title, playlists }) => {
         <h2 className="text-sm md:text-2xl sm:text-lg font-bold bg-gradient-to-r from-violet-600 via-pink-600 to-yellow-600 bg-clip-text text-transparent">
           {title}
         </h2>
-        <button className="px-4 py-2 rounded-full bg-[#ffcc00] text-black text-xs md:text-lg sm:text-sm hover:bg-[#ffeda8]">
+        <NavLink
+          to={`/main-category?title=${encodeURIComponent(title)}`}
+          className="text-white text-xs md:text-lg sm:text-sm hover:text-[#ffeda8]"
+        >
           Mostrar todo
-        </button>
+        </NavLink>
       </div>
 
       {/* Contenedor de imágenes */}

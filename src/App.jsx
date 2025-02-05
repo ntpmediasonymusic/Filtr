@@ -7,6 +7,7 @@ import Moods from "./pages/Moods";
 import Quizzes from "./pages/Quizzes";
 import Shows from "./pages/Shows";
 import Footer from "./components/Footer ";
+import MainCategoryPage from "./pages/MainCategoryPage";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/moods" element={<Moods />} />
           <Route path="/quizzes" element={<Quizzes />} />
           <Route path="/shows" element={<Shows />} />
+          <Route path="/main-category" element={<MainCategoryPage />} />
         </Routes>
       </div>
       <Footer />
