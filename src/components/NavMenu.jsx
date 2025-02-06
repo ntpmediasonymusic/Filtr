@@ -40,17 +40,14 @@ const Submenu = ({ submenu, name, closeSubmenu }) => {
 };
 
 // Componente NavMenuItem
-const NavMenuItem = ({
-  name,
-  icon,
-  route,
-  submenu,
-  toggleMenu,
-  closeSubmenu,
-}) => {
+const NavMenuItem = ({ name, icon, route, submenu, toggleMenu }) => {
   const [isSubmenuOpen, setIsSubmenuOpen] = useState(false);
   const location = useLocation();
   const isActive = route && location.pathname === route; // Detecta si la opción está activa
+
+  const closeSubmenu = () => {
+    setIsSubmenuOpen(false);
+  };
 
   return (
     <div
@@ -98,7 +95,7 @@ const NavMenu = () => {
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
-    setActiveSubmenu(null); 
+    setActiveSubmenu(null);
   };
 
   const openSubmenu = (submenuName) => {
@@ -148,7 +145,7 @@ const NavMenu = () => {
             icon={option.icon}
             route={option.route}
             submenu={option.submenu}
-            closeSubmenu={closeSubmenu}
+            toggleMenu={toggleMenu}
           />
         ))}
       </div>
@@ -210,9 +207,19 @@ const NavMenu = () => {
                     {option.submenu.map((item) => (
                       <div
                         key={item}
-                        className="text-white text-lg hover:text-yellow-400"
+                        className="text-white text-lg hover:text-yellow-400 cursor-pointer"
                       >
-                        {item}
+                        <NavLink
+                          onClick={() => {
+                            closeSubmenu();
+                            toggleMenu();
+                          }}
+                          to={`/${
+                            option.name == "Géneros" ? "genres" : "moods"
+                          }?title=${encodeURIComponent(item)}`}
+                        >
+                          {item}
+                        </NavLink>
                       </div>
                     ))}
                   </div>
