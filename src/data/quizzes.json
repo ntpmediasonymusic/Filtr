@@ -18,7 +18,7 @@
         {
           "name": "En La Luna",
           "urlSpotifyProfile": "https://open.spotify.com/intl-es/album/3dN45Kj9R75Zbj6Xt8Ed9P",
-          "urlProfileImage": "https://i.scdn.co/image/ab67616d00001e022fd7aee3183357d1421ccc76"
+          "urlCoverImage": "https://i.scdn.co/image/ab67616d00001e022fd7aee3183357d1421ccc76"
         }
       ]
     },
@@ -40,7 +40,7 @@
         {
           "name": "GARCÍA",
           "urlSpotifyProfile": "https://open.spotify.com/intl-es/album/1nwWnsVZSWIpMebokmGwdo",
-          "urlProfileImage": "https://i.scdn.co/image/ab67616d00001e027180f28c3a5b8991497d33c4"
+          "urlCoverImage": "https://i.scdn.co/image/ab67616d00001e027180f28c3a5b8991497d33c4"
         }
       ]
     },
@@ -67,7 +67,7 @@
         {
           "name": "Copa Vacía",
           "urlSpotifyProfile": "https://open.spotify.com/intl-es/track/2iVgM5C7m1G4CJGbms301G",
-          "urlProfileImage": "https://i.scdn.co/image/ab67616d00001e02caecc8c0bcfd16173dfeeb53"
+          "urlCoverImage": "https://i.scdn.co/image/ab67616d00001e02caecc8c0bcfd16173dfeeb53"
         }
       ]
     }

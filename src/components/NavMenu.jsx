@@ -159,7 +159,7 @@ const NavMenu = () => {
 
       {/* Mobile Menu con NavLink y estado activo */}
       {isOpen && (
-        <div className="absolute top-16 right-0 w-2/3 bg-gray-800 p-4 flex flex-col space-y-4 md:hidden z-10 rounded-lg shadow-lg">
+        <div className="absolute top-16 right-0 w-2/3 bg-gray-800 p-4 flex flex-col space-y-4 md:hidden z-10 shadow-lg">
           {menuOptions.map((option) => {
             const isActive = option.route && location.pathname === option.route;
 
