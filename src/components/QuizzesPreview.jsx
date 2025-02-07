@@ -23,7 +23,7 @@ const QuizzesPreview = () => {
             {/* Botón para explorar más quizzes */}
             <NavLink to="/quizzes">
               <button className="w-full px-4 py-2 bg-[#f8cd28] text-black font-bold rounded-lg hover:bg-[#ffeda8] transition">
-                Explorar más quizzes
+                Explorar más Quizzes
               </button>
             </NavLink>
           </div>
