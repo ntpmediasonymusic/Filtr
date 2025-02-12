@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { useGenres } from "../hooks/useGenres";
+import { useGenres } from "../../hooks/playlists/useGenres";
 
 const GenresList = () => {
   const genres = useGenres();

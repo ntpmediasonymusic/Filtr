@@ -1,4 +1,4 @@
-import ComingSoon from "./ComingSoon";
+import ComingSoon from "../ui/ComingSoon";
 
 const PlaylistsIframePreview = () => {
   return (

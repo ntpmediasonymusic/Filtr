@@ -1,5 +1,5 @@
 import { FaInstagram, FaTiktok, FaSpotify } from "react-icons/fa";
-import logo from "../assets/filtr_logo_white.png";
+import logo from "../../assets/filtr_logo_white.png";
 
 const Footer = () => {
   return (

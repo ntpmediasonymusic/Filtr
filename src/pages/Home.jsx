@@ -1,7 +1,7 @@
-import HeaderCarousel from "../components/HeaderCarousel";
-import { useSortedPlaylists } from "../hooks/useSortedPlaylists";
-import { useMainCategories } from "../hooks/useMainCategories";
-import MainCategoryPreview from "../components/MainCategoryPreview";
+import HeaderCarousel from "../components/home/HeaderCarousel";
+import MainCategoryPreview from "../components/home/MainCategoryPreview";
+import { useSortedPlaylists } from "../hooks/playlists/useSortedPlaylists";
+import { useMainCategories } from "../hooks/playlists/useMainCategories";
 
 const Home = () => {
   const sortedPlaylists = useSortedPlaylists();

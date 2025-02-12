@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import showsData from "../data/shows.json";
+import showsData from "../../data/shows.json";
 
 export const useSortedShows = () => {
   const sortedShows = useMemo(() => {

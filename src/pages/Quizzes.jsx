@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import Quiz from "../components/Quiz";
-import useSortedQuizzes from "../hooks/useSortedQuizzes";
+import Quiz from "../components/quizzes/Quiz";
+import { useSortedQuizzes } from "../hooks/quizzes/useSortedQuizzes";
 
 const Quizzes = () => {
   useEffect(() => {

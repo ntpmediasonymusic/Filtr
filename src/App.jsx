@@ -1,13 +1,13 @@
 import { Routes, Route } from "react-router-dom";
-import NavMenu from "./components/NavMenu";
 import Home from "./pages/Home";
 import Explore from "./pages/Explore";
 import Genres from "./pages/Genres";
 import Moods from "./pages/Moods";
 import Quizzes from "./pages/Quizzes";
 import Shows from "./pages/Shows";
-import Footer from "./components/Footer ";
-import MainCategory from "./pages/MainCategory.jsx";
+import MainCategory from "./pages/MainCategory";
+import Footer from "./components/ui/Footer";
+import NavMenu from "./components/ui/navMenu/NavMenu";
 
 function App() {
   return (

@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import useSortedQuizzes from "../hooks/useSortedQuizzes";
+import { useSortedQuizzes } from "../../hooks/quizzes/useSortedQuizzes";
 
 const QuizzesPreview = () => {
   const quizzes = useSortedQuizzes().slice(0, 3);

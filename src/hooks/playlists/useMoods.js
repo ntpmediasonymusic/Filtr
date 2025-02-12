@@ -1,4 +1,4 @@
-import playlistsData from "../data/playlists.json";
+import playlistsData from "../../data/playlists.json";
 
 export const useMoods = () => {
   const moodsMap = new Map();

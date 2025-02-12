@@ -1,8 +1,8 @@
-import GenresList from "../components/GenresList";
-import MoodsList from "../components/MoodsList";
-import QuizzesPreview from "../components/QuizzesPreview";
-import ShowsPreview from "../components/ShowsPreview";
-import PlaylistsIframePreview from "../components/PlaylistsIframePreview";
+import GenresList from "../components/explore/GenresList";
+import MoodsList from "../components/explore/MoodsList";
+import QuizzesPreview from "../components/explore/QuizzesPreview";
+import ShowsPreview from "../components/explore/ShowsPreview";
+import PlaylistsIframePreview from "../components/explore/PlaylistsIframePreview";
 
 const Explore = () => {
   return (

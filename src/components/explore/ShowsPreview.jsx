@@ -1,6 +1,5 @@
-/* eslint-disable react/prop-types */
 import { NavLink } from "react-router-dom";
-import { useSortedShows } from "../hooks/useSortedShows";
+import { useSortedShows } from "../../hooks/shows/useSortedShows";
 
 // Función para obtener la abreviatura del mes en español
 const getMonthAbbreviation = (month) => {

@@ -1,6 +1,5 @@
-/* eslint-disable react/prop-types */
 import { useLocation } from "react-router-dom";
-import { useSortedPlaylists } from "../hooks/useSortedPlaylists";
+import { useSortedPlaylists } from "../hooks/playlists/useSortedPlaylists";
 import { useEffect } from "react";
 
 const MainCategoryPage = () => {

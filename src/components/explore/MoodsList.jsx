@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { useMoods } from "../hooks/useMoods";
+import { useMoods } from "../../hooks/playlists/useMoods";
 
 const MoodsList = () => {
   const moods = useMoods();
