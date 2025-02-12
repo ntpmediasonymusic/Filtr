@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   FaBars,
   FaCompass,
@@ -92,21 +92,24 @@ const NavMenu = () => {
   const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
   const [activeSubmenu, setActiveSubmenu] = useState(null);
+  const [isSticky, setIsSticky] = useState(false);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
     setActiveSubmenu(null);
   };
 
-  const openSubmenu = (submenuName) => {
-    setActiveSubmenu(submenuName);
+  const handleScroll = () => {
+    setIsSticky(window.scrollY > 0);
   };
 
-  const closeSubmenu = () => {
-    setActiveSubmenu(null);
-  };
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
-  // Opciones del menú
   const menuOptions = [
     { name: "Inicio", icon: <FaHome />, route: "/" },
     { name: "Explorar", icon: <FaCompass />, route: "/explore" },
@@ -118,7 +121,9 @@ const NavMenu = () => {
 
   return (
     <nav
-      className="text-white px-4 py-2 md:py-0 flex items-center justify-between relative"
+      className={`text-white px-4 py-2 md:py-0 flex items-center justify-between relative transition-all duration-300 ${
+        isSticky ? "sticky top-0 z-50 bg-gray-900 shadow-md" : ""
+      }`}
       style={{
         backgroundColor: "#0d0d0d",
         backgroundImage:
@@ -157,76 +162,67 @@ const NavMenu = () => {
         </button>
       </div>
 
-      {/* Mobile Menu con NavLink y estado activo */}
+      {/* Mobile Menu Dropdown */}
       {isOpen && (
         <div className="absolute top-16 right-0 w-2/3 bg-gray-800 p-4 flex flex-col space-y-4 md:hidden z-10 shadow-lg">
-          {menuOptions.map((option) => {
-            const isActive = option.route && location.pathname === option.route;
-
-            return (
-              <div key={option.name} className="relative">
-                {option.submenu ? (
-                  <button
-                    className="flex items-center justify-between p-2 text-lg text-white cursor-pointer hover:text-yellow-400 w-full"
-                    onClick={() =>
-                      activeSubmenu === option.name
-                        ? closeSubmenu()
-                        : openSubmenu(option.name)
-                    }
-                  >
-                    <div className="flex items-center space-x-2">
-                      <span className="text-xl">{option.icon}</span>
-                      <span>{option.name}</span>
-                    </div>
-                    <FaChevronDown className="text-sm" />
-                  </button>
-                ) : (
-                  <NavLink
-                    to={option.route}
-                    onClick={toggleMenu}
-                    className={`flex items-center space-x-2 text-lg font-medium px-2 py-2 transition duration-300 ${
-                      isActive
-                        ? "text-[#f8cd28] border-b-2 border-[#f8cd28]"
-                        : "text-white hover:text-[#ffeda8]"
-                    }`}
-                  >
+          {menuOptions.map((option) => (
+            <div key={option.name} className="relative">
+              {option.submenu ? (
+                <button
+                  className="flex items-center justify-between p-2 text-lg text-white cursor-pointer hover:text-yellow-400 w-full"
+                  onClick={() =>
+                    activeSubmenu === option.name
+                      ? setActiveSubmenu(null)
+                      : setActiveSubmenu(option.name)
+                  }
+                >
+                  <div className="flex items-center space-x-2">
                     <span className="text-xl">{option.icon}</span>
                     <span>{option.name}</span>
-                  </NavLink>
-                )}
-
-                {/* Mobile Submenu ocupa toda la pantalla */}
-                {activeSubmenu === option.name && (
-                  <div className="fixed inset-0 bg-black bg-opacity-90 flex flex-col items-center justify-center space-y-4 p-6 z-20">
-                    <button
-                      onClick={closeSubmenu}
-                      className="absolute top-4 right-4 text-white text-3xl"
-                    >
-                      <FaTimes />
-                    </button>
-                    {option.submenu.map((item) => (
-                      <div
-                        key={item}
-                        className="text-white text-lg hover:text-yellow-400 cursor-pointer"
-                      >
-                        <NavLink
-                          onClick={() => {
-                            closeSubmenu();
-                            toggleMenu();
-                          }}
-                          to={`/${
-                            option.name == "Géneros" ? "genres" : "moods"
-                          }?title=${encodeURIComponent(item)}`}
-                        >
-                          {item}
-                        </NavLink>
-                      </div>
-                    ))}
                   </div>
-                )}
-              </div>
-            );
-          })}
+                  <FaChevronDown className="text-sm" />
+                </button>
+              ) : (
+                <NavLink
+                  to={option.route}
+                  onClick={toggleMenu}
+                  className={`flex items-center space-x-2 text-lg font-medium px-2 py-2 transition duration-300 ${
+                    location.pathname === option.route
+                      ? "text-[#f8cd28] border-b-2 border-[#f8cd28]"
+                      : "text-white hover:text-[#ffeda8]"
+                  }`}
+                >
+                  <span className="text-xl">{option.icon}</span>
+                  <span>{option.name}</span>
+                </NavLink>
+              )}
+              {activeSubmenu === option.name && (
+                <div className="fixed inset-0 bg-black bg-opacity-90 flex flex-col items-center justify-center space-y-4 p-6 z-20">
+                  <button
+                    onClick={() => setActiveSubmenu(null)}
+                    className="absolute top-4 right-4 text-white text-3xl"
+                  >
+                    <FaTimes />
+                  </button>
+                  {option.submenu.map((item) => (
+                    <NavLink
+                      key={item}
+                      onClick={() => {
+                        setActiveSubmenu(null);
+                        toggleMenu();
+                      }}
+                      to={`/${
+                        option.name === "Géneros" ? "genres" : "moods"
+                      }?title=${encodeURIComponent(item)}`}
+                      className="text-white text-lg hover:text-yellow-400"
+                    >
+                      {item}
+                    </NavLink>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
         </div>
       )}
     </nav>
