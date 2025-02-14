@@ -125,7 +125,7 @@
       "urlPlaylist": "https://open.spotify.com/playlist/1gGWlBEY14j8dsqQVpUXb4?si=o6U3Nc-YTGitMJNmDM-0fw",
       "urlCoverImage": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da843205c0b028b86c33e978dd6c",
       "mainCategory": ["¡A BAILAAAAR!"],
-      "genre": ["Bachata","Tropical"],
+      "genre": ["Bachata", "Tropical"],
       "moods": ["Vibras de Verano", "Fiesta"],
       "region": "Centroamérica y Caribe",
       "priority": 1
@@ -135,7 +135,7 @@
       "urlPlaylist": "https://open.spotify.com/playlist/3Nl5b1bjCOhFCtiNya8P7f?si=p-xO7gqhTzacJLDe-ENR6g",
       "urlCoverImage": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da848f0478d0678034b6fc7edcb8",
       "mainCategory": ["¡A BAILAAAAR!"],
-      "genre": ["Tropical","Reggaetón", "Pop en Español"],
+      "genre": ["Tropical", "Reggaetón", "Pop en Español"],
       "moods": ["Fiesta"],
       "region": "Centroamérica y Caribe",
       "priority": 1
@@ -145,7 +145,7 @@
       "urlPlaylist": "https://open.spotify.com/playlist/5MrUPHONCmMQMSvJRBM1jn?si=WBkGLUQeTVil9Y7iDaOufQ",
       "urlCoverImage": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da846e33a30a6b2ddf5a6280675e",
       "mainCategory": ["¡A BAILAAAAR!"],
-      "genre": ["Tropical","Pop en Español"],
+      "genre": ["Tropical", "Pop en Español"],
       "moods": ["Feliz", "Fiesta", "Vibras de Verano"],
       "region": "Centroamérica y Caribe",
       "priority": 1
@@ -155,7 +155,7 @@
       "urlPlaylist": "https://open.spotify.com/playlist/16f6EeKTcW1JyPAewb52I1?si=0CCimeyfR3W3ZjhpAXsIfA",
       "urlCoverImage": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84ff548d0074db7c840daf86f3",
       "mainCategory": [],
-      "genre": ["Baladas Románticas","Pop en Español"],
+      "genre": ["Baladas Románticas", "Pop en Español"],
       "moods": ["Tranqui", "Tomar Café"],
       "region": "Centroamérica y Caribe",
       "priority": 1
@@ -197,6 +197,196 @@
       "mainCategory": [],
       "genre": ["Música en Inglés", "Pop en Español"],
       "moods": ["Feliz", "Tomar Café"],
+      "region": "Centroamérica y Caribe",
+      "priority": 1
+    },
+    {
+      "playlistName": "Baladas Viejitas pero Bonitas en Español 60, 70, 80 y 90 💝 Baladas Romanticas de Ayer y Hoy 2",
+      "urlPlaylist": "https://open.spotify.com/playlist/16f6EeKTcW1JyPAewb52I1?si=0CCimeyfR3W3ZjhpAXsIfA",
+      "urlCoverImage": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84ff548d0074db7c840daf86f3",
+      "mainCategory": [],
+      "genre": ["Baladas Románticas", "Pop en Español"],
+      "moods": ["Tranqui", "Tomar Café"],
+      "region": "Centroamérica y Caribe",
+      "priority": 1
+    },
+    {
+      "playlistName": "Baladas Viejitas pero Bonitas en Español 60, 70, 80 y 90 💝 Baladas Romanticas de Ayer y Hoy 3",
+      "urlPlaylist": "https://open.spotify.com/playlist/16f6EeKTcW1JyPAewb52I1?si=0CCimeyfR3W3ZjhpAXsIfA",
+      "urlCoverImage": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84ff548d0074db7c840daf86f3",
+      "mainCategory": [],
+      "genre": ["Baladas Románticas", "Pop en Español"],
+      "moods": ["Tranqui", "Tomar Café"],
+      "region": "Centroamérica y Caribe",
+      "priority": 1
+    },
+    {
+      "playlistName": "Baladas Viejitas pero Bonitas en Español 60, 70, 80 y 90 💝 Baladas Romanticas de Ayer y Hoy 4",
+      "urlPlaylist": "https://open.spotify.com/playlist/16f6EeKTcW1JyPAewb52I1?si=0CCimeyfR3W3ZjhpAXsIfA",
+      "urlCoverImage": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84ff548d0074db7c840daf86f3",
+      "mainCategory": [],
+      "genre": ["Baladas Románticas", "Pop en Español"],
+      "moods": ["Tranqui", "Tomar Café"],
+      "region": "Centroamérica y Caribe",
+      "priority": 1
+    },
+    {
+      "playlistName": "Baladas Viejitas pero Bonitas en Español 60, 70, 80 y 90 💝 Baladas Romanticas de Ayer y Hoy 5",
+      "urlPlaylist": "https://open.spotify.com/playlist/16f6EeKTcW1JyPAewb52I1?si=0CCimeyfR3W3ZjhpAXsIfA",
+      "urlCoverImage": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84ff548d0074db7c840daf86f3",
+      "mainCategory": [],
+      "genre": ["Baladas Románticas", "Pop en Español"],
+      "moods": ["Tranqui", "Tomar Café"],
+      "region": "Centroamérica y Caribe",
+      "priority": 1
+    },
+    {
+      "playlistName": "Baladas Viejitas pero Bonitas en Español 60, 70, 80 y 90 💝 Baladas Romanticas de Ayer y Hoy 6",
+      "urlPlaylist": "https://open.spotify.com/playlist/16f6EeKTcW1JyPAewb52I1?si=0CCimeyfR3W3ZjhpAXsIfA",
+      "urlCoverImage": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84ff548d0074db7c840daf86f3",
+      "mainCategory": [],
+      "genre": ["Baladas Románticas", "Pop en Español"],
+      "moods": ["Tranqui", "Tomar Café"],
+      "region": "Centroamérica y Caribe",
+      "priority": 1
+    },
+    {
+      "playlistName": "Baladas Viejitas pero Bonitas en Español 60, 70, 80 y 90 💝 Baladas Romanticas de Ayer y Hoy 7",
+      "urlPlaylist": "https://open.spotify.com/playlist/16f6EeKTcW1JyPAewb52I1?si=0CCimeyfR3W3ZjhpAXsIfA",
+      "urlCoverImage": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84ff548d0074db7c840daf86f3",
+      "mainCategory": [],
+      "genre": ["Baladas Románticas", "Pop en Español"],
+      "moods": ["Tranqui", "Tomar Café"],
+      "region": "Centroamérica y Caribe",
+      "priority": 1
+    },
+    {
+      "playlistName": "Baladas Viejitas pero Bonitas en Español 60, 70, 80 y 90 💝 Baladas Romanticas de Ayer y Hoy 8",
+      "urlPlaylist": "https://open.spotify.com/playlist/16f6EeKTcW1JyPAewb52I1?si=0CCimeyfR3W3ZjhpAXsIfA",
+      "urlCoverImage": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84ff548d0074db7c840daf86f3",
+      "mainCategory": [],
+      "genre": ["Baladas Románticas", "Pop en Español"],
+      "moods": ["Tranqui", "Tomar Café"],
+      "region": "Centroamérica y Caribe",
+      "priority": 1
+    },
+    {
+      "playlistName": "Baladas Viejitas pero Bonitas en Español 60, 70, 80 y 90 💝 Baladas Romanticas de Ayer y Hoy 9",
+      "urlPlaylist": "https://open.spotify.com/playlist/16f6EeKTcW1JyPAewb52I1?si=0CCimeyfR3W3ZjhpAXsIfA",
+      "urlCoverImage": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84ff548d0074db7c840daf86f3",
+      "mainCategory": [],
+      "genre": ["Baladas Románticas", "Pop en Español"],
+      "moods": ["Tranqui", "Tomar Café"],
+      "region": "Centroamérica y Caribe",
+      "priority": 1
+    },
+    {
+      "playlistName": "Baladas Viejitas pero Bonitas en Español 60, 70, 80 y 90 💝 Baladas Romanticas de Ayer y Hoy 10",
+      "urlPlaylist": "https://open.spotify.com/playlist/16f6EeKTcW1JyPAewb52I1?si=0CCimeyfR3W3ZjhpAXsIfA",
+      "urlCoverImage": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84ff548d0074db7c840daf86f3",
+      "mainCategory": [],
+      "genre": ["Baladas Románticas", "Pop en Español"],
+      "moods": ["Tranqui", "Tomar Café"],
+      "region": "Centroamérica y Caribe",
+      "priority": 1
+    },
+    {
+      "playlistName": "Baladas Viejitas pero Bonitas en Español 60, 70, 80 y 90 💝 Baladas Romanticas de Ayer y Hoy 11",
+      "urlPlaylist": "https://open.spotify.com/playlist/16f6EeKTcW1JyPAewb52I1?si=0CCimeyfR3W3ZjhpAXsIfA",
+      "urlCoverImage": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84ff548d0074db7c840daf86f3",
+      "mainCategory": [],
+      "genre": ["Baladas Románticas", "Pop en Español"],
+      "moods": ["Tranqui", "Tomar Café"],
+      "region": "Centroamérica y Caribe",
+      "priority": 1
+    },
+    {
+      "playlistName": "Baladas Viejitas pero Bonitas en Español 60, 70, 80 y 90 💝 Baladas Romanticas de Ayer y Hoy 12",
+      "urlPlaylist": "https://open.spotify.com/playlist/16f6EeKTcW1JyPAewb52I1?si=0CCimeyfR3W3ZjhpAXsIfA",
+      "urlCoverImage": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84ff548d0074db7c840daf86f3",
+      "mainCategory": [],
+      "genre": ["Baladas Románticas", "Pop en Español"],
+      "moods": ["Tranqui", "Tomar Café"],
+      "region": "Centroamérica y Caribe",
+      "priority": 1
+    },
+    {
+      "playlistName": "Baladas Viejitas pero Bonitas en Español 60, 70, 80 y 90 💝 Baladas Romanticas de Ayer y Hoy 13",
+      "urlPlaylist": "https://open.spotify.com/playlist/16f6EeKTcW1JyPAewb52I1?si=0CCimeyfR3W3ZjhpAXsIfA",
+      "urlCoverImage": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84ff548d0074db7c840daf86f3",
+      "mainCategory": [],
+      "genre": ["Baladas Románticas", "Pop en Español"],
+      "moods": ["Tranqui", "Tomar Café"],
+      "region": "Centroamérica y Caribe",
+      "priority": 1
+    },
+    {
+      "playlistName": "Baladas Viejitas pero Bonitas en Español 60, 70, 80 y 90 💝 Baladas Romanticas de Ayer y Hoy 14",
+      "urlPlaylist": "https://open.spotify.com/playlist/16f6EeKTcW1JyPAewb52I1?si=0CCimeyfR3W3ZjhpAXsIfA",
+      "urlCoverImage": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84ff548d0074db7c840daf86f3",
+      "mainCategory": [],
+      "genre": ["Baladas Románticas", "Pop en Español"],
+      "moods": ["Tranqui", "Tomar Café"],
+      "region": "Centroamérica y Caribe",
+      "priority": 1
+    },
+    {
+      "playlistName": "Baladas Viejitas pero Bonitas en Español 60, 70, 80 y 90 💝 Baladas Romanticas de Ayer y Hoy 15",
+      "urlPlaylist": "https://open.spotify.com/playlist/16f6EeKTcW1JyPAewb52I1?si=0CCimeyfR3W3ZjhpAXsIfA",
+      "urlCoverImage": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84ff548d0074db7c840daf86f3",
+      "mainCategory": [],
+      "genre": ["Baladas Románticas", "Pop en Español"],
+      "moods": ["Tranqui", "Tomar Café"],
+      "region": "Centroamérica y Caribe",
+      "priority": 1
+    },
+    {
+      "playlistName": "Baladas Viejitas pero Bonitas en Español 60, 70, 80 y 90 💝 Baladas Romanticas de Ayer y Hoy 16",
+      "urlPlaylist": "https://open.spotify.com/playlist/16f6EeKTcW1JyPAewb52I1?si=0CCimeyfR3W3ZjhpAXsIfA",
+      "urlCoverImage": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84ff548d0074db7c840daf86f3",
+      "mainCategory": [],
+      "genre": ["Baladas Románticas", "Pop en Español"],
+      "moods": ["Tranqui", "Tomar Café"],
+      "region": "Centroamérica y Caribe",
+      "priority": 1
+    },
+    {
+      "playlistName": "Baladas Viejitas pero Bonitas en Español 60, 70, 80 y 90 💝 Baladas Romanticas de Ayer y Hoy 17",
+      "urlPlaylist": "https://open.spotify.com/playlist/16f6EeKTcW1JyPAewb52I1?si=0CCimeyfR3W3ZjhpAXsIfA",
+      "urlCoverImage": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84ff548d0074db7c840daf86f3",
+      "mainCategory": [],
+      "genre": ["Baladas Románticas", "Pop en Español"],
+      "moods": ["Tranqui", "Tomar Café"],
+      "region": "Centroamérica y Caribe",
+      "priority": 1
+    },
+    {
+      "playlistName": "Baladas Viejitas pero Bonitas en Español 60, 70, 80 y 90 💝 Baladas Romanticas de Ayer y Hoy 18",
+      "urlPlaylist": "https://open.spotify.com/playlist/16f6EeKTcW1JyPAewb52I1?si=0CCimeyfR3W3ZjhpAXsIfA",
+      "urlCoverImage": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84ff548d0074db7c840daf86f3",
+      "mainCategory": [],
+      "genre": ["Baladas Románticas", "Pop en Español"],
+      "moods": ["Tranqui", "Tomar Café"],
+      "region": "Centroamérica y Caribe",
+      "priority": 1
+    },
+    {
+      "playlistName": "Baladas Viejitas pero Bonitas en Español 60, 70, 80 y 90 💝 Baladas Romanticas de Ayer y Hoy 19",
+      "urlPlaylist": "https://open.spotify.com/playlist/16f6EeKTcW1JyPAewb52I1?si=0CCimeyfR3W3ZjhpAXsIfA",
+      "urlCoverImage": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84ff548d0074db7c840daf86f3",
+      "mainCategory": [],
+      "genre": ["Baladas Románticas", "Pop en Español"],
+      "moods": ["Tranqui", "Tomar Café"],
+      "region": "Centroamérica y Caribe",
+      "priority": 1
+    },
+    {
+      "playlistName": "Baladas Viejitas pero Bonitas en Español 60, 70, 80 y 90 💝 Baladas Romanticas de Ayer y Hoy 20",
+      "urlPlaylist": "https://open.spotify.com/playlist/16f6EeKTcW1JyPAewb52I1?si=0CCimeyfR3W3ZjhpAXsIfA",
+      "urlCoverImage": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da84ff548d0074db7c840daf86f3",
+      "mainCategory": [],
+      "genre": ["Baladas Románticas", "Pop en Español"],
+      "moods": ["Tranqui", "Tomar Café"],
       "region": "Centroamérica y Caribe",
       "priority": 1
     }
