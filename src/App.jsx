@@ -8,7 +8,7 @@ import Shows from "./pages/Shows";
 import MainCategory from "./pages/MainCategory";
 import Footer from "./components/ui/Footer";
 import NavMenu from "./components/ui/navMenu/NavMenu";
-import { PageTitleProvider } from "./context/PageTitleContext";
+import { PageTitleProvider } from "./context/pageTitleContext";
 
 function App() {
   return (
