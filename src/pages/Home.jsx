@@ -2,10 +2,12 @@ import HeaderCarousel from "../components/home/HeaderCarousel";
 import MainCategoryPreview from "../components/home/MainCategoryPreview";
 import { useSortedPlaylists } from "../hooks/playlists/useSortedPlaylists";
 import { useMainCategories } from "../hooks/playlists/useMainCategories";
+// import { useUpdatedPlaylists } from "../hooks/playlists/useUpdatedPlaylists";
 
 const Home = () => {
   const sortedPlaylists = useSortedPlaylists();
   const mainCategories = useMainCategories();
+  // const playlists = useUpdatedPlaylists();
 
   return (
     <>
