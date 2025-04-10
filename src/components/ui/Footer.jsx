@@ -1,14 +1,14 @@
 import { FaInstagram, FaTiktok, FaSpotify } from "react-icons/fa";
-import logo from "../../assets/filtr_logo_white.png";
+import logo from "../../assets/images/filtr_logo_white.png";
 
 const Footer = () => {
   return (
     <footer
       className="px-6 py-8 flex flex-col items-center"
       style={{
-        backgroundColor: "#0d0d0d",
+        backgroundColor: "rgb(0, 79, 212)",
         backgroundImage:
-          "linear-gradient(225deg, rgb(255, 60, 172) -80%, rgb(13, 13, 13) 50%, rgb(43, 134, 197) 180%)",
+          "linear-gradient(to right, rgb(202, 36, 156) 0%, rgb(202, 36, 156) 20%, rgb(0, 79, 212) 70%, rgb(0, 79, 212) 100%)",
       }}
     >
       {/* Logo */}

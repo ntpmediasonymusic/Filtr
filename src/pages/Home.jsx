@@ -1,13 +1,11 @@
 import HeaderCarousel from "../components/home/HeaderCarousel";
 import MainCategoryPreview from "../components/home/MainCategoryPreview";
-import { useSortedPlaylists } from "../hooks/playlists/useSortedPlaylists";
+import { usePlaylists } from "../context/PlaylistContext";
 import { useMainCategories } from "../hooks/playlists/useMainCategories";
-// import { useUpdatedPlaylists } from "../hooks/playlists/useUpdatedPlaylists";
 
 const Home = () => {
-  const sortedPlaylists = useSortedPlaylists();
   const mainCategories = useMainCategories();
-  // const playlists = useUpdatedPlaylists();
+  const playlists = usePlaylists();
 
   return (
     <>
@@ -19,7 +17,7 @@ const Home = () => {
         {/* 🔄 Iterar sobre todas las categorías y generar un MainCategoryPreview */}
         {mainCategories.map((category) => {
           // Filtrar las playlists que pertenezcan a la categoría actual
-          const filteredPlaylistsFilter = sortedPlaylists.filter((playlist) =>
+          const filteredPlaylistsFilter = playlists.filter((playlist) =>
             playlist.mainCategory.includes(category)
           );
 

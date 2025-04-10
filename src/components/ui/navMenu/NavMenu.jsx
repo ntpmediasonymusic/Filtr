@@ -1,24 +1,17 @@
 import { useEffect, useState } from "react";
-import {
-  FaBars,
-  FaCompass,
-  FaHome,
-  FaMusic,
-  FaQuestionCircle,
-  FaSmile,
-  FaTimes,
-  FaTv,
-} from "react-icons/fa";
+import { FaBars, FaTimes } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
-import logo from "../../../assets/filtr_logo_white.png";
-import { useGenres } from "../../../hooks/playlists/useGenres";
-import { useMoods } from "../../../hooks/playlists/useMoods";
 import NavMenuItem from "./NavMenuItem";
 import MobileMenu from "./MobileMenu";
+import logo from "../../../assets/images/filtr_logo_white.png";
+import GenresIcon from "../../../assets/icons/GenresIcon";
+import HomeIcon from "../../../assets/icons/HomeIcon";
+import MoodsIcon from "../../../assets/icons/MoodsIcon";
+import QuizzesIcon from "../../../assets/icons/QuizzesIcon";
+import ShowsIcon from "../../../assets/icons/ShowsIcon";
+import ProfileIcon from "../../../assets/icons/ProfileIcon";
 
 const NavMenu = () => {
-  const genres = useGenres();
-  const moods = useMoods();
   const [isOpen, setIsOpen] = useState(false);
   const [activeSubmenu, setActiveSubmenu] = useState(null);
   const [isSticky, setIsSticky] = useState(false);
@@ -40,23 +33,23 @@ const NavMenu = () => {
   }, []);
 
   const menuOptions = [
-    { name: "Inicio", icon: <FaHome />, route: "/" },
-    { name: "Explorar", icon: <FaCompass />, route: "/explore" },
-    { name: "Géneros", icon: <FaMusic />, route: "/genres", submenu: genres },
-    { name: "Moods", icon: <FaSmile />, route: "/moods", submenu: moods },
-    { name: "Quizzes", icon: <FaQuestionCircle />, route: "/quizzes" },
-    { name: "Shows", icon: <FaTv />, route: "/shows" },
+    { name: "Inicio", icon: <HomeIcon />, route: "/" },
+    { name: "Explorar", icon: <ProfileIcon />, route: "/explore" },
+    { name: "Géneros", icon: <GenresIcon />, route: "/genres" },
+    { name: "Moods", icon: <MoodsIcon />, route: "/moods" },
+    { name: "Quizzes", icon: <QuizzesIcon />, route: "/quizzes" },
+    { name: "Shows", icon: <ShowsIcon />, route: "/shows" },
   ];
 
   return (
     <nav
-      className={`text-white px-4 py-2 md:py-0 flex items-center justify-between relative transition-all duration-300 ${
-        isSticky ? "sticky top-0 z-50 bg-gray-900 shadow-md" : ""
-      }`}
+      className={`flex items-center justify-between text-white px-4 py-5 
+              transition-all duration-300
+              ${isSticky ? "sticky top-0 z-50 shadow-md" : ""}`}
       style={{
-        backgroundColor: "#0d0d0d",
+        backgroundColor: "rgb(0, 79, 212)",
         backgroundImage:
-          "linear-gradient(225deg, rgb(255, 60, 172) -80%, rgb(13, 13, 13) 50%, rgb(43, 134, 197) 180%)",
+          "linear-gradient(to right, rgb(202, 36, 156) 0%, rgb(202, 36, 156) 20%, rgb(0, 79, 212) 70%, rgb(0, 79, 212) 100%)",
       }}
     >
       {/* Logo */}
@@ -66,7 +59,7 @@ const NavMenu = () => {
             src={logo}
             alt="Logo Filtr"
             className="w-12 md:w-20 cursor-pointer"
-          />
+          /> 
         </NavLink>
       </div>
 

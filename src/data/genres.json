@@ -1,0 +1,36 @@
+{
+  "genres": [
+    {
+      "name": "Bachata",
+      "urlImageHeader": "assets/images/genres-header/genres-header-Bachata.png"
+    },
+    {
+      "name": "Baladas Románticas",
+      "urlImageHeader": "assets/images/genres-header/genres-header-BaladasRománticas.png"
+    },
+    {
+      "name": "Música en Inglés",
+      "urlImageHeader": "assets/images/genres-header/genres-header-MúsicaEnInglés.png"
+    },
+    {
+      "name": "Navidad",
+      "urlImageHeader": "assets/images/genres-header/genres-header-PopEnEspañol.png"
+    },
+    {
+      "name": "Novedades y Éxitos",
+      "urlImageHeader": ""
+    },
+    {
+      "name": "Pop en Español",
+      "urlImageHeader": "assets/images/genres-header/genres-header-PopEnEspañol.png"
+    },
+    {
+      "name": "Reggaetón",
+      "urlImageHeader": "assets/images/genres-header/genres-header-Reggaetón.png"
+    },
+    {
+      "name": "Tropical",
+      "urlImageHeader": "assets/images/genres-header/genres-header-Tropical.png"
+    }
+  ]
+}

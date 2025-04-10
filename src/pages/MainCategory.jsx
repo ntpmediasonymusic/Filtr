@@ -1,13 +1,13 @@
 import { useLocation } from "react-router-dom";
-import { useSortedPlaylists } from "../hooks/playlists/useSortedPlaylists";
 import { useEffect, useRef, useState } from "react";
 import SearchBar from "../components/ui/SearchBar";
 import PlaylistsContainerGrid from "../components/ui/PlaylistsContainerGrid";
 import Paginate from "../components/ui/Paginate";
+import { usePlaylists } from "../context/PlaylistContext";
 
 const MainCategoryPage = () => {
   const location = useLocation();
-  const sortedPlaylists = useSortedPlaylists();
+  const playlists = usePlaylists();
 
   const [searchTerm, setSearchTerm] = useState("");
   const [searchSuggestions, setSearchSuggestions] = useState([]);
@@ -23,7 +23,7 @@ const MainCategoryPage = () => {
   const queryParams = new URLSearchParams(location.search);
   const categoryTitle = queryParams.get("title") || "Mood no encontrado";
 
-  const filteredPlaylists = sortedPlaylists.filter((playlist) =>
+  const filteredPlaylists = playlists.filter((playlist) =>
     playlist.mainCategory.includes(categoryTitle)
   );
 
