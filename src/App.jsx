@@ -9,7 +9,7 @@ import MainCategory from "./pages/MainCategory";
 import Footer from "./components/ui/Footer";
 import NavMenu from "./components/ui/navMenu/NavMenu";
 import { PlaylistProvider } from "./context/PlaylistContext";
-import { PageTitleProvider } from "./context/pageTitleContext";
+import { PageTitleProvider } from "./context/PageTitleContext";
 
 function App() {
   return (
