@@ -1,18 +1,25 @@
 import { useEffect } from "react";
-import Show from "../components/shows/Show";
 import { useSortedShows } from "../hooks/shows/useSortedShows";
+import ShowCard from "../components/shows/ShowCard";
+import ShowsHeader from "../components/shows/ShowsHeader";
 
 const Shows = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
   const shows = useSortedShows();
+
   return (
-    <div className="flex flex-col gap-[50px] md:gap-[100px] px-6 py-[50px] md:py-[100px]">
-      {shows.map((show) => (
-        <Show key={show.showName} {...show} />
-      ))}
-    </div>
+    <>
+      <div className="p-0">
+        <ShowsHeader />
+      </div>
+      <div className="grid justify-items-center grid-cols-1 md:grid-cols-2 gap-6 px-6 py-[50px] md:py-[100px]">
+        {shows.map((show) => (
+          <ShowCard key={show.showName} {...show} />
+        ))}
+      </div>
+    </>
   );
 };
 

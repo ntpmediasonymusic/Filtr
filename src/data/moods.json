@@ -1,0 +1,36 @@
+{
+  "moods": [
+    {
+      "name": "Despecho",
+      "urlImageHeader": ""
+    },
+    {
+      "name": "Feliz",
+      "urlImageHeader": ""
+    },
+    {
+      "name": "Fiesta",
+      "urlImageHeader": ""
+    },
+    {
+      "name": "Romance",
+      "urlImageHeader": ""
+    },
+    {
+      "name": "Tomar Café",
+      "urlImageHeader": ""
+    },
+    {
+      "name": "Tranqui",
+      "urlImageHeader": "assets/images/moods-header/moods-header-Tranqui.png"
+    },
+    {
+      "name": "Triste",
+      "urlImageHeader": ""
+    },
+    {
+      "name": "Vibras de Verano",
+      "urlImageHeader": ""
+    }
+  ]
+}
