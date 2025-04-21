@@ -9,7 +9,8 @@ import HomeIcon from "../../../assets/icons/HomeIcon";
 import MoodsIcon from "../../../assets/icons/MoodsIcon";
 import QuizzesIcon from "../../../assets/icons/QuizzesIcon";
 import ShowsIcon from "../../../assets/icons/ShowsIcon";
-import ProfileIcon from "../../../assets/icons/ProfileIcon";
+import TrendIcon from "../../../assets/icons/TrendIcon";
+import WinWinIcon from "../../../assets/icons/WinWinIcon";
 
 const NavMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -34,11 +35,12 @@ const NavMenu = () => {
 
   const menuOptions = [
     { name: "Inicio", icon: <HomeIcon />, route: "/" },
-    { name: "Explorar", icon: <ProfileIcon />, route: "/explore" },
     { name: "Géneros", icon: <GenresIcon />, route: "/genres" },
     { name: "Moods", icon: <MoodsIcon />, route: "/moods" },
-    { name: "Quizzes", icon: <QuizzesIcon />, route: "/quizzes" },
+    { name: "Trends", icon: <TrendIcon />, route: "/trends" },
     { name: "Shows", icon: <ShowsIcon />, route: "/shows" },
+    { name: "Quizzes", icon: <QuizzesIcon />, route: "/quizzes" },
+    { name: "Win Win", icon: <WinWinIcon />, route: "/winwin" },
   ];
 
   return (
@@ -64,7 +66,7 @@ const NavMenu = () => {
       </div>
 
       {/* Desktop Menu */}
-      <div className="hidden md:flex space-x-6">
+      <div className="hidden md:flex space-x-1">
         {menuOptions.map((option) => (
           <NavMenuItem
             key={option.name}

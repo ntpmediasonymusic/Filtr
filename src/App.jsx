@@ -10,6 +10,8 @@ import Footer from "./components/ui/Footer";
 import NavMenu from "./components/ui/navMenu/NavMenu";
 import { PlaylistProvider } from "./context/PlaylistContext";
 import { PageTitleProvider } from "./context/PageTitleContext";
+import Trends from "./pages/Trends";
+import WinWin from "./pages/WinWin";
 
 function App() {
   return (
@@ -26,6 +28,8 @@ function App() {
               <Route path="/quizzes" element={<Quizzes />} />
               <Route path="/shows" element={<Shows />} />
               <Route path="/main-category" element={<MainCategory />} />
+              <Route path="/trends" element={<Trends />} />
+              <Route path="/winwin" element={<WinWin />} />
             </Routes>
           </PlaylistProvider>
         </PageTitleProvider>

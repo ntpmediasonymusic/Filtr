@@ -30,6 +30,12 @@ export const PageTitleProvider = ({ children }) => {
       case "/main-category":
         document.title = "Categoría";
         break;
+      case "/trends":
+        document.title = "Trends";
+        break;
+      case "/winwin":
+        document.title = "Win Win";
+        break;
       default:
         document.title = "Filtr";
     }
@@ -41,4 +47,3 @@ export const PageTitleProvider = ({ children }) => {
     </PageTitleContext.Provider>
   );
 };
-
