@@ -1,11 +1,12 @@
 import ComingSoon from "../components/ui/ComingSoon";
+import PageHeader from "../components/ui/PageHeader";
 
 const WinWin = () => {
   return (
     <>
-      <h2 className="text-sm md:text-2xl sm:text-lg font-normal text-[#00DAF0]">
-        Win Win
-      </h2>
+      <div className="p-0">
+        <PageHeader welcomeMsg={"A ganar"} />
+      </div>
       <ComingSoon color="#c43ea0" />
     </>
   );

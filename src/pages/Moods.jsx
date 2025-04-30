@@ -6,6 +6,7 @@ import PlaylistsContainerGrid from "../components/ui/PlaylistsContainerGrid";
 import { usePlaylists } from "../context/PlaylistContext";
 import moodsData from "../data/moods.json";
 import MoodsHeader from "../components/moods/MoodsHeader";
+import PageHeader from "../components/ui/PageHeader";
 
 const Moods = () => {
   useEffect(() => {
@@ -72,8 +73,12 @@ const Moods = () => {
   // };
 
   return (
-    <div className="flex flex-col px-6 py-[50px] md:py-[100px] gap-[35px] md:gap-[50px]">
-      {/* <h2 className="text-xl md:text-3xl sm:text-xl font-bold bg-gradient-to-r from-violet-600 via-pink-600 to-yellow-600 bg-clip-text text-transparent">
+    <>
+      <div className="p-0">
+        <PageHeader welcomeMsg={"Mi mood de hoy es..."} />
+      </div>
+      <div className="flex flex-col px-6 py-[50px] md:py-[100px] gap-[35px] md:gap-[50px]">
+        {/* <h2 className="text-xl md:text-3xl sm:text-xl font-bold bg-gradient-to-r from-violet-600 via-pink-600 to-yellow-600 bg-clip-text text-transparent">
         {moodTitle}
       </h2>
 
@@ -88,17 +93,18 @@ const Moods = () => {
         searchRef={searchRef}
         clearSuggestions={() => setSearchSuggestions([])}
       /> */}
-      <MoodsHeader
-        moods={moodsData.moods}
-        selectedMood={selectedMood}
-        setSelectedMood={setSelectedMood}
-      />
+        <MoodsHeader
+          moods={moodsData.moods}
+          selectedMood={selectedMood}
+          setSelectedMood={setSelectedMood}
+        />
 
-      <PlaylistsContainerGrid currentPlaylists={filteredPlaylists} />
-      {/* {pageCount > 1 && (
+        <PlaylistsContainerGrid currentPlaylists={filteredPlaylists} />
+        {/* {pageCount > 1 && (
         <Paginate pageCount={pageCount} handlePageClick={handlePageClick} />
       )} */}
-    </div>
+      </div>
+    </>
   );
 };
 

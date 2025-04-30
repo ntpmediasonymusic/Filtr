@@ -1,6 +1,6 @@
 import HeaderCarousel from "../components/home/HeaderCarousel";
 import MainCategoryPreview from "../components/home/MainCategoryPreview";
-// import PageHeader from "../components/ui/PageHeader";
+import PageHeader from "../components/ui/PageHeader";
 import { usePlaylists } from "../context/PlaylistContext";
 import { useMainCategories } from "../hooks/playlists/useMainCategories";
 
@@ -10,11 +10,11 @@ const Home = () => {
 
   return (
     <>
-      {/* <div className="p-0">
-        <PageHeader />
-      </div> */}
-
       <div className="p-0">
+        <PageHeader welcomeMsg={"Ana, tu vida suena así"} />
+      </div>
+
+      <div className="px-6">
         <HeaderCarousel />
       </div>
 

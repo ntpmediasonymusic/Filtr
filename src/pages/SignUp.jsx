@@ -7,7 +7,7 @@ const SignUp = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#131517] flex flex-col items-center justify-center px-4">
+    <div className="min-h-screen flex flex-col items-center justify-center px-6 py-[50px] md:py-[100px]">
       <div className="text-center mb-8 max-w-md">
         <h2 className="text-white text-2xl md:text-3xl font-bold">
           Vamos a registrarme

@@ -6,6 +6,7 @@ import PlaylistsContainerGrid from "../components/ui/PlaylistsContainerGrid";
 import { usePlaylists } from "../context/PlaylistContext";
 import GenresHeader from "../components/genres/GenresHeader";
 import genresData from "../data/genres.json";
+import PageHeader from "../components/ui/PageHeader";
 
 const Genres = () => {
   useEffect(() => {
@@ -23,7 +24,6 @@ const Genres = () => {
           playlist.genre && playlist.genre.includes(selectedGenre.name)
       )
     : playlists;
-
 
   // const [searchTerm, setSearchTerm] = useState("");
   // const [searchSuggestions, setSearchSuggestions] = useState([]);
@@ -73,8 +73,12 @@ const Genres = () => {
   // };
 
   return (
-    <div className="flex flex-col px-6 py-[50px] md:py-[100px] gap-[35px] md:gap-[50px]">
-      {/* <h2 className="text-xl md:text-3xl sm:text-xl font-bold bg-gradient-to-r from-violet-600 via-pink-600 to-yellow-600 bg-clip-text text-transparent">
+    <>
+      <div className="p-0">
+        <PageHeader welcomeMsg={"Mi género de hoy es..."} />
+      </div>
+      <div className="flex flex-col px-6 py-[50px] md:py-[100px] gap-[35px] md:gap-[50px]">
+        {/* <h2 className="text-xl md:text-3xl sm:text-xl font-bold bg-gradient-to-r from-violet-600 via-pink-600 to-yellow-600 bg-clip-text text-transparent">
         {genreTitle}
       </h2>
       <SearchBar
@@ -88,17 +92,18 @@ const Genres = () => {
         searchRef={searchRef}
         clearSuggestions={() => setSearchSuggestions([])}
       /> */}
-      <GenresHeader
-        genres={genresData.genres}
-        selectedGenre={selectedGenre}
-        setSelectedGenre={setSelectedGenre}
-      />
-      
-      <PlaylistsContainerGrid currentPlaylists={filteredPlaylists} />
-      {/* {pageCount > 1 && (
+        <GenresHeader
+          genres={genresData.genres}
+          selectedGenre={selectedGenre}
+          setSelectedGenre={setSelectedGenre}
+        />
+
+        <PlaylistsContainerGrid currentPlaylists={filteredPlaylists} />
+        {/* {pageCount > 1 && (
         <Paginate pageCount={pageCount} handlePageClick={handlePageClick} />
       )} */}
-    </div>
+      </div>
+    </>
   );
 };
 

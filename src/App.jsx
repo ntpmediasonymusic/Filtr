@@ -8,7 +8,6 @@ import Shows from "./pages/Shows";
 import MainCategory from "./pages/MainCategory";
 import Footer from "./components/ui/Footer";
 import NavMenu from "./components/ui/navMenu/NavMenu";
-import PageHeader from "./components/ui/PageHeader";
 import { PlaylistProvider } from "./context/PlaylistContext";
 import { PageTitleProvider } from "./context/PageTitleContext";
 import Trends from "./pages/Trends";
@@ -22,9 +21,6 @@ function App() {
     <div className="flex flex-col min-h-screen bg-[#131517]">
       <NavMenu />
       <div className="flex-1">
-        <div className="p-0">
-          <PageHeader />
-        </div>
         <PageTitleProvider>
           <PlaylistProvider>
             <Routes>

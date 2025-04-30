@@ -1,8 +1,9 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
 import SearchIcon from "../../assets/icons/SearchIcon";
 import UserCircleIcon from "../../assets/icons/UserCircleIcon";
 
-const PageHeader = () => {
+const PageHeader = ({ welcomeMsg }) => {
   const userName = "Ana";
   const [searchValue, setSearchValue] = useState("");
   const handleSearchChange = (e) => {
@@ -13,9 +14,7 @@ const PageHeader = () => {
     <header className="w-full flex items-center justify-between px-6 py-10 bg-[#131517]">
       {/* Saludo */}
       <div>
-        <h1 className="text-white text-lg md:text-2xl">
-          {userName}, tu vida suena así
-        </h1>
+        <h1 className="text-white text-lg md:text-2xl">{welcomeMsg}</h1>
       </div>
 
       {/* Zona de búsqueda + perfil */}

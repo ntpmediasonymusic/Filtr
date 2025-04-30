@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useSortedShows } from "../hooks/shows/useSortedShows";
 import ShowCard from "../components/shows/ShowCard";
 import ShowsHeader from "../components/shows/ShowsHeader";
+import PageHeader from "../components/ui/PageHeader";
 
 const Shows = () => {
   useEffect(() => {
@@ -12,6 +13,9 @@ const Shows = () => {
   return (
     <>
       <div className="p-0">
+        <PageHeader welcomeMsg={""} />
+      </div>
+      <div className="px-6">
         <ShowsHeader />
       </div>
       <div className="grid justify-items-center grid-cols-1 md:grid-cols-2 gap-6 px-6 py-[50px] md:py-[100px]">
