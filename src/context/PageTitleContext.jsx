@@ -36,6 +36,15 @@ export const PageTitleProvider = ({ children }) => {
       case "/winwin":
         document.title = "Win Win";
         break;
+      case "/login":
+        document.title = "Login";
+        break;
+      case "/signup":
+        document.title = "SignUp";
+        break;
+      case "/edit-account":
+        document.title = "Edit Account";
+        break;
       default:
         document.title = "Filtr";
     }
