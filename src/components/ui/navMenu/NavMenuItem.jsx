@@ -41,7 +41,7 @@ const NavMenuItem = ({ name, icon, route, submenu, toggleMenu }) => {
             ${
               isActive
                 ? "text-[#00DAF0] font-normal p-[11px] border border-[#00DAF0]"
-                : "text-[#00DAF0] hover:bg-[#5C0F8B] hover:font-bold hover:text-white"
+                : "text-white hover:bg-[#5C0F8B] hover:font-bold hover:text-[#00DAF0]"
             }
             `
           }
