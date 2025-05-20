@@ -1,13 +1,30 @@
-function PlaylistPlayButton() {
+/* eslint-disable react/prop-types */
+function PlaylistPlayButton({ className = "", onlyArrow = false }) {
   return (
     <svg
       viewBox="0 0 225 225"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className="w-full h-full" // Se elimina tamaño fijo para que se ajuste al contenedor
+      className={`w-full h-full ${className}`}
     >
-      <rect width="225" height="225" rx="8" fill="black" fillOpacity="0.2" />
-      <rect width="225" height="225" rx="8" fill="#252734" fillOpacity="0.7" />
+      {!onlyArrow && (
+        <>
+          <rect
+            width="225"
+            height="225"
+            rx="8"
+            fill="black"
+            fillOpacity="0.2"
+          />
+          <rect
+            width="225"
+            height="225"
+            rx="8"
+            fill="#252734"
+            fillOpacity="0.7"
+          />
+        </>
+      )}
       <g filter="url(#filter0_d_430_911)">
         <path
           d="M164.436 112.5C164.436 141.224 141.276 164.5 112.718 164.5C84.16 164.5 61 141.224 61 112.5C61 83.7762 84.16 60.5 112.718 60.5C141.276 60.5 164.436 83.7762 164.436 112.5Z"
@@ -111,8 +128,8 @@ function PlaylistPlayButton() {
           y2="59.5"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0.0845617" stopColor="#FFE94A" />
-          <stop offset="0.816646" stopColor="#B9F2CD" />
+          <stop offset="0.0845617" stopColor="#ffffff" />
+          <stop offset="0.816646" stopColor="#ffffff" />
         </linearGradient>
         <linearGradient
           id="paint1_linear_430_911"
@@ -122,8 +139,8 @@ function PlaylistPlayButton() {
           y2="76.5123"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0.269476" stopColor="#FFE94A" />
-          <stop offset="0.891731" stopColor="#B9F2CD" />
+          <stop offset="0.269476" stopColor="#ffffff" />
+          <stop offset="0.891731" stopColor="#ffffff" />
         </linearGradient>
         <linearGradient
           id="paint2_linear_430_911"
@@ -133,8 +150,8 @@ function PlaylistPlayButton() {
           y2="112.173"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stopColor="#FFE94A" />
-          <stop offset="1" stopColor="#B9F2CD" />
+          <stop stopColor="#ffffff" />
+          <stop offset="1" stopColor="#ffffff" />
         </linearGradient>
       </defs>
     </svg>

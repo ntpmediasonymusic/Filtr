@@ -74,7 +74,7 @@ const Moods = () => {
 
   return (
     <>
-      <div className="p-0">
+      <div className="px-6 py-10">
         <PageHeader welcomeMsg={"Mi mood de hoy es..."} />
       </div>
       <div className="flex flex-col px-6 py-[50px] md:py-[100px] gap-[35px] md:gap-[50px]">

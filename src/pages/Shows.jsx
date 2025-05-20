@@ -12,7 +12,7 @@ const Shows = () => {
 
   return (
     <>
-      <div className="p-0">
+      <div className="px-6 py-10">
         <PageHeader welcomeMsg={""} />
       </div>
       <div className="px-6">

@@ -29,36 +29,36 @@ const PageHeader = ({ welcomeMsg }) => {
   }, [showModal]);
 
   return (
-    <header className="w-full flex items-center justify-between px-6 py-10 bg-[#131517]">
+    <header className="w-full flex items-center justify-between">
       {/* Saludo */}
       <div>
-        <h1 className="text-white text-lg md:text-2xl">{welcomeMsg}</h1>
+        <h1 className="text-white font-bold text-lg md:text-3xl">
+          {welcomeMsg}
+        </h1>
       </div>
 
       {/* Zona de búsqueda + perfil */}
       <div className="flex items-center gap-6">
         {/* Barra de búsqueda */}
-        <div className="p-[2px] rounded-full bg-gradient-to-r from-[#00DAF0] to-[#004FD4]">
-          <div className="flex items-center bg-[#131517] rounded-full px-3 py-1 gap-2">
-            <SearchIcon />
-            <input
-              type="text"
-              value={searchValue}
-              onChange={handleSearchChange}
-              placeholder="Buscar..."
-              className="bg-transparent focus:outline-none text-white placeholder:text-gray-400 text-sm md:text-base"
-            />
-          </div>
+        <div className="flex items-center bg-[#131517] rounded-full px-4 py-2 gap-2 border-2 border-[#00DAF0] w-80">
+          <SearchIcon className="text-[#00DAF0]" />
+          <input
+            type="text"
+            value={searchValue}
+            onChange={handleSearchChange}
+            placeholder="Buscar..."
+            className="flex-1 bg-transparent focus:outline-none text-white placeholder:text-gray-400 text-sm md:text-base"
+          />
         </div>
 
         {/* Botón perfil */}
         <div className="relative" ref={wrapperRef}>
           <button
             onClick={() => setShowModal((v) => !v)}
-            className="flex items-center gap-2 text-white text-sm md:text-base"
+            className="flex items-center gap-2 text-white text-sm md:text-xl"
           >
             <span>{userName}</span>
-            <UserCircleIcon className="text-white" />
+            <UserCircleIcon className="text-white" width={"30"} height={"30"} />
           </button>
 
           {/* Modal de perfil */}
