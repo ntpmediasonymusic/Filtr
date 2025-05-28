@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import HeaderCarousel from "../components/home/HeaderCarousel";
 import MainCategoryPreview from "../components/home/MainCategoryPreview";
 import PageHeader from "../components/ui/PageHeader";
@@ -5,13 +6,17 @@ import { usePlaylists } from "../context/PlaylistContext";
 import { useMainCategories } from "../hooks/playlists/useMainCategories";
 
 const Home = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const mainCategories = useMainCategories();
   const playlists = usePlaylists();
 
   return (
     <>
       <div className="px-6 py-10">
-        <PageHeader welcomeMsg={"Ana, tu vida suena así"} />
+        <PageHeader welcomeMsg={"Tu vida suena así"} />
       </div>
 
       <div className="px-6">

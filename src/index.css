@@ -18,3 +18,8 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #ffffff; /* Color al pasar el mouse */
 }
+
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear {
+  display: none;
+}

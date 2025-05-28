@@ -7,10 +7,10 @@ import logo from "../../../assets/images/filtr_logo_white.png";
 import GenresIcon from "../../../assets/icons/GenresIcon";
 import HomeIcon from "../../../assets/icons/HomeIcon";
 import MoodsIcon from "../../../assets/icons/MoodsIcon";
-import QuizzesIcon from "../../../assets/icons/QuizzesIcon";
+// import QuizzesIcon from "../../../assets/icons/QuizzesIcon";
 import ShowsIcon from "../../../assets/icons/ShowsIcon";
 import TrendIcon from "../../../assets/icons/TrendIcon";
-import WinWinIcon from "../../../assets/icons/WinWinIcon";
+// import WinWinIcon from "../../../assets/icons/WinWinIcon";
 
 const NavMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -37,10 +37,10 @@ const NavMenu = () => {
     { name: "Inicio", icon: <HomeIcon />, route: "/" },
     { name: "Géneros", icon: <GenresIcon />, route: "/genres" },
     { name: "Moods", icon: <MoodsIcon />, route: "/moods" },
-    { name: "Trends", icon: <TrendIcon />, route: "/trends" },
+    { name: "Trending", icon: <TrendIcon />, route: "/trending" },
     { name: "Shows", icon: <ShowsIcon />, route: "/shows" },
-    { name: "Quizzes", icon: <QuizzesIcon />, route: "/quizzes" },
-    { name: "Win Win", icon: <WinWinIcon />, route: "/winwin" },
+    // { name: "Quizzes", icon: <QuizzesIcon />, route: "/quizzes" },
+    // { name: "Premios", icon: <WinWinIcon />, route: "/prizes" },
   ];
 
   return (
@@ -61,7 +61,7 @@ const NavMenu = () => {
             src={logo}
             alt="Logo Filtr"
             className="w-12 md:w-20 cursor-pointer"
-          /> 
+          />
         </NavLink>
       </div>
 

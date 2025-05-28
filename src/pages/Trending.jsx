@@ -1,8 +1,7 @@
 import ComingSoon from "../components/ui/ComingSoon";
 import PageHeader from "../components/ui/PageHeader";
 
-const Trends = () => {
-
+const Trending = () => {
   return (
     <>
       <div className="px-6 py-10">
@@ -13,4 +12,4 @@ const Trends = () => {
   );
 };
 
-export default Trends;
+export default Trending;

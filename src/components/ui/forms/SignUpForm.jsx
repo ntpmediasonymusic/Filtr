@@ -2,11 +2,18 @@ import { useState } from "react";
 import UserIcon from "../../../assets/icons/UserIcon";
 import EnvelopeIcon from "../../../assets/icons/EnvelopeIcon";
 import LockIcon from "../../../assets/icons/LockIcon";
-import { FaCalendarAlt, FaEye, FaEyeSlash, FaPhone } from "react-icons/fa";
-import GoogleIcon from "../../../assets/icons/GoogleIcon";
-import FacebookIcon from "../../../assets/icons/FacebookIcon";
+import { FaRegCalendarAlt, FaEye, FaEyeSlash } from "react-icons/fa";
+import { MdOutlinePlace } from "react-icons/md";
+import { TbPhone } from "react-icons/tb";
+import { PiMusicNotes } from "react-icons/pi";
+// import GoogleIcon from "../../../assets/icons/GoogleIcon";
+// import FacebookIcon from "../../../assets/icons/FacebookIcon";
+import { register } from "../../../api/backendApi";
+import { useNavigate } from "react-router-dom";
 
 const SignUpForm = () => {
+  const navigate = useNavigate();
+
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -15,8 +22,8 @@ const SignUpForm = () => {
   const [birthdate, setBirthdate] = useState("");
   const [phone, setPhone] = useState("");
   const [listening, setListening] = useState("");
-  const [optInSony, setOptInSony] = useState(false);
-  const [optInFiltr, setOptInFiltr] = useState(false);
+  const [optInSony, setOptInSony] = useState(true);
+  const [optInFiltr, setOptInFiltr] = useState(true);
   const [showPwd, setShowPwd] = useState(false);
   const [errors, setErrors] = useState({});
 
@@ -62,30 +69,48 @@ const SignUpForm = () => {
     return errs;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const errs = validate();
     setErrors(errs);
-    if (Object.keys(errs).length === 0) {
-      console.log({
-        firstName,
-        lastName,
-        email,
-        password,
-        country,
-        birthdate,
-        phone,
-        listening,
-        optInSony,
-        optInFiltr,
-      });
+    if (Object.keys(errs).length) return;
+
+    const payload = {
+      firstName,
+      lastName,
+      email,
+      password,
+      dateOfBirth: birthdate,
+      phone,
+      favoriteMethod: listening,
+      optInSony,
+      optInFiltr,
+    };
+
+    try {
+      const { data } = await register(payload);
+      // almacena token y usuario en localStorage
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("user", JSON.stringify(data.user));
+      // redirige directo
+      navigate("/");
+    } catch (err) {
+      if (err.response?.status === 400 && err.response.data.errors) {
+        const apiErrs = {};
+        err.response.data.errors.forEach((e) => {
+          apiErrs[e.param] = e.msg;
+        });
+        setErrors(apiErrs);
+      } else {
+        console.error(err);
+      }
     }
   };
 
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-gradient-to-b from-[#00DAF0] to-[#CFDD28]
+      className="bg-white
                  p-[40px] rounded-[22px] max-w-[800px] w-full
                  mx-auto flex flex-col gap-5"
     >
@@ -93,8 +118,10 @@ const SignUpForm = () => {
       <div className="flex gap-4">
         {/* Nombre */}
         <div className="w-1/2">
-          <div className="flex items-center bg-white border border-[#262627] rounded-[8px] p-4 gap-3">
-            <UserIcon />
+          <div className="flex items-center bg-white border border-[#262627] rounded-[8px] p-4 gap-2">
+            <div className="w-8 h-8 flex justify-center items-center">
+              <UserIcon className="text-[#ca249c]" />
+            </div>
             <input
               type="text"
               placeholder="Nombre"
@@ -109,8 +136,10 @@ const SignUpForm = () => {
         </div>
         {/* Apellidos */}
         <div className="w-1/2">
-          <div className="flex items-center bg-white border border-[#262627] rounded-[8px] p-4 gap-3">
-            <UserIcon />
+          <div className="flex items-center bg-white border border-[#262627] rounded-[8px] p-4 gap-2">
+            <div className="w-8 h-8 flex justify-center items-center">
+              <UserIcon className="text-[#ca249c]" />
+            </div>
             <input
               type="text"
               placeholder="Apellidos"
@@ -127,8 +156,10 @@ const SignUpForm = () => {
 
       {/* E-mail */}
       <div className="w-full">
-        <div className="flex items-center bg-white border border-[#262627] rounded-[8px] p-4 gap-3">
-          <EnvelopeIcon />
+        <div className="flex items-center bg-white border border-[#262627] rounded-[8px] p-4 gap-2">
+          <div className="w-8 h-8 flex justify-center items-center">
+            <EnvelopeIcon className="text-[#ca249c]" />
+          </div>
           <input
             type="email"
             placeholder="Correo electrónico"
@@ -144,8 +175,10 @@ const SignUpForm = () => {
 
       {/* Contraseña */}
       <div className="w-full">
-        <div className="flex items-center bg-white border border-[#262627] rounded-[8px] p-4 gap-3">
-          <LockIcon />
+        <div className="flex items-center bg-white border border-[#262627] rounded-[8px] p-4 gap-2">
+          <div className="w-8 h-8 flex justify-center items-center">
+            <LockIcon className="text-[#ca249c]" />
+          </div>
           <input
             type={showPwd ? "text" : "password"}
             placeholder="Contraseña"
@@ -158,7 +191,11 @@ const SignUpForm = () => {
             onClick={() => setShowPwd((v) => !v)}
             className="text-gray-600"
           >
-            {showPwd ? <FaEyeSlash /> : <FaEye />}
+            {showPwd ? (
+              <FaEyeSlash className="w-5.5 h-5.5 text-[#ca249c] transition-transform duration-200 ease-in-out" />
+            ) : (
+              <FaEye className="w-5 h-5 text-[#ca249c] transition-transform duration-200 ease-in-out" />
+            )}
           </button>
         </div>
         {errors.password && (
@@ -170,26 +207,33 @@ const SignUpForm = () => {
       <div className="flex gap-4">
         {/* País */}
         <div className="w-1/2">
-          <select
-            value={country}
-            onChange={(e) => setCountry(e.target.value)}
-            className="w-full bg-white border border-[#262627] rounded-[8px] p-4 text-gray-700 focus:outline-none"
-          >
-            <option value="">País</option>
-            {countries.map((c) => (
-              <option key={c} value={c}>
-                {c}
-              </option>
-            ))}
-          </select>
+          <div className="flex items-center bg-white border border-[#262627] rounded-[8px] p-4 gap-2">
+            <div className="w-8 h-8 flex justify-center items-center">
+              <MdOutlinePlace className="text-[#ca249c] w-7 h-7 flex-shrink-0" />
+            </div>
+            <select
+              value={country}
+              onChange={(e) => setCountry(e.target.value)}
+              className="flex-1 bg-transparent focus:outline-none text-gray-700"
+            >
+              <option value="">País</option>
+              {countries.map((c) => (
+                <option key={c} value={c}>
+                  {c}
+                </option>
+              ))}
+            </select>
+          </div>
           {errors.country && (
             <p className="mt-1 text-sm text-red-600">{errors.country}</p>
           )}
         </div>
         {/* Fecha de nacimiento */}
         <div className="w-1/2">
-          <div className="flex items-center bg-white border border-[#262627] rounded-[8px] p-4 gap-3">
-            <FaCalendarAlt />
+          <div className="flex items-center bg-white border border-[#262627] rounded-[8px] p-4 gap-2">
+            <div className="w-8 h-8 flex justify-center items-center">
+              <FaRegCalendarAlt className="text-[#ca249c] w-5 h-5 flex-shrink-0" />
+            </div>
             <input
               type="date"
               value={birthdate}
@@ -207,8 +251,10 @@ const SignUpForm = () => {
       <div className="flex gap-4">
         {/* Teléfono */}
         <div className="w-1/2">
-          <div className="flex items-center bg-white border border-[#262627] rounded-[8px] p-4 gap-3">
-            <FaPhone />
+          <div className="flex items-center bg-white border border-[#262627] rounded-[8px] p-4 gap-2">
+            <div className="w-8 h-8 flex justify-center items-center">
+              <TbPhone className="text-[#ca249c] w-6.5 h-6.5 flex-shrink-0" />
+            </div>
             <input
               type="tel"
               placeholder="Teléfono"
@@ -223,18 +269,23 @@ const SignUpForm = () => {
         </div>
         {/* Forma de escuchar música */}
         <div className="w-1/2">
-          <select
-            value={listening}
-            onChange={(e) => setListening(e.target.value)}
-            className="w-full bg-white border border-[#262627] rounded-[8px] p-4 text-gray-700 focus:outline-none"
-          >
-            <option value="">¿Cómo escuchas música?</option>
-            {listeningOptions.map((o) => (
-              <option key={o} value={o}>
-                {o}
-              </option>
-            ))}
-          </select>
+          <div className="flex items-center bg-white border border-[#262627] rounded-[8px] p-4 gap-2">
+            <div className="w-8 h-8 flex justify-center items-center">
+              <PiMusicNotes className="text-[#ca249c] w-6.5 h-6.5 flex-shrink-0" />
+            </div>
+            <select
+              value={listening}
+              onChange={(e) => setListening(e.target.value)}
+              className="flex-1 bg-transparent focus:outline-none text-gray-700"
+            >
+              <option value="">¿Cómo escuchas música?</option>
+              {listeningOptions.map((o) => (
+                <option key={o} value={o}>
+                  {o}
+                </option>
+              ))}
+            </select>
+          </div>
           {errors.listening && (
             <p className="mt-1 text-sm text-red-600">{errors.listening}</p>
           )}
@@ -248,7 +299,7 @@ const SignUpForm = () => {
             type="checkbox"
             checked={optInSony}
             onChange={() => setOptInSony((v) => !v)}
-            className="w-4 h-4"
+            className="w-4 h-4 accent-[#ca249c]"
           />
           Me gustaría suscribirme y recibir más información de Sony Music
           Centroamérica y El Caribe.
@@ -258,7 +309,7 @@ const SignUpForm = () => {
             type="checkbox"
             checked={optInFiltr}
             onChange={() => setOptInFiltr((v) => !v)}
-            className="w-4 h-4"
+            className="w-4 h-4 accent-[#ca249c]"
           />
           Me gustaría suscribirme y recibir más información de Filtr
           Centroamérica y El Caribe.
@@ -268,21 +319,29 @@ const SignUpForm = () => {
       {/* Botón Principal */}
       <button
         type="submit"
-        className="w-full py-3 bg-gradient-to-b from-[#F27CAC] to-[#5C0F8B]
-                   text-white font-semibold rounded-lg transition hover:opacity-90"
+        className="w-full py-3 mt-6 bg-[#ca249c] text-white font-semibold rounded-lg transition hover:opacity-90"
       >
         Crear cuenta
       </button>
 
+      {/* Link Sign Up */}
+      <div className="text-center text-[#131517] mt-2">
+        ¿Ya tienes una cuenta?
+        <br />
+        <a href="/login" className="font-semibold text-[#131517]">
+          Accede Aquí
+        </a>
+      </div>
+
       {/* Separador */}
-      <div className="flex items-center my-4 text-gray-700">
+      {/* <div className="flex items-center my-4 text-gray-700">
         <div className="flex-1 h-px bg-gray-400" />
         <span className="px-3 whitespace-nowrap">O continúa con:</span>
         <div className="flex-1 h-px bg-gray-400" />
-      </div>
+      </div> */}
 
       {/* Botones Sociales */}
-      <div className="flex flex-wrap gap-4">
+      {/* <div className="flex flex-wrap gap-4">
         <button
           type="button"
           className="flex-1 min-w-[200px] flex items-center justify-center gap-2
@@ -297,7 +356,7 @@ const SignUpForm = () => {
         >
           <FacebookIcon /> Facebook
         </button>
-      </div>
+      </div> */}
     </form>
   );
 };

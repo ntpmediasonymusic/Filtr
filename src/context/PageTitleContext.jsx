@@ -30,11 +30,11 @@ export const PageTitleProvider = ({ children }) => {
       case "/main-category":
         document.title = "Categoría";
         break;
-      case "/trends":
-        document.title = "Trends";
+      case "/trending":
+        document.title = "Trending";
         break;
-      case "/winwin":
-        document.title = "Win Win";
+      case "/prizes":
+        document.title = "Premios";
         break;
       case "/login":
         document.title = "Login";

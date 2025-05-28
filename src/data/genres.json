@@ -1,36 +1,60 @@
 {
   "genres": [
     {
-      "name": "Bachata",
-      "urlImageHeader": "assets/images/genres-header/genres-header-Bachata.png"
-    },
-    {
       "name": "Baladas Románticas",
-      "urlImageHeader": "assets/images/genres-header/genres-header-BaladasRománticas.png"
-    },
-    {
-      "name": "Música en Inglés",
-      "urlImageHeader": "assets/images/genres-header/genres-header-MúsicaEnInglés.png"
-    },
-    {
-      "name": "Navidad",
-      "urlImageHeader": "assets/images/genres-header/genres-header-PopEnEspañol.png"
-    },
-    {
-      "name": "Novedades y Éxitos",
       "urlImageHeader": ""
     },
     {
-      "name": "Pop en Español",
-      "urlImageHeader": "assets/images/genres-header/genres-header-PopEnEspañol.png"
+      "name": "Éxitos",
+      "urlImageHeader": ""
     },
     {
-      "name": "Reggaetón",
-      "urlImageHeader": "assets/images/genres-header/genres-header-Reggaetón.png"
+      "name": "Novedades",
+      "urlImageHeader": ""
+    },
+    {
+      "name": "Pop",
+      "urlImageHeader": ""
+    },
+    {
+      "name": "Urbano",
+      "urlImageHeader": ""
+    },
+    {
+      "name": "Artistas Femeninas",
+      "urlImageHeader": ""
+    },
+    {
+      "name": "Música Mexicana",
+      "urlImageHeader": ""
+    },
+    {
+      "name": "Electrónica",
+      "urlImageHeader": ""
     },
     {
       "name": "Tropical",
-      "urlImageHeader": "assets/images/genres-header/genres-header-Tropical.png"
+      "urlImageHeader": ""
+    },
+    {
+      "name": "Indie",
+      "urlImageHeader": ""
+    },
+    {
+      "name": "Temporadas",
+      "urlImageHeader": ""
+    },
+    {
+      "name": "Rock",
+      "urlImageHeader": ""
+    },
+    {
+      "name": "Reggae",
+      "urlImageHeader": ""
+    },
+    {
+      "name": "Musica Cristiana",
+      "urlImageHeader": ""
     }
   ]
 }

@@ -10,8 +10,8 @@ import Footer from "./components/ui/Footer";
 import NavMenu from "./components/ui/navMenu/NavMenu";
 import { PlaylistProvider } from "./context/PlaylistContext";
 import { PageTitleProvider } from "./context/PageTitleContext";
-import Trends from "./pages/Trends";
-import WinWin from "./pages/WinWin";
+import Trending from "./pages/Trending";
+import Prizes from "./pages/Prizes";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import EditAccount from "./pages/EditAccount";
@@ -31,8 +31,8 @@ function App() {
               <Route path="/quizzes" element={<Quizzes />} />
               <Route path="/shows" element={<Shows />} />
               <Route path="/main-category" element={<MainCategory />} />
-              <Route path="/trends" element={<Trends />} />
-              <Route path="/winwin" element={<WinWin />} />
+              <Route path="/trending" element={<Trending />} />
+              <Route path="/prizes" element={<Prizes />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<SignUp />} />
               <Route path="/edit-account" element={<EditAccount />} />

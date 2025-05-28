@@ -37,6 +37,14 @@ const PlaylistCard = ({ playlistName, urlPlaylist, urlCoverImage }) => {
         </h6>
 
         <div className="flex items-center gap-2">
+          {/* Favorite heart button */}
+          <button onClick={toggleFavorite} className="flex-shrink-0">
+            {favorited ? (
+              <FaHeart className="w-6 h-6 text-red-500 transform scale-110 transition-transform duration-200 ease-in-out" />
+            ) : (
+              <FaRegHeart className="w-6 h-6 text-[#e72b36bf] transition-transform duration-200 ease-in-out" />
+            )}
+          </button>
           {/* Share button */}
           <button
             onClick={() => setShowShareModal((v) => !v)}
@@ -45,14 +53,6 @@ const PlaylistCard = ({ playlistName, urlPlaylist, urlCoverImage }) => {
             <SharePaperPlaneIcon className="w-6 h-6 text-[#00DAF0]" />
           </button>
         </div>
-        {/* Favorite heart button */}
-        <button onClick={toggleFavorite} className="flex-shrink-0">
-          {favorited ? (
-            <FaHeart className="w-6 h-6 text-red-500 transform scale-110 transition-transform duration-200 ease-in-out" />
-          ) : (
-            <FaRegHeart className="w-6 h-6 text-[#e72b36bf] transition-transform duration-200 ease-in-out" />
-          )}
-        </button>
       </div>
 
       {showShareModal && (

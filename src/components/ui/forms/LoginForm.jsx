@@ -1,16 +1,22 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { login } from "../../../api/backendApi";
 import EnvelopeIcon from "../../../assets/icons/EnvelopeIcon";
 import LockIcon from "../../../assets/icons/LockIcon";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import GoogleIcon from "../../../assets/icons/GoogleIcon";
-import FacebookIcon from "../../../assets/icons/FacebookIcon";
+import { AiFillGoogleCircle } from "react-icons/ai";
+import { MdOutlineFacebook } from "react-icons/md";
 import UserBigCircleIcon from "../../../assets/icons/UserBigCircleIcon";
+
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPwd, setShowPwd] = useState(false);
   const [errors, setErrors] = useState({});
+  const [apiError, setApiError] = useState("");
+
+  const navigate = useNavigate();
 
   const validate = () => {
     const errs = {};
@@ -21,27 +27,44 @@ const LoginForm = () => {
     return errs;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const errs = validate();
     setErrors(errs);
+    setApiError("");
     if (Object.keys(errs).length === 0) {
-      console.log({ email, password });
+      try {
+        const { data } = await login({ email, password });
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("user", JSON.stringify(data.user));
+        navigate("/");
+      } catch (err) {
+        if (err.response?.status === 401) {
+          setApiError(err.response.data.message || "Credenciales inválidas");
+        } else {
+          console.error(err);
+        }
+      }
     }
   };
 
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-gradient-to-b from-[#00DAF0] to-[#CFDD28] p-10 rounded-[22px] max-w-[800px] w-full mx-auto flex flex-col gap-5"
+      className="bg-white p-10 rounded-[22px] max-w-[800px] w-full mx-auto flex flex-col gap-5"
     >
       <div className="w-full flex items-center justify-center">
         <UserBigCircleIcon />
       </div>
+      {apiError && (
+        <p className="mt-2 text-sm text-red-600 text-center">{apiError}</p>
+      )}
       {/* E-mail */}
       <div className="w-full">
         <div className="flex items-center bg-white border border-[#262627] rounded-[8px] p-4 gap-3">
-          <EnvelopeIcon />
+          <div className="w-8 h-8 flex justify-center items-center">
+            <EnvelopeIcon className="text-[#ca249c]" />
+          </div>
           <input
             type="email"
             placeholder="E-mail"
@@ -57,7 +80,9 @@ const LoginForm = () => {
       {/* Clave */}
       <div className="w-full">
         <div className="flex items-center bg-white border border-[#262627] rounded-[8px] p-4 gap-3">
-          <LockIcon />
+          <div className="w-8 h-8 flex justify-center items-center">
+            <LockIcon className="text-[#ca249c]" />
+          </div>
           <input
             type={showPwd ? "text" : "password"}
             placeholder="Tu clave"
@@ -70,7 +95,11 @@ const LoginForm = () => {
             onClick={() => setShowPwd(!showPwd)}
             className="text-gray-600"
           >
-            {showPwd ? <FaEyeSlash /> : <FaEye />}
+            {showPwd ? (
+              <FaEyeSlash className="w-5.5 h-5.5 text-[#ca249c] transition-transform duration-200 ease-in-out" />
+            ) : (
+              <FaEye className="w-5 h-5 text-[#ca249c] transition-transform duration-200 ease-in-out" />
+            )}
           </button>
         </div>
         {errors.password && (
@@ -80,8 +109,10 @@ const LoginForm = () => {
       {/* Recordarme y Olvidaste */}
       <div className="flex justify-between items-center text-[#131517] text-sm">
         <label className="flex items-center gap-2">
-          <input type="checkbox" className="w-4 h-4" />
-          <span>Recordarme la clave</span>
+          <input type="checkbox" className="w-4 h-4 accent-[#ca249c]" />
+          <span className="text-sm font-semibold text-[#131517]">
+            Recordarme la clave
+          </span>
         </label>
         <a href="#" className="text-sm font-semibold text-[#131517]">
           ¿Olvidaste tu clave?
@@ -90,15 +121,15 @@ const LoginForm = () => {
       {/* Botón Entrar */}
       <button
         type="submit"
-        className="w-full py-3 bg-gradient-to-b from-[#F27CAC] to-[#5C0F8B] text-white font-semibold rounded-lg transition hover:opacity-90"
+        className="w-full py-3 bg-[#ca249c] text-white font-semibold rounded-lg transition hover:opacity-90"
       >
         Entrar
       </button>
       {/* Link Sign Up */}
       <div className="text-center text-[#131517] mt-2">
-        ¿No tienes una cuenta?{" "}
+        ¿No tienes una cuenta?<br/>
         <a href="/signup" className="font-semibold text-[#131517]">
-          Sign Up
+          Regístrate Aquí
         </a>
       </div>
       {/* Separador */}
@@ -111,15 +142,15 @@ const LoginForm = () => {
       <div className="flex flex-wrap gap-4">
         <button
           type="button"
-          className="flex-1 min-w-[200px] flex items-center justify-center gap-2 py-3 bg-black text-white rounded-lg transition hover:opacity-90"
+          className="flex-1 min-w-[200px] flex items-center justify-center gap-2 py-3 bg-[#004fd4] text-white rounded-lg transition hover:opacity-90"
         >
-          <GoogleIcon /> Google
+          <AiFillGoogleCircle className="w-6 h-6" /> Google
         </button>
         <button
           type="button"
-          className="flex-1 min-w-[200px] flex items-center justify-center gap-2 py-3 bg-black text-white rounded-lg transition hover:opacity-90"
+          className="flex-1 min-w-[200px] flex items-center justify-center gap-2 py-3 bg-[#004fd4] text-white rounded-lg transition hover:opacity-90"
         >
-          <FacebookIcon /> Facebook
+          <MdOutlineFacebook className="w-6 h-6" /> Facebook
         </button>
       </div>
     </form>
