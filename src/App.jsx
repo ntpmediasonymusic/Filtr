@@ -9,7 +9,7 @@ import MainCategory from "./pages/MainCategory";
 import Footer from "./components/ui/Footer";
 import NavMenu from "./components/ui/navMenu/NavMenu";
 import { PlaylistProvider } from "./context/PlaylistContext";
-import { PageTitleProvider } from "./context/PageTitleContext";
+import { PageTitleProvider } from "./context/pageTitleContext";
 import Trending from "./pages/Trending";
 import Prizes from "./pages/Prizes";
 import Login from "./pages/Login";
