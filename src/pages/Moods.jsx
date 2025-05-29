@@ -4,6 +4,8 @@ import { usePlaylists } from "../context/PlaylistContext";
 import moodsData from "../data/moods.json";
 import MoodsHeader from "../components/moods/MoodsHeader";
 import PageHeader from "../components/ui/PageHeader";
+import { useSearch } from "../context/SearchContext";
+import Filter from "../components/filter/filter";
 
 const Moods = () => {
   useEffect(() => {
@@ -12,6 +14,13 @@ const Moods = () => {
   const playlists = usePlaylists();
 
   const [selectedMood, setSelectedMood] = useState(moodsData.moods[0]);
+
+  const { searchQuery } = useSearch();
+  
+  // Si hay búsqueda activa, mostrar el componente Filter
+  if (searchQuery && searchQuery.trim() !== "") {
+    return <Filter />;
+  }
 
   const filteredPlaylists = selectedMood
     ? playlists.filter(
