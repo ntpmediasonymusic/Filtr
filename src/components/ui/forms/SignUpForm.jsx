@@ -111,15 +111,15 @@ const SignUpForm = () => {
     <form
       onSubmit={handleSubmit}
       className="bg-white
-                 p-[40px] rounded-[22px] max-w-[800px] w-full
-                 mx-auto flex flex-col gap-5"
+                 p-5 sm:p-[40px] rounded-[22px] max-w-[800px] w-full
+                 mx-auto flex flex-col gap-4 sm:gap-5"
     >
       {/* Nombre y Apellidos */}
-      <div className="flex gap-4">
+      <div className="flex flex-col sm:flex-row gap-4">
         {/* Nombre */}
-        <div className="w-1/2">
-          <div className="flex items-center bg-white border border-[#262627] rounded-[8px] p-4 gap-2">
-            <div className="w-8 h-8 flex justify-center items-center">
+        <div className="w-full sm:w-1/2">
+          <div className="flex items-center bg-white border border-[#262627] rounded-[8px] p-3 sm:p-4 gap-2">
+            <div className="w-6 h-6 sm:w-8 sm:h-8 flex justify-center items-center">
               <UserIcon className="text-[#ca249c]" />
             </div>
             <input
@@ -127,17 +127,17 @@ const SignUpForm = () => {
               placeholder="Nombre"
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
-              className="flex-1 bg-transparent focus:outline-none text-gray-700 placeholder:text-gray-400"
+              className="flex-1 bg-transparent focus:outline-none text-gray-700 placeholder:text-gray-400 text-sm sm:text-base"
             />
           </div>
           {errors.firstName && (
-            <p className="mt-1 text-sm text-red-600">{errors.firstName}</p>
+            <p className="mt-1 text-xs sm:text-sm text-red-600">{errors.firstName}</p>
           )}
         </div>
         {/* Apellidos */}
-        <div className="w-1/2">
-          <div className="flex items-center bg-white border border-[#262627] rounded-[8px] p-4 gap-2">
-            <div className="w-8 h-8 flex justify-center items-center">
+        <div className="w-full sm:w-1/2">
+          <div className="flex items-center bg-white border border-[#262627] rounded-[8px] p-3 sm:p-4 gap-2">
+            <div className="w-6 h-6 sm:w-8 sm:h-8 flex justify-center items-center">
               <UserIcon className="text-[#ca249c]" />
             </div>
             <input
@@ -145,19 +145,19 @@ const SignUpForm = () => {
               placeholder="Apellidos"
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
-              className="flex-1 bg-transparent focus:outline-none text-gray-700 placeholder:text-gray-400"
+              className="flex-1 bg-transparent focus:outline-none text-gray-700 placeholder:text-gray-400 text-sm sm:text-base"
             />
           </div>
           {errors.lastName && (
-            <p className="mt-1 text-sm text-red-600">{errors.lastName}</p>
+            <p className="mt-1 text-xs sm:text-sm text-red-600">{errors.lastName}</p>
           )}
         </div>
       </div>
 
       {/* E-mail */}
       <div className="w-full">
-        <div className="flex items-center bg-white border border-[#262627] rounded-[8px] p-4 gap-2">
-          <div className="w-8 h-8 flex justify-center items-center">
+        <div className="flex items-center bg-white border border-[#262627] rounded-[8px] p-3 sm:p-4 gap-2">
+          <div className="w-6 h-6 sm:w-8 sm:h-8 flex justify-center items-center">
             <EnvelopeIcon className="text-[#ca249c]" />
           </div>
           <input
@@ -165,18 +165,18 @@ const SignUpForm = () => {
             placeholder="Correo electrónico"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="flex-1 bg-transparent focus:outline-none text-gray-700 placeholder:text-gray-400"
+            className="flex-1 bg-transparent focus:outline-none text-gray-700 placeholder:text-gray-400 text-sm sm:text-base"
           />
         </div>
         {errors.email && (
-          <p className="mt-1 text-sm text-red-600">{errors.email}</p>
+          <p className="mt-1 text-xs sm:text-sm text-red-600">{errors.email}</p>
         )}
       </div>
 
       {/* Contraseña */}
       <div className="w-full">
-        <div className="flex items-center bg-white border border-[#262627] rounded-[8px] p-4 gap-2">
-          <div className="w-8 h-8 flex justify-center items-center">
+        <div className="flex items-center bg-white border border-[#262627] rounded-[8px] p-3 sm:p-4 gap-2">
+          <div className="w-6 h-6 sm:w-8 sm:h-8 flex justify-center items-center">
             <LockIcon className="text-[#ca249c]" />
           </div>
           <input
@@ -184,7 +184,7 @@ const SignUpForm = () => {
             placeholder="Contraseña"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="flex-1 bg-transparent focus:outline-none text-gray-700 placeholder:text-gray-400"
+            className="flex-1 bg-transparent focus:outline-none text-gray-700 placeholder:text-gray-400 text-sm sm:text-base"
           />
           <button
             type="button"
@@ -192,29 +192,29 @@ const SignUpForm = () => {
             className="text-gray-600"
           >
             {showPwd ? (
-              <FaEyeSlash className="w-5.5 h-5.5 text-[#ca249c] transition-transform duration-200 ease-in-out" />
+              <FaEyeSlash className="w-4 h-4 sm:w-5.5 sm:h-5.5 text-[#ca249c] transition-transform duration-200 ease-in-out" />
             ) : (
-              <FaEye className="w-5 h-5 text-[#ca249c] transition-transform duration-200 ease-in-out" />
+              <FaEye className="w-4 h-4 sm:w-5 sm:h-5 text-[#ca249c] transition-transform duration-200 ease-in-out" />
             )}
           </button>
         </div>
         {errors.password && (
-          <p className="mt-1 text-sm text-red-600">{errors.password}</p>
+          <p className="mt-1 text-xs sm:text-sm text-red-600">{errors.password}</p>
         )}
       </div>
 
       {/* País y Fecha de nacimiento */}
-      <div className="flex gap-4">
+      <div className="flex flex-col sm:flex-row gap-4">
         {/* País */}
-        <div className="w-1/2">
-          <div className="flex items-center bg-white border border-[#262627] rounded-[8px] p-4 gap-2">
-            <div className="w-8 h-8 flex justify-center items-center">
-              <MdOutlinePlace className="text-[#ca249c] w-7 h-7 flex-shrink-0" />
+        <div className="w-full sm:w-1/2">
+          <div className="flex items-center bg-white border border-[#262627] rounded-[8px] p-3 sm:p-4 gap-2">
+            <div className="w-6 h-6 sm:w-8 sm:h-8 flex justify-center items-center">
+              <MdOutlinePlace className="text-[#ca249c] w-5 h-5 sm:w-7 sm:h-7 flex-shrink-0" />
             </div>
             <select
               value={country}
               onChange={(e) => setCountry(e.target.value)}
-              className="flex-1 bg-transparent focus:outline-none text-gray-700"
+              className="flex-1 bg-transparent focus:outline-none text-gray-700 text-sm sm:text-base"
             >
               <option value="">País</option>
               {countries.map((c) => (
@@ -225,58 +225,58 @@ const SignUpForm = () => {
             </select>
           </div>
           {errors.country && (
-            <p className="mt-1 text-sm text-red-600">{errors.country}</p>
+            <p className="mt-1 text-xs sm:text-sm text-red-600">{errors.country}</p>
           )}
         </div>
         {/* Fecha de nacimiento */}
-        <div className="w-1/2">
-          <div className="flex items-center bg-white border border-[#262627] rounded-[8px] p-4 gap-2">
-            <div className="w-8 h-8 flex justify-center items-center">
-              <FaRegCalendarAlt className="text-[#ca249c] w-5 h-5 flex-shrink-0" />
+        <div className="w-full sm:w-1/2">
+          <div className="flex items-center bg-white border border-[#262627] rounded-[8px] p-3 sm:p-4 gap-2">
+            <div className="w-6 h-6 sm:w-8 sm:h-8 flex justify-center items-center">
+              <FaRegCalendarAlt className="text-[#ca249c] w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
             </div>
             <input
               type="date"
               value={birthdate}
               onChange={(e) => setBirthdate(e.target.value)}
-              className="flex-1 bg-transparent focus:outline-none text-gray-700 placeholder:text-gray-400"
+              className="flex-1 bg-transparent focus:outline-none text-gray-700 placeholder:text-gray-400 text-sm sm:text-base"
             />
           </div>
           {errors.birthdate && (
-            <p className="mt-1 text-sm text-red-600">{errors.birthdate}</p>
+            <p className="mt-1 text-xs sm:text-sm text-red-600">{errors.birthdate}</p>
           )}
         </div>
       </div>
 
       {/* Teléfono y Forma de escuchar música */}
-      <div className="flex gap-4">
+      <div className="flex flex-col sm:flex-row gap-4">
         {/* Teléfono */}
-        <div className="w-1/2">
-          <div className="flex items-center bg-white border border-[#262627] rounded-[8px] p-4 gap-2">
-            <div className="w-8 h-8 flex justify-center items-center">
-              <TbPhone className="text-[#ca249c] w-6.5 h-6.5 flex-shrink-0" />
+        <div className="w-full sm:w-1/2">
+          <div className="flex items-center bg-white border border-[#262627] rounded-[8px] p-3 sm:p-4 gap-2">
+            <div className="w-6 h-6 sm:w-8 sm:h-8 flex justify-center items-center">
+              <TbPhone className="text-[#ca249c] w-5 h-5 sm:w-6.5 sm:h-6.5 flex-shrink-0" />
             </div>
             <input
               type="tel"
               placeholder="Teléfono"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
-              className="flex-1 bg-transparent focus:outline-none text-gray-700 placeholder:text-gray-400"
+              className="flex-1 bg-transparent focus:outline-none text-gray-700 placeholder:text-gray-400 text-sm sm:text-base"
             />
           </div>
           {errors.phone && (
-            <p className="mt-1 text-sm text-red-600">{errors.phone}</p>
+            <p className="mt-1 text-xs sm:text-sm text-red-600">{errors.phone}</p>
           )}
         </div>
         {/* Forma de escuchar música */}
-        <div className="w-1/2">
-          <div className="flex items-center bg-white border border-[#262627] rounded-[8px] p-4 gap-2">
-            <div className="w-8 h-8 flex justify-center items-center">
-              <PiMusicNotes className="text-[#ca249c] w-6.5 h-6.5 flex-shrink-0" />
+        <div className="w-full sm:w-1/2">
+          <div className="flex items-center bg-white border border-[#262627] rounded-[8px] p-3 sm:p-4 gap-2">
+            <div className="w-6 h-6 sm:w-8 sm:h-8 flex justify-center items-center">
+              <PiMusicNotes className="text-[#ca249c] w-5 h-5 sm:w-6.5 sm:h-6.5 flex-shrink-0" />
             </div>
             <select
               value={listening}
               onChange={(e) => setListening(e.target.value)}
-              className="flex-1 bg-transparent focus:outline-none text-gray-700"
+              className="flex-1 bg-transparent focus:outline-none text-gray-700 text-sm sm:text-base"
             >
               <option value="">¿Cómo escuchas música?</option>
               {listeningOptions.map((o) => (
@@ -287,48 +287,52 @@ const SignUpForm = () => {
             </select>
           </div>
           {errors.listening && (
-            <p className="mt-1 text-sm text-red-600">{errors.listening}</p>
+            <p className="mt-1 text-xs sm:text-sm text-red-600">{errors.listening}</p>
           )}
         </div>
       </div>
 
       {/* Opt-in Sony / Filtr */}
-      <div className="flex flex-col gap-2 text-black">
-        <label className="flex items-center gap-2">
+      <div className="flex flex-col gap-3 sm:gap-2 text-black">
+        <label className="flex items-start sm:items-center gap-2 text-xs sm:text-base">
           <input
             type="checkbox"
             checked={optInSony}
             onChange={() => setOptInSony((v) => !v)}
-            className="w-4 h-4 accent-[#ca249c]"
+            className="w-4 h-4 accent-[#ca249c] mt-0.5 sm:mt-0 flex-shrink-0"
           />
-          Me gustaría suscribirme y recibir más información de Sony Music
-          Centroamérica y El Caribe.
+          <span className="leading-tight sm:leading-normal">
+            Me gustaría suscribirme y recibir más información de Sony Music
+            Centroamérica y El Caribe.
+          </span>
         </label>
-        <label className="flex items-center gap-2">
+        <label className="flex items-start sm:items-center gap-2 text-xs sm:text-base">
           <input
             type="checkbox"
             checked={optInFiltr}
             onChange={() => setOptInFiltr((v) => !v)}
-            className="w-4 h-4 accent-[#ca249c]"
+            className="w-4 h-4 accent-[#ca249c] mt-0.5 sm:mt-0 flex-shrink-0"
           />
-          Me gustaría suscribirme y recibir más información de Filtr
-          Centroamérica y El Caribe.
+          <span className="leading-tight sm:leading-normal">
+            Me gustaría suscribirme y recibir más información de Filtr
+            Centroamérica y El Caribe.
+          </span>
         </label>
       </div>
 
       {/* Botón Principal */}
       <button
         type="submit"
-        className="w-full py-3 mt-6 bg-[#ca249c] text-white font-semibold rounded-lg transition hover:opacity-90"
+        className="w-full py-2.5 sm:py-3 mt-3 sm:mt-6 bg-[#ca249c] text-white font-semibold rounded-lg transition hover:opacity-90 text-sm sm:text-base"
       >
         Crear cuenta
       </button>
 
       {/* Link Sign Up */}
-      <div className="text-center text-[#131517] mt-2">
-        ¿Ya tienes una cuenta?
+      <div className="text-center text-[#131517] mt-1 sm:mt-2">
+        <span className="text-sm sm:text-base">¿Ya tienes una cuenta?</span>
         <br />
-        <a href="/login" className="font-semibold text-[#131517]">
+        <a href="/login" className="font-semibold text-[#131517] text-sm sm:text-base">
           Accede Aquí
         </a>
       </div>

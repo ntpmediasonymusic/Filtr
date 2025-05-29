@@ -22,7 +22,7 @@ const MoodsHeader = ({ moods, selectedMood, setSelectedMood }) => {
               `}
             >
               {isSelected ? (
-                <span className="block bg-[#0d0d0d] rounded-4xl px-1 py-1">
+                <span className="block bg-[#0d0d0d] rounded-4xl px-4 py-1 min-w-[100px] text-center">
                   {mood.name}
                 </span>
               ) : (

@@ -51,7 +51,7 @@ const LoginForm = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-white p-10 rounded-[22px] max-w-[800px] w-full mx-auto flex flex-col gap-5"
+      className="bg-white p-6 sm:p-10 rounded-[22px] max-w-[800px] w-full mx-auto flex flex-col gap-4 sm:gap-5"
     >
       <div className="w-full flex items-center justify-center">
         <UserBigCircleIcon />
@@ -61,8 +61,8 @@ const LoginForm = () => {
       )}
       {/* E-mail */}
       <div className="w-full">
-        <div className="flex items-center bg-white border border-[#262627] rounded-[8px] p-4 gap-3">
-          <div className="w-8 h-8 flex justify-center items-center">
+        <div className="flex items-center bg-white border border-[#262627] rounded-[8px] p-3 sm:p-4 gap-2 sm:gap-3">
+          <div className="w-6 h-6 sm:w-8 sm:h-8 flex justify-center items-center">
             <EnvelopeIcon className="text-[#ca249c]" />
           </div>
           <input
@@ -70,17 +70,17 @@ const LoginForm = () => {
             placeholder="E-mail"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="flex-1 bg-transparent focus:outline-none text-gray-700 placeholder:text-gray-400"
+            className="flex-1 bg-transparent focus:outline-none text-gray-700 placeholder:text-gray-400 text-sm sm:text-base"
           />
         </div>
         {errors.email && (
-          <p className="mt-1 text-sm text-red-600">{errors.email}</p>
+          <p className="mt-1 text-xs sm:text-sm text-red-600">{errors.email}</p>
         )}
       </div>
       {/* Clave */}
       <div className="w-full">
-        <div className="flex items-center bg-white border border-[#262627] rounded-[8px] p-4 gap-3">
-          <div className="w-8 h-8 flex justify-center items-center">
+        <div className="flex items-center bg-white border border-[#262627] rounded-[8px] p-3 sm:p-4 gap-2 sm:gap-3">
+          <div className="w-6 h-6 sm:w-8 sm:h-8 flex justify-center items-center">
             <LockIcon className="text-[#ca249c]" />
           </div>
           <input
@@ -88,7 +88,7 @@ const LoginForm = () => {
             placeholder="Tu clave"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="flex-1 bg-transparent focus:outline-none text-gray-700 placeholder:text-gray-400"
+            className="flex-1 bg-transparent focus:outline-none text-gray-700 placeholder:text-gray-400 text-sm sm:text-base"
           />
           <button
             type="button"
@@ -96,61 +96,61 @@ const LoginForm = () => {
             className="text-gray-600"
           >
             {showPwd ? (
-              <FaEyeSlash className="w-5.5 h-5.5 text-[#ca249c] transition-transform duration-200 ease-in-out" />
+              <FaEyeSlash className="w-4 h-4 sm:w-5.5 sm:h-5.5 text-[#ca249c] transition-transform duration-200 ease-in-out" />
             ) : (
-              <FaEye className="w-5 h-5 text-[#ca249c] transition-transform duration-200 ease-in-out" />
+              <FaEye className="w-4 h-4 sm:w-5 sm:h-5 text-[#ca249c] transition-transform duration-200 ease-in-out" />
             )}
           </button>
         </div>
         {errors.password && (
-          <p className="mt-1 text-sm text-red-600">{errors.password}</p>
+          <p className="mt-1 text-xs sm:text-sm text-red-600">{errors.password}</p>
         )}
       </div>
       {/* Recordarme y Olvidaste */}
-      <div className="flex justify-between items-center text-[#131517] text-sm">
+      <div className="flex flex-col sm:flex-row gap-2 sm:gap-0 sm:justify-between items-start sm:items-center text-[#131517]">
         <label className="flex items-center gap-2">
           <input type="checkbox" className="w-4 h-4 accent-[#ca249c]" />
-          <span className="text-sm font-semibold text-[#131517]">
+          <span className="text-xs sm:text-sm font-semibold text-[#131517]">
             Recordarme la clave
           </span>
         </label>
-        <a href="#" className="text-sm font-semibold text-[#131517]">
+        <a href="#" className="text-xs sm:text-sm font-semibold text-[#131517]">
           ¿Olvidaste tu clave?
         </a>
       </div>
       {/* Botón Entrar */}
       <button
         type="submit"
-        className="w-full py-3 bg-[#ca249c] text-white font-semibold rounded-lg transition hover:opacity-90"
+        className="w-full py-2.5 sm:py-3 bg-[#ca249c] text-white font-semibold rounded-lg transition hover:opacity-90 text-sm sm:text-base"
       >
         Entrar
       </button>
       {/* Link Sign Up */}
-      <div className="text-center text-[#131517] mt-2">
-        ¿No tienes una cuenta?<br/>
-        <a href="/signup" className="font-semibold text-[#131517]">
+      <div className="text-center text-[#131517] mt-1 sm:mt-2">
+        <span className="text-sm sm:text-base">¿No tienes una cuenta?</span><br/>
+        <a href="/signup" className="font-semibold text-[#131517] text-sm sm:text-base">
           Regístrate Aquí
         </a>
       </div>
       {/* Separador */}
-      <div className="flex items-center my-4 text-[#131517]">
+      <div className="flex items-center my-3 sm:my-4 text-[#131517]">
         <div className="flex-1 h-px bg-[#131517]" />
-        <span className="px-3 whitespace-nowrap">O continúa con:</span>
+        <span className="px-2 sm:px-3 whitespace-nowrap text-xs sm:text-base">O continúa con:</span>
         <div className="flex-1 h-px bg-[#131517]" />
       </div>
       {/* Botones Sociales */}
-      <div className="flex flex-wrap gap-4">
+      <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
         <button
           type="button"
-          className="flex-1 min-w-[200px] flex items-center justify-center gap-2 py-3 bg-[#004fd4] text-white rounded-lg transition hover:opacity-90"
+          className="flex-1 sm:min-w-[200px] flex items-center justify-center gap-2 py-2.5 sm:py-3 bg-[#004fd4] text-white rounded-lg transition hover:opacity-90 text-sm sm:text-base"
         >
-          <AiFillGoogleCircle className="w-6 h-6" /> Google
+          <AiFillGoogleCircle className="w-5 h-5 sm:w-6 sm:h-6" /> Google
         </button>
         <button
           type="button"
-          className="flex-1 min-w-[200px] flex items-center justify-center gap-2 py-3 bg-[#004fd4] text-white rounded-lg transition hover:opacity-90"
+          className="flex-1 sm:min-w-[200px] flex items-center justify-center gap-2 py-2.5 sm:py-3 bg-[#004fd4] text-white rounded-lg transition hover:opacity-90 text-sm sm:text-base"
         >
-          <MdOutlineFacebook className="w-6 h-6" /> Facebook
+          <MdOutlineFacebook className="w-5 h-5 sm:w-6 sm:h-6" /> Facebook
         </button>
       </div>
     </form>

@@ -6,7 +6,7 @@ import PlaylistsIframePreview from "../components/explore/PlaylistsIframePreview
 
 const Explore = () => {
   return (
-    <div className="flex flex-col gap-[50px] md:gap-[100px] px-6 py-[50px] md:py-[100px]">
+    <div className="flex flex-col gap-[50px] md:gap-[100px] px-6 py-[50px] md:py-[50px]">
       <div className="flex flex-col lg:flex-row w-full gap-[50px] md:gap-[100px] lg:gap-[24px]">
         <div className="flex flex-col md:flex-row w-full lg:w-3/5 gap-[50px] md:gap-[24px]">
           {/* Géneros */}

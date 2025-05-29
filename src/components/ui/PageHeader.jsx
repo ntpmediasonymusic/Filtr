@@ -50,7 +50,7 @@ const PageHeader = ({ welcomeMsg }) => {
   }, [showModal]);
 
   return (
-    <header className="w-full flex items-center justify-between">
+    <header className="w-full flex flex-col md:flex-row items-center justify-between">
       {/* Saludo */}
       <div>
         <h1 className="text-white font-bold text-lg md:text-3xl">
@@ -59,7 +59,7 @@ const PageHeader = ({ welcomeMsg }) => {
       </div>
 
       {/* Zona de búsqueda + perfil / login-signup */}
-      <div className="flex items-center gap-6">
+      <div className="flex flex-col md:flex-row items-center gap-6 mt-4 md:mt-0">
         {/* Barra de búsqueda */}
         <div className="flex items-center bg-[#131517] rounded-full px-4 py-2 gap-2 border-2 border-[#00DAF0] w-80">
           <SearchIcon className="text-[#00DAF0]" />
@@ -74,7 +74,7 @@ const PageHeader = ({ welcomeMsg }) => {
 
         {!isAuthenticated ? (
           /* Si no hay usuario, muestra Login & Sign Up */
-          <div className="flex items-center gap-2">
+          <div className="hidden md:flex items-center gap-2">
             <NavLink
               to="/login"
               className="flex items-center gap-2 px-2 py-2 text-white text-lg font-normal hover:opacity-60"

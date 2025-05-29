@@ -75,9 +75,9 @@ const Genres = () => {
   return (
     <>
       <div className="px-6 py-10">
-        <PageHeader welcomeMsg={"Mi género de hoy es..."} />
+        <PageHeader welcomeMsg={"Ana. ¿qué género querés escuchar hoy?"} />
       </div>
-      <div className="flex flex-col px-6 py-[50px] md:py-[100px] gap-[35px] md:gap-[50px]">
+      <div className="flex flex-col px-6 py-[50px] md:py-[50px] gap-[35px] md:gap-[50px]">
         {/* <h2 className="text-xl md:text-3xl sm:text-xl font-bold bg-gradient-to-r from-violet-600 via-pink-600 to-yellow-600 bg-clip-text text-transparent">
         {genreTitle}
       </h2>

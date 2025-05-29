@@ -14,7 +14,7 @@ const EditAccount = () => {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col items-center px-6 py-[50px] md:py-[100px]">
+    <div className="min-h-screen flex flex-col items-center px-6 py-[50px] md:py-[50px]">
       {/* Título y subtítulo */}
       <h2 className="text-white text-2xl md:text-3xl font-bold">Mi cuenta</h2>
       <p className="text-white/80 mt-1">{user.name}</p>

@@ -4,7 +4,7 @@ import PlaylistCard from "./PlaylistCard";
 const PlaylistsContainerGrid = ({ currentPlaylists }) => {
   return (
     <>
-      <div className="grid justify-items-center grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-[14px] gap-y-[30px]">
+      <div className="grid justify-items-center grid-cols-1 md:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-[14px] gap-y-[30px]">
         {currentPlaylists.length > 0 &&
           currentPlaylists.map((playlist) => (
             <PlaylistCard

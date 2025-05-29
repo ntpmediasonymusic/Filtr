@@ -19,11 +19,11 @@ const Home = () => {
         <PageHeader welcomeMsg={"Tu vida suena así"} />
       </div>
 
-      <div className="px-6">
+      <div>
         <HeaderCarousel />
       </div>
 
-      <div className="flex flex-col gap-[50px] md:gap-[100px] px-16 py-[50px] md:py-[100px]">
+      <div className="flex flex-col gap-[50px] md:gap-[50px] px-8 py-[50px] md:py-[50px]">
         {/* 🔄 Iterar sobre todas las categorías y generar un MainCategoryPreview */}
         {mainCategories.map((category) => {
           // Filtrar las playlists que pertenezcan a la categoría actual

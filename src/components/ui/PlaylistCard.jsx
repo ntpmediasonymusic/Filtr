@@ -12,7 +12,7 @@ const PlaylistCard = ({ playlistName, urlPlaylist, urlCoverImage }) => {
   const toggleFavorite = () => setFavorited((prev) => !prev);
 
   return (
-    <div className="flex flex-col w-30 md:w-60 sm:w-40 flex-shrink-0 bg-[#282534] rounded-lg p-3 gap-2.5">
+    <div className="flex flex-col w-[100%] md:w-30 md:w-60 sm:w-40 flex-shrink-0 bg-[#282534] rounded-lg p-3 gap-2.5">
       <a
         href={urlPlaylist}
         target="_blank"
@@ -32,7 +32,7 @@ const PlaylistCard = ({ playlistName, urlPlaylist, urlCoverImage }) => {
       </a>
 
       <div className="flex w-full justify-between items-center gap-2.5">
-        <h6 className="flex-1 text-xs md:text-base text-white text-left line-clamp-2 min-h-[3rem]">
+        <h6 className="flex-1 md:text-xs md:text-base text-white text-left line-clamp-2 min-h-[3rem]">
           {playlistName}
         </h6>
 

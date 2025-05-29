@@ -9,7 +9,7 @@ const Quizzes = () => {
 
   const sortedQuizzes = useSortedQuizzes();
   return (
-    <div className="flex flex-col gap-[50px] md:gap-[100px] px-6 py-[50px] md:py-[100px]">
+    <div className="flex flex-col gap-[50px] md:gap-[100px] px-6 py-[50px] md:py-[50px]">
       {sortedQuizzes.map((quiz) => (
         <Quiz key={quiz.QuizName} {...quiz} />
       ))}

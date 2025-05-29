@@ -23,7 +23,7 @@ const GenresHeader = ({ genres, selectedGenre, setSelectedGenre }) => {
               `}
             >
               {isSelected ? (
-                <span className="block bg-[#0d0d0d] rounded-4xl px-1 py-1">
+                <span className="block bg-[#0d0d0d] rounded-4xl px-4 py-1 min-w-[100px] text-center">
                   {genre.name}
                 </span>
               ) : (
@@ -47,7 +47,7 @@ const GenresHeader = ({ genres, selectedGenre, setSelectedGenre }) => {
 
         {/* Contenedor derecho - se ve en todas las pantallas, 
             pero en mobile ocupa todo el ancho (w-full) */}
-        <div className="w-full md:w-1/2 pl-2">
+        <div className="w-full md:w-1/2 md:pl-2">
           <img
             src={
               selectedGenre?.urlImageHeader ||

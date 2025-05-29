@@ -18,7 +18,7 @@ const Shows = () => {
       <div className="px-6">
         <ShowsHeader />
       </div>
-      <div className="grid justify-items-center grid-cols-1 md:grid-cols-2 gap-6 px-6 py-[50px] md:py-[100px]">
+      <div className="grid justify-items-center grid-cols-1 md:grid-cols-2 gap-6 px-6 py-[50px] md:py-[50px]">
         {shows.map((show) => (
           <ShowCard key={show.showName} {...show} />
         ))}
