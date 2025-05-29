@@ -1,4 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Modak&display=swap');
+
 @import "tailwindcss";
+
+@theme {
+  --font-modak:'Modak', 'system-ui'
+}
 
 ::-webkit-scrollbar {
   width: 6px; /* Ancho de la scrollbar */
