@@ -6,8 +6,6 @@ import { FaRegCalendarAlt, FaEye, FaEyeSlash } from "react-icons/fa";
 import { MdOutlinePlace } from "react-icons/md";
 import { TbPhone } from "react-icons/tb";
 import { PiMusicNotes } from "react-icons/pi";
-// import GoogleIcon from "../../../assets/icons/GoogleIcon";
-// import FacebookIcon from "../../../assets/icons/FacebookIcon";
 import { register } from "../../../api/backendApi";
 import { useNavigate } from "react-router-dom";
 
@@ -57,10 +55,10 @@ const SignUpForm = () => {
     if (!email) errs.email = "El correo es obligatorio.";
     else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(email))
       errs.email = "El correo no es válido.";
-    if (!password) errs.password = "La clave es obligatoria.";
+    if (!password) errs.password = "La contraseña es obligatoria.";
     else if (!/(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*\W).{6,}/.test(password))
       errs.password =
-        "La clave requiere ≥6 caracteres, mayúsculas, minúsculas, números y símbolos.";
+        "La contraseña requiere ≥6 caracteres, mayúsculas, minúsculas, números y símbolos.";
     if (!country) errs.country = "Seleccione un país.";
     if (!birthdate) errs.birthdate = "La fecha de nacimiento es obligatoria.";
     if (!phone) errs.phone = "El teléfono es obligatorio.";
@@ -336,31 +334,6 @@ const SignUpForm = () => {
           Accede Aquí
         </a>
       </div>
-
-      {/* Separador */}
-      {/* <div className="flex items-center my-4 text-gray-700">
-        <div className="flex-1 h-px bg-gray-400" />
-        <span className="px-3 whitespace-nowrap">O continúa con:</span>
-        <div className="flex-1 h-px bg-gray-400" />
-      </div> */}
-
-      {/* Botones Sociales */}
-      {/* <div className="flex flex-wrap gap-4">
-        <button
-          type="button"
-          className="flex-1 min-w-[200px] flex items-center justify-center gap-2
-                     py-3 bg-black text-white rounded-lg transition hover:opacity-90"
-        >
-          <GoogleIcon /> Google
-        </button>
-        <button
-          type="button"
-          className="flex-1 min-w-[200px] flex items-center justify-center gap-2
-                     py-3 bg-black text-white rounded-lg transition hover:opacity-90"
-        >
-          <FacebookIcon /> Facebook
-        </button>
-      </div> */}
     </form>
   );
 };

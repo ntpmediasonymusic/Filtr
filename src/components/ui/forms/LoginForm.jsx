@@ -23,7 +23,7 @@ const LoginForm = () => {
     if (!email) errs.email = "El e-mail es obligatorio.";
     else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(email))
       errs.email = "El e-mail no es válido.";
-    if (!password) errs.password = "La clave es obligatoria.";
+    if (!password) errs.password = "La contraseñas es obligatoria.";
     return errs;
   };
 
@@ -77,7 +77,7 @@ const LoginForm = () => {
           <p className="mt-1 text-xs sm:text-sm text-red-600">{errors.email}</p>
         )}
       </div>
-      {/* Clave */}
+      {/* Contraseñas */}
       <div className="w-full">
         <div className="flex items-center bg-white border border-[#262627] rounded-[8px] p-3 sm:p-4 gap-2 sm:gap-3">
           <div className="w-6 h-6 sm:w-8 sm:h-8 flex justify-center items-center">
@@ -85,7 +85,7 @@ const LoginForm = () => {
           </div>
           <input
             type={showPwd ? "text" : "password"}
-            placeholder="Tu clave"
+            placeholder="Contraseñas"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             className="flex-1 bg-transparent focus:outline-none text-gray-700 placeholder:text-gray-400 text-sm sm:text-base"
@@ -103,19 +103,21 @@ const LoginForm = () => {
           </button>
         </div>
         {errors.password && (
-          <p className="mt-1 text-xs sm:text-sm text-red-600">{errors.password}</p>
+          <p className="mt-1 text-xs sm:text-sm text-red-600">
+            {errors.password}
+          </p>
         )}
       </div>
-      {/* Recordarme y Olvidaste */}
+      {/* Recordar y Olvidaste */}
       <div className="flex flex-col sm:flex-row gap-2 sm:gap-0 sm:justify-between items-start sm:items-center text-[#131517]">
         <label className="flex items-center gap-2">
           <input type="checkbox" className="w-4 h-4 accent-[#ca249c]" />
           <span className="text-xs sm:text-sm font-semibold text-[#131517]">
-            Recordarme la clave
+            Recordar la contraseñas
           </span>
         </label>
         <a href="#" className="text-xs sm:text-sm font-semibold text-[#131517]">
-          ¿Olvidaste tu clave?
+          ¿Olvidaste tu contraseñas?
         </a>
       </div>
       {/* Botón Entrar */}
@@ -127,15 +129,21 @@ const LoginForm = () => {
       </button>
       {/* Link Sign Up */}
       <div className="text-center text-[#131517] mt-1 sm:mt-2">
-        <span className="text-sm sm:text-base">¿No tienes una cuenta?</span><br/>
-        <a href="/signup" className="font-semibold text-[#131517] text-sm sm:text-base">
+        <span className="text-sm sm:text-base">¿No tienes una cuenta?</span>
+        <br />
+        <a
+          href="/signup"
+          className="font-semibold text-[#131517] text-sm sm:text-base"
+        >
           Regístrate Aquí
         </a>
       </div>
       {/* Separador */}
       <div className="flex items-center my-3 sm:my-4 text-[#131517]">
         <div className="flex-1 h-px bg-[#131517]" />
-        <span className="px-2 sm:px-3 whitespace-nowrap text-xs sm:text-base">O continúa con:</span>
+        <span className="px-2 sm:px-3 whitespace-nowrap text-xs sm:text-base">
+          O continúa con:
+        </span>
         <div className="flex-1 h-px bg-[#131517]" />
       </div>
       {/* Botones Sociales */}
