@@ -38,7 +38,7 @@ const ProfileModal = ({ onClose }) => {
 
       {/* Mis Playlist favoritas */}
       <NavLink
-        to="/"
+        to="/favorite-playlists"
         onClick={onClose}
         className="flex flex-row items-center gap-4 py-2 pl-2 hover:bg-white/10 rounded"
       >

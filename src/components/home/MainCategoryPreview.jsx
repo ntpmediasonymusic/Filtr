@@ -4,7 +4,7 @@ import PlaylistCard from "../ui/PlaylistCard";
 
 const MainCategoryPreview = ({ title, playlists }) => {
   return (
-    <div className="xl:flex 2xl:justify-center">
+    <div className="xl:flex 2xl:justify-center justify-center">
       <div>
         {/* Título y Botón */}
         <div className="flex justify-between items-center mb-4">
@@ -27,10 +27,10 @@ const MainCategoryPreview = ({ title, playlists }) => {
               playlistName={playlist.playlistName}
               urlPlaylist={playlist.urlPlaylist}
               urlCoverImage={playlist.urlCoverImage}
+              isFavorite={playlist.isFavorite}
             />
           ))}
         </div>
-
       </div>
     </div>
   );

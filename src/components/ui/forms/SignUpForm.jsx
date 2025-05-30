@@ -6,8 +6,6 @@ import { FaRegCalendarAlt, FaEye, FaEyeSlash } from "react-icons/fa";
 import { MdOutlinePlace } from "react-icons/md";
 import { TbPhone } from "react-icons/tb";
 import { PiMusicNotes } from "react-icons/pi";
-// import GoogleIcon from "../../../assets/icons/GoogleIcon";
-// import FacebookIcon from "../../../assets/icons/FacebookIcon";
 import { register } from "../../../api/backendApi";
 import { useNavigate } from "react-router-dom";
 
@@ -57,10 +55,10 @@ const SignUpForm = () => {
     if (!email) errs.email = "El correo es obligatorio.";
     else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(email))
       errs.email = "El correo no es válido.";
-    if (!password) errs.password = "La clave es obligatoria.";
+    if (!password) errs.password = "La contraseña es obligatoria.";
     else if (!/(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*\W).{6,}/.test(password))
       errs.password =
-        "La clave requiere ≥6 caracteres, mayúsculas, minúsculas, números y símbolos.";
+        "La contraseña requiere ≥6 caracteres, mayúsculas, minúsculas, números y símbolos.";
     if (!country) errs.country = "Seleccione un país.";
     if (!birthdate) errs.birthdate = "La fecha de nacimiento es obligatoria.";
     if (!phone) errs.phone = "El teléfono es obligatorio.";
@@ -82,6 +80,7 @@ const SignUpForm = () => {
       password,
       dateOfBirth: birthdate,
       phone,
+      country: country,
       favoriteMethod: listening,
       optInSony,
       optInFiltr,
@@ -131,7 +130,9 @@ const SignUpForm = () => {
             />
           </div>
           {errors.firstName && (
-            <p className="mt-1 text-xs sm:text-sm text-red-600">{errors.firstName}</p>
+            <p className="mt-1 text-xs sm:text-sm text-red-600">
+              {errors.firstName}
+            </p>
           )}
         </div>
         {/* Apellidos */}
@@ -149,7 +150,9 @@ const SignUpForm = () => {
             />
           </div>
           {errors.lastName && (
-            <p className="mt-1 text-xs sm:text-sm text-red-600">{errors.lastName}</p>
+            <p className="mt-1 text-xs sm:text-sm text-red-600">
+              {errors.lastName}
+            </p>
           )}
         </div>
       </div>
@@ -199,7 +202,9 @@ const SignUpForm = () => {
           </button>
         </div>
         {errors.password && (
-          <p className="mt-1 text-xs sm:text-sm text-red-600">{errors.password}</p>
+          <p className="mt-1 text-xs sm:text-sm text-red-600">
+            {errors.password}
+          </p>
         )}
       </div>
 
@@ -225,7 +230,9 @@ const SignUpForm = () => {
             </select>
           </div>
           {errors.country && (
-            <p className="mt-1 text-xs sm:text-sm text-red-600">{errors.country}</p>
+            <p className="mt-1 text-xs sm:text-sm text-red-600">
+              {errors.country}
+            </p>
           )}
         </div>
         {/* Fecha de nacimiento */}
@@ -242,7 +249,9 @@ const SignUpForm = () => {
             />
           </div>
           {errors.birthdate && (
-            <p className="mt-1 text-xs sm:text-sm text-red-600">{errors.birthdate}</p>
+            <p className="mt-1 text-xs sm:text-sm text-red-600">
+              {errors.birthdate}
+            </p>
           )}
         </div>
       </div>
@@ -264,7 +273,9 @@ const SignUpForm = () => {
             />
           </div>
           {errors.phone && (
-            <p className="mt-1 text-xs sm:text-sm text-red-600">{errors.phone}</p>
+            <p className="mt-1 text-xs sm:text-sm text-red-600">
+              {errors.phone}
+            </p>
           )}
         </div>
         {/* Forma de escuchar música */}
@@ -287,7 +298,9 @@ const SignUpForm = () => {
             </select>
           </div>
           {errors.listening && (
-            <p className="mt-1 text-xs sm:text-sm text-red-600">{errors.listening}</p>
+            <p className="mt-1 text-xs sm:text-sm text-red-600">
+              {errors.listening}
+            </p>
           )}
         </div>
       </div>
@@ -332,35 +345,13 @@ const SignUpForm = () => {
       <div className="text-center text-[#131517] mt-1 sm:mt-2">
         <span className="text-sm sm:text-base">¿Ya tienes una cuenta?</span>
         <br />
-        <a href="/login" className="font-semibold text-[#131517] text-sm sm:text-base">
+        <a
+          href="/login"
+          className="font-semibold text-[#131517] text-sm sm:text-base"
+        >
           Accede Aquí
         </a>
       </div>
-
-      {/* Separador */}
-      {/* <div className="flex items-center my-4 text-gray-700">
-        <div className="flex-1 h-px bg-gray-400" />
-        <span className="px-3 whitespace-nowrap">O continúa con:</span>
-        <div className="flex-1 h-px bg-gray-400" />
-      </div> */}
-
-      {/* Botones Sociales */}
-      {/* <div className="flex flex-wrap gap-4">
-        <button
-          type="button"
-          className="flex-1 min-w-[200px] flex items-center justify-center gap-2
-                     py-3 bg-black text-white rounded-lg transition hover:opacity-90"
-        >
-          <GoogleIcon /> Google
-        </button>
-        <button
-          type="button"
-          className="flex-1 min-w-[200px] flex items-center justify-center gap-2
-                     py-3 bg-black text-white rounded-lg transition hover:opacity-90"
-        >
-          <FacebookIcon /> Facebook
-        </button>
-      </div> */}
     </form>
   );
 };

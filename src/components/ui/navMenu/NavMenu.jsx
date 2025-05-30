@@ -10,16 +10,14 @@ import MoodsIcon from "../../../assets/icons/MoodsIcon";
 // import QuizzesIcon from "../../../assets/icons/QuizzesIcon";
 import ShowsIcon from "../../../assets/icons/ShowsIcon";
 import TrendIcon from "../../../assets/icons/TrendIcon";
-// import WinWinIcon from "../../../assets/icons/WinWinIcon";
+import WinWinIcon from "../../../assets/icons/WinWinIcon";
 
 const NavMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [activeSubmenu, setActiveSubmenu] = useState(null);
   const menuRef = useRef(null);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
-    setActiveSubmenu(null);
   };
 
   // Handle clicks outside of menu
@@ -27,7 +25,6 @@ const NavMenu = () => {
     const handleClickOutside = (event) => {
       if (menuRef.current && !menuRef.current.contains(event.target)) {
         setIsOpen(false);
-        setActiveSubmenu(null);
       }
     };
 
@@ -47,7 +44,7 @@ const NavMenu = () => {
     { name: "Trending", icon: <TrendIcon />, route: "/trending" },
     { name: "Shows", icon: <ShowsIcon />, route: "/shows" },
     // { name: "Quizzes", icon: <QuizzesIcon />, route: "/quizzes" },
-    // { name: "Premios", icon: <WinWinIcon />, route: "/prizes" },
+    { name: "Premios", icon: <WinWinIcon />, route: "/prizes" },
   ];
 
   return (
@@ -79,7 +76,6 @@ const NavMenu = () => {
             name={option.name}
             icon={option.icon}
             route={option.route}
-            submenu={option.submenu}
             toggleMenu={toggleMenu}
           />
         ))}
@@ -96,8 +92,6 @@ const NavMenu = () => {
       {isOpen && (
         <MobileMenu
           menuOptions={menuOptions}
-          activeSubmenu={activeSubmenu}
-          setActiveSubmenu={setActiveSubmenu}
           toggleMenu={toggleMenu}
         />
       )}

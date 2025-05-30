@@ -11,7 +11,7 @@ const Moods = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  const playlists = usePlaylists();
+  const { playlists } = usePlaylists();
 
   const [selectedMood, setSelectedMood] = useState(moodsData.moods[0]);
 
@@ -32,7 +32,7 @@ const Moods = () => {
 
   return (
     <>
-      <div className="px-6 py-10">
+      <div className="px-6 py-5 md:py-10">
         <PageHeader welcomeMsg={"¿Cuál es tu mood de hoy?"} />
       </div>
       <div className="flex flex-col px-6 pb-[50px] md:pb-[50px] gap-[35px] md:gap-[50px]">

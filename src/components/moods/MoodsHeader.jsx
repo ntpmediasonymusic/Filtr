@@ -24,7 +24,7 @@ export default function MoodsHeader({ moods, selectedMood, setSelectedMood, filt
             >
               <div className="flex items-center justify-center h-20 sm:h-24 md:h-28 lg:h-32">
                 <span
-                  className="font-modak text-lg sm:text-xl md:text-2xl whitespace-nowrap"
+                  className="font-modak text-2xl sm:text-2xl md:text-3xl whitespace-nowrap"
                   style={{ color: mood.textColor }}
                 >
                   {mood.abbreviation}
