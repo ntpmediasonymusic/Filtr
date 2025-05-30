@@ -3,7 +3,9 @@ import HeaderCarousel from "../components/home/HeaderCarousel";
 import MainCategoryPreview from "../components/home/MainCategoryPreview";
 import PageHeader from "../components/ui/PageHeader";
 import { usePlaylists } from "../context/PlaylistContext";
+import { useSearch } from "../context/SearchContext";
 import { useMainCategories } from "../hooks/playlists/useMainCategories";
+import Filter from "../components/filter/filter";
 
 const Home = () => {
   useEffect(() => {
@@ -12,7 +14,14 @@ const Home = () => {
 
   const mainCategories = useMainCategories();
   const playlists = usePlaylists();
+  const { searchQuery } = useSearch();
 
+  // Si hay búsqueda activa, mostrar el componente Filter
+  if (searchQuery && searchQuery.trim() !== "") {
+    return <Filter />;
+  }
+
+  // Vista normal sin búsqueda
   return (
     <>
       <div className="px-6 py-10">

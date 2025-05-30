@@ -5,11 +5,13 @@ import SearchIcon from "../../assets/icons/SearchIcon";
 import UserCircleIcon from "../../assets/icons/UserCircleIcon";
 import ProfileModal from "./ProfileModal";
 import { FaSignInAlt, FaUserPlus } from "react-icons/fa";
+import { useSearch } from "../../context/SearchContext";
 
 const PageHeader = ({ welcomeMsg }) => {
-  const [searchValue, setSearchValue] = useState("");
+  const { searchQuery, setSearchQuery } = useSearch();
   const [showModal, setShowModal] = useState(false);
   const wrapperRef = useRef(null);
+  const searchInputRef = useRef(null);
 
   // Helper para leer exp del JWT
   const getTokenExp = (bearerToken) => {
@@ -49,6 +51,13 @@ const PageHeader = ({ welcomeMsg }) => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [showModal]);
 
+  // Mantener el foco en el input cuando hay búsqueda activa
+  useEffect(() => {
+    if (searchQuery && searchInputRef.current) {
+      searchInputRef.current.focus();
+    }
+  }, [searchQuery]);
+
   return (
     <header className="w-full flex flex-col md:flex-row items-center justify-between">
       {/* Saludo */}
@@ -64,10 +73,11 @@ const PageHeader = ({ welcomeMsg }) => {
         <div className="flex items-center bg-[#131517] rounded-full px-4 py-2 gap-2 border-2 border-[#00DAF0] w-80">
           <SearchIcon className="text-[#00DAF0]" />
           <input
+            ref={searchInputRef}
             type="text"
-            value={searchValue}
-            onChange={(e) => setSearchValue(e.target.value)}
-            placeholder="Buscar..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            placeholder="Buscar playlists, géneros, moods..."
             className="flex-1 bg-transparent focus:outline-none text-white placeholder:text-gray-400 text-sm md:text-base"
           />
         </div>

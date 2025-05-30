@@ -4,6 +4,8 @@ import { usePlaylists } from "../context/PlaylistContext";
 import GenresHeader from "../components/genres/GenresHeader";
 import genresData from "../data/genres.json";
 import PageHeader from "../components/ui/PageHeader";
+import { useSearch } from "../context/SearchContext";
+import Filter from "../components/filter/filter";
 
 const Genres = () => {
   useEffect(() => {
@@ -12,6 +14,12 @@ const Genres = () => {
   const playlists = usePlaylists();
 
   const [selectedGenre, setSelectedGenre] = useState(genresData.genres[0]);
+  const { searchQuery } = useSearch();
+  
+  // Si hay búsqueda activa, mostrar el componente Filter
+  if (searchQuery && searchQuery.trim() !== "") {
+    return <Filter />;
+  }
 
   const filteredPlaylists = selectedGenre
     ? playlists.filter(
