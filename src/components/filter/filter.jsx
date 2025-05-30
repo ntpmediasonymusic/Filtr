@@ -102,6 +102,7 @@ const Filter = () => {
                     genres={filteredGenres}
                     selectedGenre={selectedGenre}
                     setSelectedGenre={setSelectedGenre}
+                    filter={true}
                 />
             </div>
 
@@ -110,6 +111,7 @@ const Filter = () => {
                     moods={filteredMoods}
                     selectedMood={selectedMood}
                     setSelectedMood={setSelectedMood}
+                    filter={true}
                 />
             </div>
 

@@ -59,18 +59,18 @@ const PageHeader = ({ welcomeMsg }) => {
   }, [searchQuery]);
 
   return (
-    <header className="w-full flex flex-col md:flex-row items-center justify-between">
+    <header className="w-full flex flex-col xl:flex-row items-center xl:justify-between gap-4">
       {/* Saludo */}
-      <div>
+      <div className="w-full xl:w-auto text-center xl:text-left">
         <h1 className="text-white font-bold text-lg md:text-3xl">
           {welcomeMsg}
         </h1>
       </div>
 
       {/* Zona de búsqueda + perfil / login-signup */}
-      <div className="flex flex-col md:flex-row items-center gap-6 mt-4 md:mt-0">
+      <div className="flex flex-col sm:flex-row items-center gap-4 w-full xl:w-auto justify-center xl:justify-end">
         {/* Barra de búsqueda */}
-        <div className="flex items-center bg-[#131517] rounded-full px-4 py-2 gap-2 border-2 border-[#00DAF0] w-80">
+        <div className="flex items-center bg-[#131517] rounded-full px-4 py-2 gap-2 border-2 border-[#00DAF0] w-full sm:w-80 max-w-sm">
           <SearchIcon className="text-[#00DAF0]" />
           <input
             ref={searchInputRef}
@@ -84,17 +84,17 @@ const PageHeader = ({ welcomeMsg }) => {
 
         {!isAuthenticated ? (
           /* Si no hay usuario, muestra Login & Sign Up */
-          <div className="hidden md:flex items-center gap-2">
+          <div className="hidden sm:flex items-center gap-2 flex-shrink-0">
             <NavLink
               to="/login"
-              className="flex items-center gap-2 px-2 py-2 text-white text-lg font-normal hover:opacity-60"
+              className="flex items-center gap-2 px-2 py-2 text-white text-lg font-normal hover:opacity-60 whitespace-nowrap"
             >
               <FaSignInAlt />
               <span>Login</span>
             </NavLink>
             <NavLink
               to="/signup"
-              className="flex items-center gap-2 px-2 py-2 text-white text-lg font-normal hover:opacity-60"
+              className="flex items-center gap-2 px-2 py-2 text-white text-lg font-normal hover:opacity-60 whitespace-nowrap"
             >
               <FaUserPlus />
               <span>Sign Up</span>
@@ -102,10 +102,10 @@ const PageHeader = ({ welcomeMsg }) => {
           </div>
         ) : (
           /* Si está autenticado, muestra botón de perfil */
-          <div className="relative" ref={wrapperRef}>
+          <div className="relative flex-shrink-0" ref={wrapperRef}>
             <button
               onClick={() => setShowModal((v) => !v)}
-              className="flex items-center gap-2 text-white text-sm md:text-xl"
+              className="flex items-center gap-2 text-white text-sm md:text-xl whitespace-nowrap"
             >
               <span>{user.firstName}</span>
               <UserCircleIcon className="text-white" width="30" height="30" />

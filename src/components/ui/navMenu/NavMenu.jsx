@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import NavMenuItem from "./NavMenuItem";
@@ -15,23 +15,30 @@ import TrendIcon from "../../../assets/icons/TrendIcon";
 const NavMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSubmenu, setActiveSubmenu] = useState(null);
-  const [isSticky, setIsSticky] = useState(false);
+  const menuRef = useRef(null);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
     setActiveSubmenu(null);
   };
 
-  const handleScroll = () => {
-    setIsSticky(window.scrollY > 0);
-  };
-
+  // Handle clicks outside of menu
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setIsOpen(false);
+        setActiveSubmenu(null);
+      }
     };
-  }, []);
+
+    if (isOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isOpen]);
 
   const menuOptions = [
     { name: "Inicio", icon: <HomeIcon />, route: "/" },
@@ -45,9 +52,8 @@ const NavMenu = () => {
 
   return (
     <nav
-      className={`flex items-center justify-between text-white px-4 py-5 
-              transition-all duration-300
-              ${isSticky ? "sticky top-0 z-50 shadow-md" : ""}`}
+      ref={menuRef}
+      className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between text-white px-4 py-5 shadow-md"
       style={{
         backgroundColor: "rgb(0, 79, 212)",
         backgroundImage:

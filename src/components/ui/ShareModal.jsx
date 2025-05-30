@@ -4,14 +4,24 @@ import { useEffect, useRef, useState } from "react";
 import {
   FaFacebook,
   FaInstagram,
-  FaTiktok,
-  FaWhatsapp
-} from "react-icons/fa";
+  FaWhatsapp,
+  FaXTwitter
+} from "react-icons/fa6";
 import { MdLink, MdCheck } from "react-icons/md";
 
-const ShareModal = ({ link, title = "¡Mira esto!", imageBlob = null, onClose }) => {
+const ShareModal = ({ 
+  link, 
+  title = "¡Mira esto!", 
+  imageBlob = null, 
+  onClose,
+  playlistName,
+  mainCategory,
+  genre,
+  moods = []
+}) => {
   const ref = useRef(null);
   const [copied, setCopied] = useState(false);
+  const [showCopyMessage, setShowCopyMessage] = useState(false);
 
   useEffect(() => {
     const handleClickOutside = (e) => {
@@ -23,13 +33,41 @@ const ShareModal = ({ link, title = "¡Mira esto!", imageBlob = null, onClose })
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [onClose]);
 
+  // Construir el texto de compartir
+  const buildShareText = (includeHashtags = true) => {
+    const playlistUrl = link || window.location.href;
+    const baseText = `🎧 Escucha esta playlist: ${playlistName || title} – ${playlistUrl} ¡Te va a encantar!`;
+    
+    if (!includeHashtags) return baseText;
+    
+    // Construir hashtags
+    const hashtags = ['#Filtr'];
+    if (mainCategory) hashtags.push(`#${mainCategory.replace(/\s+/g, '')}`);
+    if (genre) hashtags.push(`#${genre.replace(/\s+/g, '')}`);
+    if (moods && moods.length > 0) {
+      moods.forEach(mood => {
+        if (mood) hashtags.push(`#${mood.replace(/\s+/g, '')}`);
+      });
+    }
+    
+    return `${baseText}\n\n${hashtags.join(' ')}`;
+  };
+
   const handleCopy = async () => {
     try {
-      await navigator.clipboard.writeText(link || window.location.href);
+      // Copiar el texto completo con hashtags, no solo el link
+      const textToCopy = buildShareText(true);
+      await navigator.clipboard.writeText(textToCopy);
       setCopied(true);
+      setShowCopyMessage(true);
+      
       setTimeout(() => {
         setCopied(false);
       }, 2000);
+      
+      setTimeout(() => {
+        setShowCopyMessage(false);
+      }, 3000);
     } catch (err) {
       console.error("Error al copiar:", err);
     }
@@ -44,8 +82,8 @@ const ShareModal = ({ link, title = "¡Mira esto!", imageBlob = null, onClose })
       try {
         await navigator.share({
           files: [file],
-          title: title,
-          text: title,
+          title: playlistName || title,
+          text: buildShareText(),
           url: link || window.location.href
         });
         onClose();
@@ -60,20 +98,25 @@ const ShareModal = ({ link, title = "¡Mira esto!", imageBlob = null, onClose })
   const handleShare = async (platform) => {
     if (imageBlob && await shareWithWebAPI()) return;
     
-    // Fallback a URLs específicas de cada plataforma
-    const pageUrl = encodeURIComponent(link || window.location.href);
-    const text = encodeURIComponent(title);
+    // Construir el texto completo con hashtags
+    const fullShareText = buildShareText(true);
     let url = "";
     
     switch (platform) {
       case "facebook":
-        url = `https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`;
+        // Facebook: incluir el texto en el parámetro 'quote'
+        url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(link || window.location.href)}&quote=${encodeURIComponent(fullShareText)}`;
         break;
       case "whatsapp":
-        url = `https://api.whatsapp.com/send?text=${text}%20${pageUrl}`;
+        // WhatsApp: el texto ya incluye la URL
+        url = `https://api.whatsapp.com/send?text=${encodeURIComponent(fullShareText)}`;
+        break;
+      case "twitter":
+        // Twitter/X: el texto ya incluye la URL
+        url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(fullShareText)}`;
         break;
       case "instagram":
-      case "tiktok":
+        // Instagram: copiar el texto completo
         handleCopy();
         return;
     }
@@ -93,12 +136,24 @@ const ShareModal = ({ link, title = "¡Mira esto!", imageBlob = null, onClose })
       <div className="fixed inset-0 flex items-center justify-center z-50 p-4">
         <div
           ref={ref}
-          className="flex flex-col gap-3 w-[300px] bg-[#282828] px-5 py-10 rounded-[12px] min-w-[90%] md:min-w-[400px]"
+          className="flex flex-col gap-6 w-full max-w-[500px] bg-[#282828] p-8 rounded-[16px] shadow-2xl relative"
         >
+          {/* Mensaje de copiado */}
+          {showCopyMessage && (
+            <div className="absolute -top-16 left-1/2 transform -translate-x-1/2 bg-white text-black px-4 py-2 rounded-lg shadow-lg whitespace-nowrap">
+              ¡Enlace copiado en el portapapeles!
+            </div>
+          )}
+
+          {/* Título del modal */}
+          <h3 className="text-white text-xl font-bold text-center">
+            Compartir Playlist
+          </h3>
+
           {/* Copiar Link */}
           <button
             onClick={handleCopy}
-            className={`flex items-center justify-center gap-2 rounded-[4px] w-full p-3 font-semibold cursor-pointer transition-all duration-200 ${
+            className={`flex items-center justify-center gap-3 rounded-[8px] w-full p-4 font-semibold cursor-pointer transition-all duration-200 ${
               copied
                 ? "bg-green-500 text-white"
                 : "bg-[#B9F2CD] text-black hover:bg-[#a8e3bc]"
@@ -117,37 +172,58 @@ const ShareModal = ({ link, title = "¡Mira esto!", imageBlob = null, onClose })
             )}
           </button>
 
+          {/* Separador */}
+          <div className="relative">
+            <div className="absolute inset-0 flex items-center">
+              <div className="w-full border-t border-white/30"></div>
+            </div>
+            <div className="relative flex justify-center text-sm">
+              <span className="px-3 bg-[#282828] text-white/70">o comparte en</span>
+            </div>
+          </div>
+
           {/* Redes Sociales */}
-          <div className="flex gap-3 justify-center">
+          <div className="flex gap-4 justify-center">
             <button
               onClick={() => handleShare("facebook")}
-              className="flex-1 flex items-center justify-center py-3 bg-[#B9F2CD] rounded cursor-pointer hover:bg-[#a8e3bc] transition-colors"
+              className="flex-1 flex items-center justify-center py-4 bg-[#B9F2CD] rounded-[8px] cursor-pointer hover:bg-[#a8e3bc] transition-all group"
               title="Compartir en Facebook"
             >
-              <FaFacebook className="w-6 h-6 text-black" />
+              <FaFacebook className="w-7 h-7 text-black group-hover:scale-110 transition-transform" />
             </button>
             <button
               onClick={() => handleShare("whatsapp")}
-              className="flex-1 flex items-center justify-center py-3 bg-[#B9F2CD] rounded cursor-pointer hover:bg-[#a8e3bc] transition-colors"
+              className="flex-1 flex items-center justify-center py-4 bg-[#B9F2CD] rounded-[8px] cursor-pointer hover:bg-[#a8e3bc] transition-all group"
               title="Compartir en WhatsApp"
             >
-              <FaWhatsapp className="w-6 h-6 text-black" />
+              <FaWhatsapp className="w-7 h-7 text-black group-hover:scale-110 transition-transform" />
             </button>
             <button
               onClick={() => handleShare("instagram")}
-              className="flex-1 flex items-center justify-center py-3 bg-[#B9F2CD] rounded cursor-pointer hover:bg-[#a8e3bc] transition-colors"
+              className="flex-1 flex items-center justify-center py-4 bg-[#B9F2CD] rounded-[8px] cursor-pointer hover:bg-[#a8e3bc] transition-all group"
               title="Copiar para Instagram"
             >
-              <FaInstagram className="w-6 h-6 text-black" />
+              <FaInstagram className="w-7 h-7 text-black group-hover:scale-110 transition-transform" />
             </button>
             <button
-              onClick={() => handleShare("tiktok")}
-              className="flex-1 flex items-center justify-center py-3 bg-[#B9F2CD] rounded cursor-pointer hover:bg-[#a8e3bc] transition-colors"
-              title="Copiar para TikTok"
+              onClick={() => handleShare("twitter")}
+              className="flex-1 flex items-center justify-center py-4 bg-[#B9F2CD] rounded-[8px] cursor-pointer hover:bg-[#a8e3bc] transition-all group"
+              title="Compartir en X (Twitter)"
             >
-              <FaTiktok className="w-6 h-6 text-black" />
+              <FaXTwitter className="w-7 h-7 text-black group-hover:scale-110 transition-transform" />
             </button>
           </div>
+
+          {/* Botón de cerrar */}
+          <button
+            onClick={onClose}
+            className="absolute top-4 right-4 text-white/80 hover:text-white transition-colors cursor-pointer"
+            aria-label="Cerrar"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
         </div>
       </div>
     </>

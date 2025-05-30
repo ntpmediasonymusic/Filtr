@@ -1,8 +1,15 @@
 /* eslint-disable react/prop-types */
 
-export default function MoodsHeader({ moods, selectedMood, setSelectedMood }) {
+export default function MoodsHeader({ moods, selectedMood, setSelectedMood, filter = false }) {
   return (
     <div className="w-full">
+      {
+        filter && (
+          <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-white">
+            Elige un mood
+          </h2>
+        )
+      }
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
         {moods.map((mood) => {
           const isSelected = mood.name === selectedMood?.name;
