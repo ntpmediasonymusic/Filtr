@@ -3,28 +3,25 @@ import { fetchUpdatedPlaylists } from "../api/fetchPlaylists";
 import { useSortedPlaylists } from "../hooks/playlists/useSortedPlaylists";
 
 const PlaylistContext = createContext();
-
 // eslint-disable-next-line react/prop-types
 export const PlaylistProvider = ({ children }) => {
   const sortedPlaylists = useSortedPlaylists();
   const [playlists, setPlaylists] = useState([]);
 
+  const refreshPlaylists = async () => {
+    const updated = await fetchUpdatedPlaylists(sortedPlaylists);
+    setPlaylists(updated);
+  };
+
   useEffect(() => {
-    async function fetchData() {
-      const updated = await fetchUpdatedPlaylists(sortedPlaylists);
-      setPlaylists(updated);
-    }
-    fetchData();
+    refreshPlaylists();
   }, [sortedPlaylists]);
 
   return (
-    <PlaylistContext.Provider value={playlists}>
+    <PlaylistContext.Provider value={{ playlists, refreshPlaylists }}>
       {children}
     </PlaylistContext.Provider>
   );
 };
 
-// eslint-disable-next-line react-refresh/only-export-components
-export const usePlaylists = () => {
-  return useContext(PlaylistContext);
-};
+export const usePlaylists = () => useContext(PlaylistContext);

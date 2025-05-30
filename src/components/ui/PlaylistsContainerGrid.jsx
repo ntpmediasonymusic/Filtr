@@ -13,6 +13,7 @@ const PlaylistsContainerGrid = ({ currentPlaylists }) => {
                 playlistName={playlist.playlistName}
                 urlPlaylist={playlist.urlPlaylist}
                 urlCoverImage={playlist.urlCoverImage}
+                isFavorite={playlist.isFavorite}
               />
             ))}
         </div>

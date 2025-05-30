@@ -4,7 +4,7 @@ import PageHeader from "../components/ui/PageHeader";
 const Trending = () => {
   return (
     <>
-      <div className="px-6 py-10">
+      <div className="px-6 py-5 md:py-10">
         <PageHeader welcomeMsg={"Los playlist más Trend"} />
       </div>
       <ComingSoon color="#fddc00" />

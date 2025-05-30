@@ -13,7 +13,7 @@ const Filter = () => {
         window.scrollTo(0, 0);
     }, []);
 
-    const playlists = usePlaylists();
+    const { playlists } = usePlaylists();
     const { searchQuery } = useSearch();
     
     // Inicializar sin ningún filtro seleccionado
@@ -92,39 +92,43 @@ const Filter = () => {
     }, [searchFilteredPlaylists, selectedGenre, selectedMood]);
 
     return (
-        <>
-            <div className="px-6 py-10">
-                <PageHeader welcomeMsg={searchQuery ? `Resultados para "${searchQuery}"` : "Filtro"} />
-            </div>
+      <>
+        <div className="px-6 py-5 md:py-10">
+          <PageHeader
+            welcomeMsg={
+              searchQuery ? `Resultados para "${searchQuery}"` : "Filtro"
+            }
+          />
+        </div>
 
-            <div className="px-8 pb-4">
-                <GenresHeader
-                    genres={filteredGenres}
-                    selectedGenre={selectedGenre}
-                    setSelectedGenre={setSelectedGenre}
-                />
-            </div>
+        <div className="px-8 pb-4">
+          <GenresHeader
+            genres={filteredGenres}
+            selectedGenre={selectedGenre}
+            setSelectedGenre={setSelectedGenre}
+          />
+        </div>
 
-            <div className="px-8 pb-4">
-                <MoodsHeader
-                    moods={filteredMoods}
-                    selectedMood={selectedMood}
-                    setSelectedMood={setSelectedMood}
-                />
-            </div>
+        <div className="px-8 pb-4">
+          <MoodsHeader
+            moods={filteredMoods}
+            selectedMood={selectedMood}
+            setSelectedMood={setSelectedMood}
+          />
+        </div>
 
-            {filteredPlaylists.length === 0 ? (
-                <div className="px-8 py-20 text-center">
-                    <p className="text-gray-400 text-lg">
-                        No se encontraron playlists con los filtros seleccionados
-                    </p>
-                </div>
-            ) : (
-                <div className="gap-[50px] md:gap-[50px] px-8 py-[50px] md:py-[50px]">
-                    <PlaylistsContainerGrid currentPlaylists={filteredPlaylists} />
-                </div>
-            )}
-        </>
+        {filteredPlaylists.length === 0 ? (
+          <div className="px-8 py-20 text-center">
+            <p className="text-gray-400 text-lg">
+              No se encontraron playlists con los filtros seleccionados
+            </p>
+          </div>
+        ) : (
+          <div className="gap-[50px] md:gap-[50px] px-8 py-[50px] md:py-[50px]">
+            <PlaylistsContainerGrid currentPlaylists={filteredPlaylists} />
+          </div>
+        )}
+      </>
     );
 };
 

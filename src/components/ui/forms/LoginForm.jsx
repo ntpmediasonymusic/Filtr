@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { login } from "../../../api/backendApi";
+import { usePlaylists } from "../../../context/PlaylistContext"; // <- importar
 import EnvelopeIcon from "../../../assets/icons/EnvelopeIcon";
 import LockIcon from "../../../assets/icons/LockIcon";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { AiFillGoogleCircle } from "react-icons/ai";
 import { MdOutlineFacebook } from "react-icons/md";
 import UserBigCircleIcon from "../../../assets/icons/UserBigCircleIcon";
-
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
@@ -17,13 +17,14 @@ const LoginForm = () => {
   const [apiError, setApiError] = useState("");
 
   const navigate = useNavigate();
+  const { refreshPlaylists } = usePlaylists(); // <- hook
 
   const validate = () => {
     const errs = {};
     if (!email) errs.email = "El e-mail es obligatorio.";
     else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(email))
       errs.email = "El e-mail no es válido.";
-    if (!password) errs.password = "La contraseñas es obligatoria.";
+    if (!password) errs.password = "La contraseña es obligatoria.";
     return errs;
   };
 
@@ -37,6 +38,8 @@ const LoginForm = () => {
         const { data } = await login({ email, password });
         localStorage.setItem("token", data.token);
         localStorage.setItem("user", JSON.stringify(data.user));
+        // <-- refrescar playlists ahora que hay token y user
+        await refreshPlaylists();
         navigate("/");
       } catch (err) {
         if (err.response?.status === 401) {
@@ -77,7 +80,7 @@ const LoginForm = () => {
           <p className="mt-1 text-xs sm:text-sm text-red-600">{errors.email}</p>
         )}
       </div>
-      {/* Contraseñas */}
+      {/* Contraseña */}
       <div className="w-full">
         <div className="flex items-center bg-white border border-[#262627] rounded-[8px] p-3 sm:p-4 gap-2 sm:gap-3">
           <div className="w-6 h-6 sm:w-8 sm:h-8 flex justify-center items-center">
@@ -85,7 +88,7 @@ const LoginForm = () => {
           </div>
           <input
             type={showPwd ? "text" : "password"}
-            placeholder="Contraseñas"
+            placeholder="Contraseña"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             className="flex-1 bg-transparent focus:outline-none text-gray-700 placeholder:text-gray-400 text-sm sm:text-base"
@@ -113,11 +116,11 @@ const LoginForm = () => {
         <label className="flex items-center gap-2">
           <input type="checkbox" className="w-4 h-4 accent-[#ca249c]" />
           <span className="text-xs sm:text-sm font-semibold text-[#131517]">
-            Recordar la contraseñas
+            Recordar la contraseña
           </span>
         </label>
         <a href="#" className="text-xs sm:text-sm font-semibold text-[#131517]">
-          ¿Olvidaste tu contraseñas?
+          ¿Olvidaste tu contraseña?
         </a>
       </div>
       {/* Botón Entrar */}

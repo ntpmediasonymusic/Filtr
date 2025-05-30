@@ -43,7 +43,10 @@ export const PageTitleProvider = ({ children }) => {
         document.title = "SignUp";
         break;
       case "/edit-account":
-        document.title = "Edit Account";
+        document.title = "Editar perfil";
+        break;
+      case "/favorite-playlists":
+        document.title = "Mis Playlist favoritas";
         break;
       default:
         document.title = "Filtr";

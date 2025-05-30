@@ -16,6 +16,7 @@ import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import EditAccount from "./pages/EditAccount";
 import { SearchProvider } from "./context/SearchContext";
+import FavoritePlaylists from "./pages/FavoritePlaylists";
 
 function App() {
   return (
@@ -38,6 +39,10 @@ function App() {
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<SignUp />} />
                 <Route path="/edit-account" element={<EditAccount />} />
+                <Route
+                  path="/favorite-playlists"
+                  element={<FavoritePlaylists />}
+                />
               </Routes>
             </PlaylistProvider>
           </PageTitleProvider>

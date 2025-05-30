@@ -1,4 +1,3 @@
-
 import axios from "axios";
 
 const api = axios.create({
@@ -14,4 +13,13 @@ api.interceptors.request.use((config) => {
 
 export const register = (payload) => api.post("/auth/register", payload);
 export const login = (payload) => api.post("/auth/login", payload);
+export const updateProfile = (userId, payload) =>
+  api.put(`/users/${userId}`, payload);
+export const deleteAccount = (userId) => api.delete(`/users/${userId}`);
 export const logout = () => api.post("/auth/logout");
+export const getFavoritePlaylists = (userId) =>
+  api.get(`/users/${userId}/playlists`);
+export const addFavoritePlaylist = (userId, playlistId) =>
+  api.post(`/users/${userId}/playlists`, { playlistId });
+export const removeFavoritePlaylist = (userId, playlistId) =>
+  api.delete(`/users/${userId}/playlists/${playlistId}`);

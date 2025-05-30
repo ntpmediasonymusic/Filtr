@@ -80,6 +80,7 @@ const SignUpForm = () => {
       password,
       dateOfBirth: birthdate,
       phone,
+      country: country,
       favoriteMethod: listening,
       optInSony,
       optInFiltr,
@@ -129,7 +130,9 @@ const SignUpForm = () => {
             />
           </div>
           {errors.firstName && (
-            <p className="mt-1 text-xs sm:text-sm text-red-600">{errors.firstName}</p>
+            <p className="mt-1 text-xs sm:text-sm text-red-600">
+              {errors.firstName}
+            </p>
           )}
         </div>
         {/* Apellidos */}
@@ -147,7 +150,9 @@ const SignUpForm = () => {
             />
           </div>
           {errors.lastName && (
-            <p className="mt-1 text-xs sm:text-sm text-red-600">{errors.lastName}</p>
+            <p className="mt-1 text-xs sm:text-sm text-red-600">
+              {errors.lastName}
+            </p>
           )}
         </div>
       </div>
@@ -197,7 +202,9 @@ const SignUpForm = () => {
           </button>
         </div>
         {errors.password && (
-          <p className="mt-1 text-xs sm:text-sm text-red-600">{errors.password}</p>
+          <p className="mt-1 text-xs sm:text-sm text-red-600">
+            {errors.password}
+          </p>
         )}
       </div>
 
@@ -223,7 +230,9 @@ const SignUpForm = () => {
             </select>
           </div>
           {errors.country && (
-            <p className="mt-1 text-xs sm:text-sm text-red-600">{errors.country}</p>
+            <p className="mt-1 text-xs sm:text-sm text-red-600">
+              {errors.country}
+            </p>
           )}
         </div>
         {/* Fecha de nacimiento */}
@@ -240,7 +249,9 @@ const SignUpForm = () => {
             />
           </div>
           {errors.birthdate && (
-            <p className="mt-1 text-xs sm:text-sm text-red-600">{errors.birthdate}</p>
+            <p className="mt-1 text-xs sm:text-sm text-red-600">
+              {errors.birthdate}
+            </p>
           )}
         </div>
       </div>
@@ -262,7 +273,9 @@ const SignUpForm = () => {
             />
           </div>
           {errors.phone && (
-            <p className="mt-1 text-xs sm:text-sm text-red-600">{errors.phone}</p>
+            <p className="mt-1 text-xs sm:text-sm text-red-600">
+              {errors.phone}
+            </p>
           )}
         </div>
         {/* Forma de escuchar música */}
@@ -285,7 +298,9 @@ const SignUpForm = () => {
             </select>
           </div>
           {errors.listening && (
-            <p className="mt-1 text-xs sm:text-sm text-red-600">{errors.listening}</p>
+            <p className="mt-1 text-xs sm:text-sm text-red-600">
+              {errors.listening}
+            </p>
           )}
         </div>
       </div>
@@ -330,7 +345,10 @@ const SignUpForm = () => {
       <div className="text-center text-[#131517] mt-1 sm:mt-2">
         <span className="text-sm sm:text-base">¿Ya tienes una cuenta?</span>
         <br />
-        <a href="/login" className="font-semibold text-[#131517] text-sm sm:text-base">
+        <a
+          href="/login"
+          className="font-semibold text-[#131517] text-sm sm:text-base"
+        >
           Accede Aquí
         </a>
       </div>
