@@ -95,7 +95,7 @@ export default function MoodsHeader({
               >
                 <div className="flex items-center justify-center h-20 sm:h-24 md:h-28 lg:h-32 px-4">
                   <span
-                    className="font-modak text-2xl sm:text-2xl md:text-3xl break-words text-center leading-tight"
+                    className="font-oi text-2xl sm:text-2xl md:text-2xl break-words text-center leading-tight"
                     style={{
                       color: mood.textColor,
                       wordBreak: "break-word",
