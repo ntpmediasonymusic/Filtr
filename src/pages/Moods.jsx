@@ -22,6 +22,7 @@ const Moods = () => {
     return <Filter />;
   }
 
+  // Si hay un mood seleccionado, filtrar. Si no, mostrar todas las playlists
   const filteredPlaylists = selectedMood
     ? playlists.filter(
         (playlist) =>

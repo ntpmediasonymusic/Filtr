@@ -13,6 +13,7 @@ const Genres = () => {
   }, []);
   const { playlists } = usePlaylists();
 
+  // Inicializar con el primer género seleccionado
   const [selectedGenre, setSelectedGenre] = useState(genresData.genres[0]);
   const { searchQuery } = useSearch();
   
@@ -21,6 +22,7 @@ const Genres = () => {
     return <Filter />;
   }
 
+  // Si hay un género seleccionado, filtrar. Si no, mostrar todas las playlists
   const filteredPlaylists = selectedGenre
     ? playlists.filter(
         (playlist) =>
@@ -30,10 +32,10 @@ const Genres = () => {
 
   return (
     <>
-      <div className="px-6 py-5 md:py-10">
+      <div className="px-6 py-8 md:py-10">
         <PageHeader welcomeMsg={"¿Qué género quieres escuchar hoy?"} />
       </div>
-      <div className="flex flex-col px-6 pb-[50px] md:pb-[50px] gap-[35px] md:gap-[50px]">
+      <div className="flex flex-col pb-[50px] md:pb-[50px] gap-[35px] md:gap-[50px]">
         <GenresHeader
           genres={genresData.genres}
           selectedGenre={selectedGenre}
