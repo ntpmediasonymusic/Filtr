@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { NavLink } from "react-router-dom";
+// import { NavLink } from "react-router-dom";
 import PlaylistCard from "../ui/PlaylistCard";
 
 const MainCategoryPreview = ({ title, playlists }) => {
@@ -11,12 +11,12 @@ const MainCategoryPreview = ({ title, playlists }) => {
           <h2 className="text-sm md:text-3xl sm:text-lg text-white font-semibold">
             {title}
           </h2>
-          <NavLink
+          {/* <NavLink
             to={`/main-category?title=${encodeURIComponent(title)}`}
             className="text-[#00DAF0] text-xs md:text-lg sm:text-sm hover:text-[#adf7ff] underline underline-offset-4"
           >
             Ver todos
-          </NavLink>
+          </NavLink> */}
         </div>
 
         {/* Contenedor de imágenes */}

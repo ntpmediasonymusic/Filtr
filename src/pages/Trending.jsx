@@ -1,24 +1,37 @@
+// filtr-frontend/src/pages/Trending.jsx
+import { useEffect, useMemo } from "react";
 import Filter from "../components/filter/filter";
-import ComingSoon from "../components/ui/ComingSoon";
 import PageHeader from "../components/ui/PageHeader";
+import { usePlaylists } from "../context/PlaylistContext";
 import { useSearch } from "../context/SearchContext";
+import PlaylistsContainerGrid from "../components/ui/PlaylistsContainerGrid";
 
 const Trending = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
+  const { playlists } = usePlaylists();
   const { searchQuery } = useSearch();
 
-  // Si hay búsqueda activa, mostrar el componente Filter
+  const trendingPlaylists = useMemo(() => {
+    return playlists
+      .filter((pl) => typeof pl.trending === "number")
+      .sort((a, b) => a.trending - b.trending);
+  }, [playlists]);
+
   if (searchQuery && searchQuery.trim() !== "") {
     return <Filter />;
   }
 
-
   return (
     <>
       <div className="px-6 py-5 md:py-10">
-        <PageHeader welcomeMsg={"Los playlist más Trend"} />
+        <PageHeader welcomeMsg={"Los playlists más Trend"} />
       </div>
-      <ComingSoon color="#fddc00" />
+      <div className="flex flex-col pb-[50px] md:pb-[50px] gap-[35px] md:gap-[50px]">
+        <PlaylistsContainerGrid currentPlaylists={trendingPlaylists} />
+      </div>
     </>
   );
 };
