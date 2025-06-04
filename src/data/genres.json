@@ -4,36 +4,36 @@
       "name": "Baladas Románticas",
       "urlImageHeader": "",
       "abbreviation": "Románticas",
-      "backgroundColor": "#FF6B81",
-      "textColor": "#3B0D2B"
+      "backgroundColor": "#EAD1E2",
+      "textColor": "#692356"
     },
     {
       "name": "Éxitos",
       "urlImageHeader": "",
       "abbreviation": "Éxitos",
-      "backgroundColor": "#FFD700",
-      "textColor": "#003300"
+      "backgroundColor": "#0B2E4E",
+      "textColor": "#5ADBFF"
     },
     {
       "name": "Novedades",
       "urlImageHeader": "",
       "abbreviation": "Novedades",
-      "backgroundColor": "#00B4D8",
-      "textColor": "#0D341E"
+      "backgroundColor": "#56314D",
+      "textColor": "#FF10CB"
     },
     {
       "name": "Pop",
       "urlImageHeader": "",
       "abbreviation": "Pop",
-      "backgroundColor": "#FF69B4",
-      "textColor": "#2E003E"
+      "backgroundColor": "#F71735",
+      "textColor": "#FDFFFC"
     },
     {
       "name": "Urbano",
       "urlImageHeader": "",
       "abbreviation": "Urbano",
-      "backgroundColor": "#1D3557",
-      "textColor": "#FFD700"
+      "backgroundColor": "#00120B",
+      "textColor": "#31E981"
     },
     {
       "name": "Artistas Femeninas",
