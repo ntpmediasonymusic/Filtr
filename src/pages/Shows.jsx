@@ -21,7 +21,7 @@ const Shows = () => {
 
   return (
     <>
-      <div className="px-6 py-5 md:py-10">
+      <div className="px-6 py-10 md:py-10">
         <PageHeader welcomeMsg={""} />
       </div>
       <div className="px-6">

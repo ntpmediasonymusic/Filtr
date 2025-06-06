@@ -1,12 +1,8 @@
-/* eslint-disable react/prop-types */
 import { useRef, useEffect, useState } from "react";
+import TrendingPlaylistCard from "./TrendingPlaylistCard";
 
-export default function MoodsHeader({
-  moods,
-  selectedMood,
-  setSelectedMood,
-  filter = false,
-}) {
+/* eslint-disable react/prop-types */
+const TrendingPlaylistsContainerGrid = ({ currentPlaylists }) => {
   const scrollContainerRef = useRef(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(false);
@@ -39,7 +35,7 @@ export default function MoodsHeader({
       scrollContainer.classList.add("cursor-grabbing");
       startX = e.pageX - scrollContainer.offsetLeft;
       scrollLeft = scrollContainer.scrollLeft;
-      e.preventDefault(); // Prevenir selección de texto
+      e.preventDefault();
     };
 
     const handleMouseLeave = () => {
@@ -56,20 +52,17 @@ export default function MoodsHeader({
       if (!isDown) return;
       e.preventDefault();
       const x = e.pageX - scrollContainer.offsetLeft;
-      const walk = (x - startX) * 2; // Velocidad del scroll
+      const walk = (x - startX) * 2;
       scrollContainer.scrollLeft = scrollLeft - walk;
       checkScrollButtons();
     };
 
-    // Verificar botones al cargar y al hacer scroll
     checkScrollButtons();
     scrollContainer.addEventListener("scroll", checkScrollButtons);
     scrollContainer.addEventListener("mousedown", handleMouseDown);
     scrollContainer.addEventListener("mouseleave", handleMouseLeave);
     scrollContainer.addEventListener("mouseup", handleMouseUp);
     scrollContainer.addEventListener("mousemove", handleMouseMove);
-
-    // Verificar botones cuando cambie el tamaño de la ventana
     window.addEventListener("resize", checkScrollButtons);
 
     return () => {
@@ -82,25 +75,14 @@ export default function MoodsHeader({
     };
   }, []);
 
-  // Verificar botones cuando cambien los moods
   useEffect(() => {
     checkScrollButtons();
-  }, [moods]);
-
-  const handleMoodClick = (mood) => {
-    // Si el mood ya está seleccionado, lo deseleccionamos
-    if (selectedMood && selectedMood.name === mood.name) {
-      setSelectedMood(null);
-    } else {
-      setSelectedMood(mood);
-    }
-  };
+  }, [currentPlaylists]);
 
   const scrollToLeft = () => {
     const container = scrollContainerRef.current;
     if (!container) return;
     
-    // Calcular la distancia para un scroll más suave
     const scrollDistance = Math.min(container.scrollLeft, 400);
     
     container.scrollBy({
@@ -113,7 +95,6 @@ export default function MoodsHeader({
     const container = scrollContainerRef.current;
     if (!container) return;
     
-    // Calcular la distancia restante
     const maxScroll = container.scrollWidth - container.clientWidth;
     const remainingScroll = maxScroll - container.scrollLeft;
     const scrollDistance = Math.min(remainingScroll, 400);
@@ -124,64 +105,45 @@ export default function MoodsHeader({
     });
   };
 
+  if (currentPlaylists.length <= 0) {
+    return (
+      <p className="text-gray-500 text-sm md:text-2xl sm:text-lg text-center">
+        No hay playlists disponibles.
+      </p>
+    );
+  }
+
   return (
     <div className="w-full">
-      {filter && moods && moods.length > 0 && (
-        <h2 className="text-2xl ml-6 sm:text-3xl font-bold mb-6 text-white">
-          Elige un mood
-        </h2>
-      )}
-      <div className="overflow-x-hidden overflow-y-visible">
+      <div className="overflow-x-hidden">
         <div
           ref={scrollContainerRef}
-          className={`flex gap-4 overflow-x-auto overflow-y-visible cursor-grab select-none pr-6 pt-2 pb-2 scrollbar-hide transition-all duration-300 ease-out ${
+          className={`flex gap-6 pb-4 overflow-x-auto cursor-grab select-none transition-all duration-300 ease-out ${
             hasScrolled ? 'pl-0' : 'pl-6'
-          }`}
+          } pr-6`}
           style={{ 
-            scrollbarWidth: "none", // Firefox
-            msOverflowStyle: "none", // IE/Edge
+            scrollbarWidth: "none",
+            msOverflowStyle: "none",
             scrollBehavior: "smooth",
           }}
         >
           <style>{`
             .scrollbar-hide::-webkit-scrollbar {
-              display: none; /* Chrome, Safari, Opera */
+              display: none;
             }
           `}</style>
-          {moods.map((mood) => {
-            const isSelected = selectedMood && mood.name === selectedMood.name;
-            return (
-              <div
-                key={mood.name}
-                onClick={() => handleMoodClick(mood)}
-                onMouseDown={(e) => e.stopPropagation()} // Evitar conflicto con el drag
-                style={{ 
-                  backgroundColor: mood.backgroundColor,
-                  transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
-                }}
-                className={`
-                  cursor-pointer rounded-3xl box-border border-4 w-[240px] min-w-[240px] md:w-[300px] md:min-w-[300px] transform-gpu
-                  ${isSelected ? "border-[#ffffff] scale-105" : "border-transparent scale-100"}
-                  hover:border-[#ffffff] hover:scale-105 transition-all duration-300
-                `}
-              >
-                <div className="flex items-center justify-center h-20 sm:h-24 md:h-28 lg:h-32 px-4">
-                  <span
-                    className="font-oi text-2xl sm:text-2xl md:text-2xl break-words text-center leading-tight"
-                    style={{
-                      color: mood.textColor,
-                      wordBreak: "break-word",
-                      hyphens: "auto",
-                    }}
-                  >
-                    {mood.abbreviation}
-                  </span>
-                </div>
-              </div>
-            );
-          })}
+          {currentPlaylists.map((playlist, index) => (
+            <TrendingPlaylistCard
+              key={playlist.playlistName}
+              index={index + 1}
+              playlistName={playlist.playlistName}
+              urlPlaylist={playlist.urlPlaylist}
+              urlCoverImage={playlist.urlCoverImage}
+              isFavorite={playlist.isFavorite}
+            />
+          ))}
         </div>
-        <div className="w-full flex justify-end mt-2">
+        <div className="w-full flex justify-end mt-2 pr-6">
           <button
             onClick={scrollToLeft}
             disabled={!canScrollLeft}
@@ -205,7 +167,7 @@ export default function MoodsHeader({
               canScrollRight 
                 ? 'cursor-pointer hover:opacity-80' 
                 : 'cursor-not-allowed opacity-50'
-            } transition-opacity ml-2 mr-4`}
+            } transition-opacity ml-2`}
           >
             <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
               <g opacity="0.8">
@@ -218,4 +180,6 @@ export default function MoodsHeader({
       </div>
     </div>
   );
-}
+};
+
+export default TrendingPlaylistsContainerGrid;

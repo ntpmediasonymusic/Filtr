@@ -18,7 +18,7 @@ const Prizes = () => {
 
   return (
     <>
-      <div className="px-6 py-5 md:py-10">
+      <div className="px-6 py-10 md:py-10">
         <PageHeader welcomeMsg={"A ganar"} />
       </div>
       <ComingSoon color="#c43ea0" />

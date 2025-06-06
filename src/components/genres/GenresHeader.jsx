@@ -127,7 +127,7 @@ export default function GenresHeader({
   return (
     <div className="w-full">
       {filter && genres && genres.length > 0 && (
-        <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-white">
+        <h2 className="text-2xl sm:text-3xl ml-6 font-bold mb-6 text-white">
           Elige un género
         </h2>
       )}
