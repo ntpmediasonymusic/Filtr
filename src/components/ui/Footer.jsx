@@ -15,7 +15,7 @@ const Footer = () => {
       <img src={logo} alt="Filtr Logo" className="w-16 md:w-24 mb-4" />
 
       {/* Redes Sociales */}
-      <div className="flex space-x-5 md:space-x-9">
+      <div className="flex space-x-5 md:space-x-9 mb-6">
         <a
           href="https://www.instagram.com"
           target="_blank"
@@ -41,6 +41,27 @@ const Footer = () => {
           className="text-white text-3xl md:text-5xl transition transform hover:text-gray-300 hover:scale-120"
         >
           <FaSpotify />
+        </a>
+      </div>
+
+      {/* Enlaces legales */}
+      <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4 text-white text-sm">
+        <a
+          href="https://sonymusic.co.cr/politica-de-privacidad/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:text-gray-300 transition-colors"
+        >
+          Términos y Condiciones
+        </a>
+        <span className="hidden md:inline">|</span>
+        <a
+          href="https://www.sonymusic.com/terms-and-conditions/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:text-gray-300 transition-colors"
+        >
+          Política de Privacidad
         </a>
       </div>
     </footer>
