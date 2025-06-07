@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import MapMarker from "../../assets/icons/MapMarker";
-import MarketCartIcon from "../../assets/icons/MarketCartIcon";
+// import MarketCartIcon from "../../assets/icons/MarketCartIcon";
 import useFormattedDate from "../../hooks/shows/useFormattedDate";
 
 const ShowCard = ({ artist, showName, urlShow, urlShowImage, date, place }) => {
@@ -39,7 +39,7 @@ const ShowCard = ({ artist, showName, urlShow, urlShowImage, date, place }) => {
           </h2>
         </div>
 
-        <a
+        {/* <a
           href={urlShow}
           className="group text-[#00DAF0] hover:text-[#7cf3ff] transition xl:ml-8"
         >
@@ -47,7 +47,7 @@ const ShowCard = ({ artist, showName, urlShow, urlShowImage, date, place }) => {
             <MarketCartIcon className="w-[21px] h-[22px] text-current" />
             <span className="text-sm">Dónde comprar</span>
           </div>
-        </a>
+        </a> */}
       </div>
     </div>
   );

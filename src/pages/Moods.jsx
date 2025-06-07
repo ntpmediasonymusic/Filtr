@@ -36,7 +36,7 @@ const Moods = () => {
       <div className="px-6 py-5 md:py-10">
         <PageHeader welcomeMsg={"¿Cuál es tu mood de hoy?"} />
       </div>
-      <div className="flex flex-col px-6 pb-[50px] md:pb-[50px] gap-[35px] md:gap-[50px]">
+      <div className="flex flex-col px-6 pb-[50px] md:pb-[50px] gap-[35px] md:gap-[100px]">
         <MoodsHeader
           moods={moodsData.moods}
           selectedMood={selectedMood}

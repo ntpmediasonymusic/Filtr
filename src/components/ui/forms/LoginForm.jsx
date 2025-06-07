@@ -1,12 +1,10 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { login } from "../../../api/backendApi";
-import { usePlaylists } from "../../../context/PlaylistContext"; // <- importar
+import { usePlaylists } from "../../../context/PlaylistContext";
 import EnvelopeIcon from "../../../assets/icons/EnvelopeIcon";
 import LockIcon from "../../../assets/icons/LockIcon";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { AiFillGoogleCircle } from "react-icons/ai";
-import { MdOutlineFacebook } from "react-icons/md";
 import UserBigCircleIcon from "../../../assets/icons/UserBigCircleIcon";
 
 const LoginForm = () => {
@@ -17,7 +15,7 @@ const LoginForm = () => {
   const [apiError, setApiError] = useState("");
 
   const navigate = useNavigate();
-  const { refreshPlaylists } = usePlaylists(); // <- hook
+  const { refreshPlaylists } = usePlaylists();
 
   const validate = () => {
     const errs = {};
@@ -30,23 +28,41 @@ const LoginForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const errs = validate();
-    setErrors(errs);
+
+    // Limpiar errores previos
+    setErrors({});
     setApiError("");
-    if (Object.keys(errs).length === 0) {
-      try {
-        const { data } = await login({ email, password });
-        localStorage.setItem("token", data.token);
-        localStorage.setItem("user", JSON.stringify(data.user));
-        // <-- refrescar playlists ahora que hay token y user
-        await refreshPlaylists();
-        navigate("/");
-      } catch (err) {
-        if (err.response?.status === 401) {
-          setApiError(err.response.data.message || "Credenciales inválidas");
-        } else {
-          console.error(err);
-        }
+
+    const errs = validate();
+    if (Object.keys(errs).length) {
+      setErrors(errs);
+      return;
+    }
+
+    try {
+      const { data } = await login({ email, password });
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("user", JSON.stringify(data.user));
+      // <-- refrescar playlists ahora que hay token y user
+      await refreshPlaylists();
+      navigate("/");
+    } catch (err) {
+      const status = err.response?.status;
+      const msg = err.response?.data?.message || "Error inesperado.";
+      if (status === 401) {
+        setApiError(msg); // "Credenciales inválidas"
+      } else if (status === 403) {
+        setApiError(msg); // "Verifica tu correo para tener acceso"
+      } else if (status === 400 && err.response.data.errors) {
+        // Si el backend devolviera validación de campos, aunque normalmente no ocurre en login
+        const apiErrs = {};
+        err.response.data.errors.forEach((e) => {
+          apiErrs[e.param] = e.msg;
+        });
+        setErrors(apiErrs);
+      } else {
+        setApiError("Ocurrió un error inesperado. Intenta de nuevo.");
+        console.error(err);
       }
     }
   };
@@ -59,9 +75,7 @@ const LoginForm = () => {
       <div className="w-full flex items-center justify-center">
         <UserBigCircleIcon />
       </div>
-      {apiError && (
-        <p className="mt-2 text-sm text-red-600 text-center">{apiError}</p>
-      )}
+
       {/* E-mail */}
       <div className="w-full">
         <div className="flex items-center bg-white border border-[#262627] rounded-[8px] p-3 sm:p-4 gap-2 sm:gap-3">
@@ -80,6 +94,7 @@ const LoginForm = () => {
           <p className="mt-1 text-xs sm:text-sm text-red-600">{errors.email}</p>
         )}
       </div>
+
       {/* Contraseña */}
       <div className="w-full">
         <div className="flex items-center bg-white border border-[#262627] rounded-[8px] p-3 sm:p-4 gap-2 sm:gap-3">
@@ -111,58 +126,40 @@ const LoginForm = () => {
           </p>
         )}
       </div>
-      {/* Recordar y Olvidaste */}
-      <div className="flex flex-col sm:flex-row gap-2 sm:gap-0 sm:justify-between items-start sm:items-center text-[#131517]">
-        <label className="flex items-center gap-2">
-          <input type="checkbox" className="w-4 h-4 accent-[#ca249c]" />
-          <span className="text-xs sm:text-sm font-semibold text-[#131517]">
-            Recordar la contraseña
-          </span>
-        </label>
-        <a href="#" className="text-xs sm:text-sm font-semibold text-[#131517]">
+
+      {/* “¿Olvidaste tu contraseña?” */}
+      <div className="flex flex-col sm:flex-row gap-2 sm:gap-0 justify-end text-[#131517]">
+        <a
+          href="#"
+          className="text-xs sm:text-sm font-semibold underline underline-offset-2 text-[#131517]"
+        >
           ¿Olvidaste tu contraseña?
         </a>
       </div>
+
+      {/* Mensaje genérico de error del backend */}
+      {apiError && (
+        <p className="text-sm text-red-600 text-center">{apiError}</p>
+      )}
+
       {/* Botón Entrar */}
       <button
         type="submit"
-        className="w-full py-2.5 sm:py-3 bg-[#ca249c] text-white font-semibold rounded-lg transition hover:opacity-90 text-sm sm:text-base"
+        className="w-full py-2.5 sm:py-3 bg-[#ca249c] cursor-pointer text-white font-semibold rounded-lg transition hover:opacity-90 text-sm sm:text-base"
       >
         Entrar
       </button>
+
       {/* Link Sign Up */}
       <div className="text-center text-[#131517] mt-1 sm:mt-2">
         <span className="text-sm sm:text-base">¿No tienes una cuenta?</span>
         <br />
         <a
           href="/signup"
-          className="font-semibold text-[#131517] text-sm sm:text-base"
+          className="font-semibold text-[#131517] underline underline-offset-2 text-sm sm:text-base"
         >
           Regístrate Aquí
         </a>
-      </div>
-      {/* Separador */}
-      <div className="flex items-center my-3 sm:my-4 text-[#131517]">
-        <div className="flex-1 h-px bg-[#131517]" />
-        <span className="px-2 sm:px-3 whitespace-nowrap text-xs sm:text-base">
-          O continúa con:
-        </span>
-        <div className="flex-1 h-px bg-[#131517]" />
-      </div>
-      {/* Botones Sociales */}
-      <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-        <button
-          type="button"
-          className="flex-1 sm:min-w-[200px] flex items-center justify-center gap-2 py-2.5 sm:py-3 bg-[#004fd4] text-white rounded-lg transition hover:opacity-90 text-sm sm:text-base"
-        >
-          <AiFillGoogleCircle className="w-5 h-5 sm:w-6 sm:h-6" /> Google
-        </button>
-        <button
-          type="button"
-          className="flex-1 sm:min-w-[200px] flex items-center justify-center gap-2 py-2.5 sm:py-3 bg-[#004fd4] text-white rounded-lg transition hover:opacity-90 text-sm sm:text-base"
-        >
-          <MdOutlineFacebook className="w-5 h-5 sm:w-6 sm:h-6" /> Facebook
-        </button>
       </div>
     </form>
   );

@@ -23,3 +23,7 @@ export const addFavoritePlaylist = (userId, playlistId) =>
   api.post(`/users/${userId}/playlists`, { playlistId });
 export const removeFavoritePlaylist = (userId, playlistId) =>
   api.delete(`/users/${userId}/playlists/${playlistId}`);
+// Verificación de correo
+export const confirmEmail = (token) => api.get(`/auth/confirm?token=${token}`);
+export const resendVerification = (email) =>
+  api.post(`/auth/resend-verification`, { email });

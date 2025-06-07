@@ -16,7 +16,7 @@ const Genres = () => {
   // Inicializar con el primer género seleccionado
   const [selectedGenre, setSelectedGenre] = useState(genresData.genres[0]);
   const { searchQuery } = useSearch();
-  
+
   // Si hay búsqueda activa, mostrar el componente Filter
   if (searchQuery && searchQuery.trim() !== "") {
     return <Filter />;
@@ -32,10 +32,10 @@ const Genres = () => {
 
   return (
     <>
-      <div className="px-6 py-8 md:py-10">
+      <div className="px-6 py-5 md:py-10">
         <PageHeader welcomeMsg={"¿Qué género quieres escuchar hoy?"} />
       </div>
-      <div className="flex flex-col pb-[50px] md:pb-[50px] gap-[35px] md:gap-[50px]">
+      <div className="flex flex-col px-6 pb-[50px] md:pb-[50px] gap-[35px] md:gap-[100px]">
         <GenresHeader
           genres={genresData.genres}
           selectedGenre={selectedGenre}

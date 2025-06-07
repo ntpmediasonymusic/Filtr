@@ -47,8 +47,8 @@
       "urlPlaylist": "https://open.spotify.com/playlist/3SdPPKCc7rRRvyOpqnRWhf?si=5f4fef1cee4b400c&nd=1&dlsi=d167ae64f334464c",
       "urlCoverImage": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da841a9903b87781662a0a3700e4",
       "mainCategory": [],
-      "genre": ["Baladas Románticas", "Artistas Femeninas"],
-      "moods": ["Romance"],
+      "genre": ["Baladas Románticas", "Artistas Femeninas","Pop"],
+      "moods": ["Romance", "Despecho"],
       "region": "Centroamérica y Caribe",
       "priority": 1
     },
@@ -57,7 +57,7 @@
       "urlPlaylist": "https://open.spotify.com/playlist/2odLZBqJe1IEjK1vGPDIjd?si=b146e319e1464d88&nd=1&dlsi=ee6fbacdf40f4cb7",
       "urlCoverImage": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da847bef5fcfa0aabed1ed1686e1",
       "mainCategory": [],
-      "genre": ["Baladas Románticas", "Artistas Femeninas"],
+      "genre": ["Baladas Románticas", "Artistas Femeninas", "Pop"],
       "moods": ["Romance", "Despecho"],
       "region": "Centroamérica y Caribe",
       "priority": 1
@@ -88,7 +88,7 @@
       "urlPlaylist": "https://open.spotify.com/playlist/2t0RTLbVZqY9t2gUcC1Gox?si=5f4969cf5f2c4107&nd=1&dlsi=d441fbeff0904764",
       "urlCoverImage": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000d72c717fe3c74a96e2304bfc2e82",
       "mainCategory": ["Recomendaciones de la semana"],
-      "genre": ["Éxitos"],
+      "genre": ["Éxitos", "Pop"],
       "moods": [],
       "region": "Centroamérica y Caribe",
       "priority": 1
@@ -98,7 +98,7 @@
       "urlPlaylist": "https://open.spotify.com/playlist/6x75UX3vR6lW00yeRHgxiY?si=f7f714478c4b4c58&nd=1&dlsi=9313077e43484f4e",
       "urlCoverImage": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da845408a2cfc31b5e19543c5426",
       "mainCategory": [],
-      "genre": ["Éxitos"],
+      "genre": ["Éxitos", "Pop"],
       "moods": [],
       "region": "Centroamérica y Caribe",
       "priority": 1
@@ -144,49 +144,9 @@
       "priority": 1
     },
     {
-      "playlistName": "Top Pop 2025: Top Hits, Pop Music, Just Hits,  Pop Up",
-      "urlPlaylist": "https://open.spotify.com/playlist/2t0RTLbVZqY9t2gUcC1Gox?si=cc71828dbad8437a&nd=1&dlsi=093780c839634e3a",
-      "urlCoverImage": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000d72c717fe3c74a96e2304bfc2e82",
-      "mainCategory": [],
-      "genre": ["Pop"],
-      "moods": [],
-      "region": "Centroamérica y Caribe",
-      "priority": 1
-    },
-    {
-      "playlistName": "DIVAS: Great Female Voices",
-      "urlPlaylist": "https://open.spotify.com/playlist/3SdPPKCc7rRRvyOpqnRWhf?si=70c07ac3d8d24c3d&nd=1&dlsi=f3abf51874b64320",
-      "urlCoverImage": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da841a9903b87781662a0a3700e4",
-      "mainCategory": [],
-      "genre": ["Pop"],
-      "moods": ["Despecho"],
-      "region": "Centroamérica y Caribe",
-      "priority": 1
-    },
-    {
-      "playlistName": "Grandes DIVAS en español de ayer y hoy! DIVAS LATINAS. Mujeres del Pop Latino",
-      "urlPlaylist": "https://open.spotify.com/playlist/2odLZBqJe1IEjK1vGPDIjd?si=fb6503567d724b43&nd=1&dlsi=83d5af437c0b4a83",
-      "urlCoverImage": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da847bef5fcfa0aabed1ed1686e1",
-      "mainCategory": [],
-      "genre": ["Pop"],
-      "moods": [],
-      "region": "Centroamérica y Caribe",
-      "priority": 1
-    },
-    {
       "playlistName": "Esenciales Pop en Español",
       "urlPlaylist": "https://open.spotify.com/playlist/6N8LK0SuCMdC5faB573Xmr?si=2069fea12a0147e3&nd=1&dlsi=960d9683eee04623",
       "urlCoverImage": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000d72c32b1f291e56d7ae940c4858a",
-      "mainCategory": [],
-      "genre": ["Pop"],
-      "moods": [],
-      "region": "Centroamérica y Caribe",
-      "priority": 1
-    },
-    {
-      "playlistName": "Pop Clasico: Los Grandes ÉXITOS del Pop en Español",
-      "urlPlaylist": "https://open.spotify.com/playlist/6x75UX3vR6lW00yeRHgxiY?si=ab000cafe5b64cdc&nd=1&dlsi=a674b1d0aca240b1",
-      "urlCoverImage": "https://image-cdn-ak.spotifycdn.com/image/ab67706c0000da845408a2cfc31b5e19543c5426",
       "mainCategory": [],
       "genre": ["Pop"],
       "moods": [],
