@@ -68,9 +68,9 @@ const PageHeader = ({ welcomeMsg }) => {
       </div>
 
       {/* Zona de búsqueda + perfil / login-signup */}
-      <div className="flex flex-col sm:flex-row items-center gap-4 w-full xl:w-auto justify-center xl:justify-end">
+      <div className="flex flex-col sm:flex-row items-center gap-4 w-full xl:w-auto justify-between xl:justify-end">
         {/* Barra de búsqueda */}
-        <div className="flex items-center bg-[#131517] rounded-full px-4 py-2 gap-2 border-2 border-[#00DAF0] w-full sm:w-80 max-w-sm">
+        <div className="flex items-center bg-[#131517] rounded-full px-4 py-2 gap-2 border-2 border-[#00DAF0] w-full sm:w-100 max-w-sm">
           <SearchIcon className="text-[#00DAF0]" />
           <input
             ref={searchInputRef}

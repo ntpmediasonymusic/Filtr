@@ -8,6 +8,7 @@ import {
   removeFavoritePlaylist,
 } from "../../api/backendApi";
 import { usePlaylists } from "../../context/PlaylistContext";
+import LoginModal from "./LoginModal";
 
 /* eslint-disable react/prop-types */
 const TrendingPlaylistCard = ({
@@ -18,6 +19,7 @@ const TrendingPlaylistCard = ({
   index,
 }) => {
   const [showShareModal, setShowShareModal] = useState(false);
+  const [showLoginModal, setShowLoginModal] = useState(false);
   const [favorited, setFavorited] = useState(!!isFavorite);
   const { refreshPlaylists } = usePlaylists();
 
@@ -30,7 +32,10 @@ const TrendingPlaylistCard = ({
   const playlistId = urlPlaylist.split("/playlist/")[1].split("?")[0];
 
   const handleToggleFavorite = async () => {
-    if (!loggedIn) return;
+    if (!loggedIn) {
+      setShowLoginModal(true);
+      return;
+    }
     try {
       if (!favorited) {
         await addFavoritePlaylist(user.id, playlistId);
@@ -76,45 +81,26 @@ const TrendingPlaylistCard = ({
       </div>
 
       {/* Acciones */}
-      <div className="hidden md:flex items-center gap-3 flex-shrink-0 h-full">
+      <div className="flex items-center gap-3 flex-shrink-0 w-full justify-end md:h-full md:w-auto md:justify-start">
         <button
-          onClick={() => setShowShareModal((v) => !v)}
-          className="cursor-pointer"
+          onClick={handleToggleFavorite}
+          className="flex-shrink-0 cursor-pointer"
         >
-          <SharePaperPlaneIcon className="w-6 h-6 text-[#00DAF0]" />
+          {loggedIn && favorited ? (
+            <FaHeart className="w-8 h-8 md:w-6 md:h-6 text-red-500 transform scale-110 transition-transform duration-200" />
+          ) : (
+            <FaRegHeart className="w-8 h-8 md:w-6 md:h-6 text-white transition-transform duration-200 hover:scale-110" />
+          )}
         </button>
-        {loggedIn && (
-          <button
-            onClick={handleToggleFavorite}
-            className="cursor-pointer"
-          >
-            {favorited ? (
-              <FaHeart className="w-6 h-6 text-red-500 transform scale-110 transition-transform duration-200" />
-            ) : (
-              <FaRegHeart className="w-6 h-6 text-[#e72b36bf] transition-transform duration-200" />
-            )}
-          </button>
-        )}
-      </div>
-
-      <div className="flex md:hidden justify-end w-full items-cente">
-        {loggedIn && (
-          <button
-            onClick={handleToggleFavorite}
-            className="flex-shrink-0 cursor-pointer"
-          >
-            {favorited ? (
-              <FaHeart className="w-6 h-6 text-red-500 transform scale-110 transition-transform duration-200" />
-            ) : (
-              <FaRegHeart className="w-6 h-6 text-[#e72b36bf] transition-transform duration-200" />
-            )}
-          </button>
-        )}
         <button
           onClick={() => setShowShareModal((v) => !v)}
           className="flex-shrink-0 cursor-pointer"
         >
-          <SharePaperPlaneIcon className="w-6 h-6 text-[#00DAF0]" />
+          {loggedIn ? (
+            <SharePaperPlaneIcon className="w-8 h-8 md:w-6 md:h-6 text-white" />
+          ) : (
+            <SharePaperPlaneIcon className="w-8 h-8 md:w-6 md:h-6 text-white" />
+          )}
         </button>
       </div>
 
@@ -123,6 +109,11 @@ const TrendingPlaylistCard = ({
           link={urlPlaylist}
           onClose={() => setShowShareModal(false)}
         />
+      )}
+
+      {/* Modal de Login */}
+      {showLoginModal && (
+        <LoginModal onClose={() => setShowLoginModal(false)} />
       )}
     </div>
   );

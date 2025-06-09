@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { login } from "../../../api/backendApi";
+import { login, resendVerification } from "../../../api/backendApi";
 import { usePlaylists } from "../../../context/PlaylistContext";
 import EnvelopeIcon from "../../../assets/icons/EnvelopeIcon";
 import LockIcon from "../../../assets/icons/LockIcon";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import UserBigCircleIcon from "../../../assets/icons/UserBigCircleIcon";
+import VerificationEmailSent from "./VerificationEmailSent";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
@@ -13,6 +14,8 @@ const LoginForm = () => {
   const [showPwd, setShowPwd] = useState(false);
   const [errors, setErrors] = useState({});
   const [apiError, setApiError] = useState("");
+  const [verifyApiError, setVerifyApiError] = useState(false);
+  const [showVerifyNotice, setShowVerifyNotice] = useState(false);
 
   const navigate = useNavigate();
   const { refreshPlaylists } = usePlaylists();
@@ -28,8 +31,6 @@ const LoginForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // Limpiar errores previos
     setErrors({});
     setApiError("");
 
@@ -43,18 +44,19 @@ const LoginForm = () => {
       const { data } = await login({ email, password });
       localStorage.setItem("token", data.token);
       localStorage.setItem("user", JSON.stringify(data.user));
-      // <-- refrescar playlists ahora que hay token y user
       await refreshPlaylists();
       navigate("/");
     } catch (err) {
       const status = err.response?.status;
       const msg = err.response?.data?.message || "Error inesperado.";
+
       if (status === 401) {
-        setApiError(msg); // "Credenciales inválidas"
+        setApiError(msg);
       } else if (status === 403) {
-        setApiError(msg); // "Verifica tu correo para tener acceso"
+        // Usuario sin verificar
+        setApiError(msg);
+        setVerifyApiError(true);
       } else if (status === 400 && err.response.data.errors) {
-        // Si el backend devolviera validación de campos, aunque normalmente no ocurre en login
         const apiErrs = {};
         err.response.data.errors.forEach((e) => {
           apiErrs[e.param] = e.msg;
@@ -66,6 +68,21 @@ const LoginForm = () => {
       }
     }
   };
+
+  const handleResend = async () => {
+    try {
+      setShowVerifyNotice(true);
+      await resendVerification(email);
+    } catch (err) {
+      setApiError(
+        err.response?.data?.message || "Error al reenviar el correo."
+      );
+    }
+  };
+
+  if (showVerifyNotice) {
+    return <VerificationEmailSent email={email} fromLogin={true} />;
+  }
 
   return (
     <form
@@ -79,9 +96,7 @@ const LoginForm = () => {
       {/* E-mail */}
       <div className="w-full">
         <div className="flex items-center bg-white border border-[#262627] rounded-[8px] p-3 sm:p-4 gap-2 sm:gap-3">
-          <div className="w-6 h-6 sm:w-8 sm:h-8 flex justify-center items-center">
-            <EnvelopeIcon className="text-[#ca249c]" />
-          </div>
+          <EnvelopeIcon className="text-[#ca249c] w-6 h-6 sm:w-8 sm:h-8" />
           <input
             type="email"
             placeholder="E-mail"
@@ -98,9 +113,7 @@ const LoginForm = () => {
       {/* Contraseña */}
       <div className="w-full">
         <div className="flex items-center bg-white border border-[#262627] rounded-[8px] p-3 sm:p-4 gap-2 sm:gap-3">
-          <div className="w-6 h-6 sm:w-8 sm:h-8 flex justify-center items-center">
-            <LockIcon className="text-[#ca249c]" />
-          </div>
+          <LockIcon className="text-[#ca249c] w-6 h-6 sm:w-8 sm:h-8" />
           <input
             type={showPwd ? "text" : "password"}
             placeholder="Contraseña"
@@ -114,9 +127,9 @@ const LoginForm = () => {
             className="text-gray-600"
           >
             {showPwd ? (
-              <FaEyeSlash className="w-4 h-4 sm:w-5.5 sm:h-5.5 text-[#ca249c] transition-transform duration-200 ease-in-out" />
+              <FaEyeSlash className="w-4 h-4 sm:w-5.5 sm:h-5.5 text-[#ca249c]" />
             ) : (
-              <FaEye className="w-4 h-4 sm:w-5 sm:h-5 text-[#ca249c] transition-transform duration-200 ease-in-out" />
+              <FaEye className="w-4 h-4 sm:w-5 sm:h-5 text-[#ca249c]" />
             )}
           </button>
         </div>
@@ -127,37 +140,45 @@ const LoginForm = () => {
         )}
       </div>
 
-      {/* “¿Olvidaste tu contraseña?” */}
-      <div className="flex flex-col sm:flex-row gap-2 sm:gap-0 justify-end text-[#131517]">
+      {/* ¿Olvidaste tu contraseña? */}
+      <div className="flex justify-end text-[#131517] text-xs sm:text-sm">
         <a
-          href="#"
-          className="text-xs sm:text-sm font-semibold underline underline-offset-2 text-[#131517]"
+          href="/forgot-password"
+          className="underline underline-offset-2 font-semibold"
         >
           ¿Olvidaste tu contraseña?
         </a>
       </div>
 
-      {/* Mensaje genérico de error del backend */}
+      {/* Mensaje backend */}
       {apiError && (
-        <p className="text-sm text-red-600 text-center">{apiError}</p>
+        <div className="flex flex-col items-center gap-2">
+          <p className="text-sm text-red-600 font-bold text-center">
+            {apiError}
+          </p>
+          {verifyApiError && (
+            <button
+              onClick={handleResend}
+              className="text-sm font-semibold text-[#131517] cursor-pointer underline underline-offset-2"
+            >
+              Reenviar correo
+            </button>
+          )}
+        </div>
       )}
 
-      {/* Botón Entrar */}
+      {/* Entrar */}
       <button
         type="submit"
-        className="w-full py-2.5 sm:py-3 bg-[#ca249c] cursor-pointer text-white font-semibold rounded-lg transition hover:opacity-90 text-sm sm:text-base"
+        className="w-full py-2.5 sm:py-3 bg-[#ca249c] cursor-pointer text-white font-semibold rounded-lg hover:opacity-90 transition text-sm sm:text-base"
       >
         Entrar
       </button>
 
-      {/* Link Sign Up */}
-      <div className="text-center text-[#131517] mt-1 sm:mt-2">
-        <span className="text-sm sm:text-base">¿No tienes una cuenta?</span>
-        <br />
-        <a
-          href="/signup"
-          className="font-semibold text-[#131517] underline underline-offset-2 text-sm sm:text-base"
-        >
+      {/* Link a signup */}
+      <div className="text-center text-[#131517] mt-1 sm:mt-2 text-sm sm:text-base">
+        ¿No tienes una cuenta?{" "}
+        <a href="/signup" className="underline font-semibold">
           Regístrate Aquí
         </a>
       </div>

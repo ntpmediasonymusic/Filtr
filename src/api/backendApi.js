@@ -24,6 +24,12 @@ export const addFavoritePlaylist = (userId, playlistId) =>
 export const removeFavoritePlaylist = (userId, playlistId) =>
   api.delete(`/users/${userId}/playlists/${playlistId}`);
 // Verificación de correo
-export const confirmEmail = (token) => api.get(`/auth/confirm?token=${token}`);
+export const confirmEmail = (token) =>
+  api.get(`/auth/confirm?token=${encodeURIComponent(token)}`);
 export const resendVerification = (email) =>
   api.post(`/auth/resend-verification`, { email });
+// ¿Olvidaste tu contraseña?
+export const forgotPassword = (email) =>
+  api.post("/auth/forgot-password", { email });
+export const resetPassword = (token, newPassword) =>
+  api.post("/auth/reset-password", { token, newPassword });

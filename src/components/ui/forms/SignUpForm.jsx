@@ -368,7 +368,7 @@ const SignUpForm = () => {
 
       {/* Mostrar mensaje genérico de error del backend, si existe */}
       {apiError && (
-        <p className="text-center text-red-600 text-sm">{apiError}</p>
+        <p className="text-center text-red-600 font-bold text-sm">{apiError}</p>
       )}
 
       {/* Botón Principal */}

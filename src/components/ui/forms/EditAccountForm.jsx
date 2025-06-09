@@ -134,7 +134,7 @@ export default function EditAccountForm({ user, setUser }) {
       setTimeout(() => {
         localStorage.clear();
         navigate("/");
-      }, 5000);
+      }, 1000);
     } catch (err) {
       setDeletionMsg("Error al eliminar la cuenta.");
       setShowDeleteModal(false);

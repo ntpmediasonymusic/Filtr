@@ -5,8 +5,7 @@ import { resendVerification } from "../../../api/backendApi";
 import EnvelopeIcon from "../../../assets/icons/EnvelopeIcon";
 import { FaSyncAlt } from "react-icons/fa";
 
-
-const VerificationEmailSent = ({ email }) => {
+const VerificationEmailSent = ({ email, fromLogin = "false" }) => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -74,12 +73,15 @@ const VerificationEmailSent = ({ email }) => {
         <div className="w-16 h-16 flex items-center justify-center bg-[#ca249c] rounded-full">
           <EnvelopeIcon className="text-white w-12 h-12" />
         </div>
-        <h2 className="text-center text-2xl font-bold">
-          ¡Registro exitoso!
-        </h2>
-        <p className="text-center leading-tight sm:leading-normal">
-          Acabamos de enviarte un correo a{" "}
-          <span className="font-medium">{email}</span>. <br />
+        {!fromLogin && (
+          <h2 className="text-center text-2xl font-bold">¡Registro exitoso!</h2>
+        )}
+        <p className="text-center leading-tight sm:leading-normal text-sm">
+          {!fromLogin
+            ? "Tu correo está registrado pero aún no confirmado."
+            : "Acabamos de enviarte un correo a "}
+          <span className="font-medium">{email}</span>
+          <br />
           Por favor revisa tu bandeja y haz clic en el enlace de verificación
           para activar tu cuenta antes de iniciar sesión.
         </p>

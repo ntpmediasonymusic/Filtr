@@ -1,7 +1,7 @@
 import { useEffect } from "react";
-import LoginForm from "../components/ui/forms/LoginForm";
+import ResetPasswordForm from "../components/ui/forms/ResetPasswordForm";
 
-const Login = () => {
+const ResetPassword = () => {
   useEffect(() => window.scrollTo(0, 0), []);
 
   return (
@@ -12,9 +12,9 @@ const Login = () => {
         </h2>
         <p className="text-[#CFDD28] text-lg font-semibold mt-2">¡Entra ya!</p>
       </div>
-      <LoginForm />
+      <ResetPasswordForm />
     </div>
   );
 };
 
-export default Login;
+export default ResetPassword;
