@@ -6,6 +6,7 @@ import MoodsHeader from "../components/moods/MoodsHeader";
 import PageHeader from "../components/ui/PageHeader";
 import { useSearch } from "../context/SearchContext";
 import Filter from "../components/filter/filter";
+import MusicBanner from "../components/ui/MusicBanner";
 
 const Moods = () => {
   useEffect(() => {
@@ -36,6 +37,9 @@ const Moods = () => {
       <div className="px-6 py-10 md:py-10">
         <PageHeader welcomeMsg={"¿Cuál es tu mood de hoy?"} />
       </div>
+
+      <MusicBanner type="moods" />
+
       <div className="flex flex-col pb-[50px] md:pb-[50px] gap-[35px] md:gap-[50px]">
         <MoodsHeader
           moods={moodsData.moods}

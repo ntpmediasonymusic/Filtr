@@ -5,6 +5,7 @@ import ShowsHeader from "../components/shows/ShowsHeader";
 import PageHeader from "../components/ui/PageHeader";
 import { useSearch } from "../context/SearchContext";
 import Filter from "../components/filter/filter";
+import MusicBanner from "../components/ui/MusicBanner";
 
 const Shows = () => {
   useEffect(() => {
@@ -24,6 +25,9 @@ const Shows = () => {
       <div className="px-6 py-10 md:py-10">
         <PageHeader welcomeMsg={""} />
       </div>
+
+      <MusicBanner type="shows" />
+
       <div className="px-6">
         <ShowsHeader />
       </div>

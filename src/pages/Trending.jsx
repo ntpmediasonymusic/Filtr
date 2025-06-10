@@ -5,6 +5,7 @@ import PageHeader from "../components/ui/PageHeader";
 import { usePlaylists } from "../context/PlaylistContext";
 import { useSearch } from "../context/SearchContext";
 import TrendingPlaylistsContainerGrid from "../components/ui/TrendingPlaylistsContainerGrid";
+import MusicBanner from "../components/ui/MusicBanner";
 
 const Trending = () => {
   useEffect(() => {
@@ -29,6 +30,9 @@ const Trending = () => {
       <div className="px-6 py-10 md:py-10">
         <PageHeader welcomeMsg={"Las playlist más escuchadas"} />
       </div>
+
+      <MusicBanner type="trending" />
+
       <div className="flex flex-col pb-[50px] md:pb-[50px] gap-[35px] md:gap-[50px]">
         <TrendingPlaylistsContainerGrid currentPlaylists={trendingPlaylists} />
       </div>
