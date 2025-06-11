@@ -142,7 +142,14 @@ export default function GenresHeader({
         onClick={() => handleGenreClick(genre)}
         onMouseDown={(e) => e.stopPropagation()}
         className={`
-          cursor-pointer rounded-3xl box-border border-4 w-[240px] min-w-[240px] md:w-[280px] md:min-w-[280px] lg:w-[320px] lg:min-w-[320px] transform-gpu overflow-hidden h-20 sm:h-24 md:h-32 lg:h-36
+          cursor-pointer rounded-2xl md:rounded-3xl box-border border-2 md:border-4 
+          w-[160px] min-w-[160px] 
+          sm:w-[180px] sm:min-w-[180px]
+          md:w-[160px] md:min-w-[160px] 
+          lg:w-[200px] lg:min-w-[200px] 
+          xl:w-[240px] xl:min-w-[240px] 
+          transform-gpu overflow-hidden 
+          h-20 sm:h-24 md:h-24 lg:h-28 xl:h-32
           ${isSelected ? "border-[#ffffff] scale-105 relative z-10" : "border-transparent scale-100"}
           hover:border-[#ffffff] hover:scale-105 transition-all duration-300
         `}
@@ -192,19 +199,28 @@ export default function GenresHeader({
         </div>
       </div>
 
-      {/* Vista desktop - layout flexible con wrap */}
-      <div className="hidden md:flex md:justify-center overflow-x-hidden">
-        <div
-          ref={scrollContainerRef}
-          className="overflow-x-auto cursor-grab select-none scrollbar-hide max-w-full"
-          style={{ 
-            scrollbarWidth: "none",
-            msOverflowStyle: "none",
-            scrollBehavior: "smooth",
-          }}
-        >
-          <div className={`flex flex-wrap gap-4 max-h-[320px] lg:max-h-[376px] justify-center px-6 py-2 transition-all duration-300 ease-out`}>
-            {genres.map(renderGenreCard)}
+      {/* Vista desktop - exactamente 2 filas */}
+      <div className="hidden md:block">
+        <div className="overflow-x-auto">
+          <div
+            ref={scrollContainerRef}
+            className="cursor-grab select-none scrollbar-hide lg:flex lg:justify-center lg:min-w-full"
+            style={{ 
+              scrollbarWidth: "none",
+              msOverflowStyle: "none",
+              scrollBehavior: "smooth",
+            }}
+          >
+            <div className="px-6 py-4 inline-block">
+              {/* Primera fila */}
+              <div className="flex gap-4 mb-4">
+                {genres.slice(0, Math.ceil(genres.length / 2)).map(renderGenreCard)}
+              </div>
+              {/* Segunda fila */}
+              <div className="flex gap-4">
+                {genres.slice(Math.ceil(genres.length / 2)).map(renderGenreCard)}
+              </div>
+            </div>
           </div>
         </div>
       </div>

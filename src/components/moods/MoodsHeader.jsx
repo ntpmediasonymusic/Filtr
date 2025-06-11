@@ -142,7 +142,14 @@ export default function MoodsHeader({
         onClick={() => handleMoodClick(mood)}
         onMouseDown={(e) => e.stopPropagation()}
         className={`
-          cursor-pointer rounded-3xl box-border border-4 w-[240px] min-w-[240px] md:w-[280px] md:min-w-[280px] lg:w-[320px] lg:min-w-[320px] transform-gpu overflow-hidden h-20 sm:h-24 md:h-32 lg:h-36
+          cursor-pointer rounded-3xl box-border border-4 
+          w-[180px] min-w-[180px] 
+          sm:w-[200px] sm:min-w-[200px]
+          md:w-[180px] md:min-w-[180px] 
+          lg:w-[240px] lg:min-w-[240px] 
+          xl:w-[280px] xl:min-w-[280px] 
+          transform-gpu overflow-hidden 
+          h-20 sm:h-24 md:h-26 lg:h-30 xl:h-32
           ${isSelected ? "border-[#ffffff] scale-105 relative z-10" : "border-transparent scale-100"}
           hover:border-[#ffffff] hover:scale-105 transition-all duration-300
         `}
@@ -192,19 +199,28 @@ export default function MoodsHeader({
         </div>
       </div>
 
-      {/* Vista desktop - layout flexible con wrap */}
-      <div className="hidden md:flex md:justify-center overflow-x-hidden">
-        <div
-          ref={scrollContainerRef}
-          className="overflow-x-auto cursor-grab select-none scrollbar-hide max-w-full"
-          style={{ 
-            scrollbarWidth: "none",
-            msOverflowStyle: "none",
-            scrollBehavior: "smooth",
-          }}
-        >
-          <div className={`flex flex-wrap gap-4 max-h-[320px] lg:max-h-[376px] justify-center px-6 py-2 transition-all duration-300 ease-out`}>
-            {moods.map(renderMoodCard)}
+      {/* Vista desktop - exactamente 2 filas */}
+      <div className="hidden md:block">
+        <div className="overflow-x-auto">
+          <div
+            ref={scrollContainerRef}
+            className="cursor-grab select-none scrollbar-hide lg:flex lg:justify-center lg:min-w-full"
+            style={{ 
+              scrollbarWidth: "none",
+              msOverflowStyle: "none",
+              scrollBehavior: "smooth",
+            }}
+          >
+            <div className="px-6 py-4 inline-block">
+              {/* Primera fila */}
+              <div className="flex gap-4 mb-4">
+                {moods.slice(0, Math.ceil(moods.length / 2)).map(renderMoodCard)}
+              </div>
+              {/* Segunda fila */}
+              <div className="flex gap-4">
+                {moods.slice(Math.ceil(moods.length / 2)).map(renderMoodCard)}
+              </div>
+            </div>
           </div>
         </div>
       </div>
