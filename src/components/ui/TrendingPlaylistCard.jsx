@@ -50,7 +50,7 @@ const TrendingPlaylistCard = ({
   };
 
   return (
-    <div className="flex flex-col md:flex-row items-start bg-[#282534] rounded-lg p-4 gap-4 md:h-[240px] flex-shrink-0">
+    <div className="flex flex-col md:flex-row items-start bg-[#282534] rounded-lg p-4 gap-4 md:h-[240px] flex-shrink-0 md:relative">
       {/* Imagen de la playlist */}
       <a
         href={urlPlaylist}
@@ -80,8 +80,8 @@ const TrendingPlaylistCard = ({
         </h6>
       </div>
 
-      {/* Acciones */}
-      <div className="flex items-center gap-3 flex-shrink-0 w-full justify-end md:h-full md:w-auto md:justify-start">
+      {/* Acciones - Desktop: posición absoluta, Móvil: posición normal */}
+      <div className="flex items-center gap-3 flex-shrink-0 w-full justify-end md:absolute md:ml-2 md:bottom-4 md:left-[232px] md:w-auto">
         <button
           onClick={handleToggleFavorite}
           className="flex-shrink-0 cursor-pointer"
@@ -96,11 +96,7 @@ const TrendingPlaylistCard = ({
           onClick={() => setShowShareModal((v) => !v)}
           className="flex-shrink-0 cursor-pointer"
         >
-          {loggedIn ? (
-            <SharePaperPlaneIcon className="w-8 h-8 md:w-6 md:h-6 text-white" />
-          ) : (
-            <SharePaperPlaneIcon className="w-8 h-8 md:w-6 md:h-6 text-white" />
-          )}
+          <SharePaperPlaneIcon className="w-8 h-8 md:w-6 md:h-6 text-white" />
         </button>
       </div>
 

@@ -5,35 +5,45 @@
       "urlImageHeader": "",
       "abbreviation": "Fiesta",
       "backgroundColor": "#00120B",
-      "textColor": "#31E981"
+      "textColor": "#31E981",
+      "desktopImage": "/moods/desktop/M_dsk_fiesta-100.jpg",
+      "mobileImage": "/moods/mobile/M_mov_Fiesta.png"
     },
     {
       "name": "Romance",
       "urlImageHeader": "",
       "abbreviation": "Romance",
       "backgroundColor": "#EAD1E2",
-      "textColor": "#692356"
+      "textColor": "#692356",
+      "desktopImage": "/moods/desktop/M_dsk_Romance-100.jpg",
+      "mobileImage": "/moods/mobile/M_mov_Romance.png"
     },
     {
       "name": "Despecho",
       "urlImageHeader": "",
       "abbreviation": "Despecho",
       "backgroundColor": "#0B2E4E",
-      "textColor": "#5ADBFF"
+      "textColor": "#5ADBFF",
+      "desktopImage": "/moods/desktop/M_dsk_Despecho-100.jpg",
+      "mobileImage": "/moods/mobile/M_mov_Despecho.png"
     },
     {
       "name": "Chill",
       "urlImageHeader": "",
       "abbreviation": "Chill",
       "backgroundColor": "#56314D",
-      "textColor": "#FF10CB"
+      "textColor": "#FF10CB",
+      "desktopImage": "/moods/desktop/M_dsk_Chill-100.jpg",
+      "mobileImage": "/moods/mobile/M_mov_Chill.png"
     },
     {
       "name": "Mood booster",
       "urlImageHeader": "",
       "abbreviation": "Booster",
       "backgroundColor": "#F71735",
-      "textColor": "#FDFFFC"
+      "textColor": "#FDFFFC",
+      "desktopImage": "/moods/desktop/M_dsk_Mood booster-100.jpg",
+      "mobileImage": "/moods/mobile/M_mov_Mood booster.png"
     }
   ]
 }
