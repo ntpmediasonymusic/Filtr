@@ -28,7 +28,7 @@ const MusicBanner = ({ type = 'generos' }) => {
   const images = imageMap[type] || imageMap.generos;
 
   return (
-    <div className="px-6 py-5 md:py-10">
+    <div className="px-6 pb-5 md:pb-10">
       {/* Imagen para escritorio - visible solo en md y superiores */}
       <img 
         src={images.desktop} 

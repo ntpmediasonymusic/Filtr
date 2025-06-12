@@ -62,7 +62,7 @@ const PageHeader = ({ welcomeMsg }) => {
     <header className="w-full flex flex-col xl:flex-row items-center xl:justify-between gap-4">
       {/* Saludo */}
       <div className="w-full xl:w-auto text-center xl:text-left">
-        <h1 className="text-white font-bold text-lg md:text-3xl">
+        <h1 className="text-white font-bold text-lg md:text-[28px] font-montserrat">
           {welcomeMsg}
         </h1>
       </div>
