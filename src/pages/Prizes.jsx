@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import Filter from "../components/filter/filter";
 import PageHeader from "../components/ui/PageHeader";
 import { useSearch } from "../context/SearchContext";
-import PrizesHeader from "../components/prizes/prizesHeader";
+import PrizesHeader from "../components/prizes/PrizesHeader";
 
 const imageMap = [
   {
