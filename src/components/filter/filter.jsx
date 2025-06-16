@@ -26,8 +26,7 @@ const Filter = () => {
         
         const query = searchQuery.toLowerCase().trim();
         return genresData.genres.filter(genre => 
-            genre.name.toLowerCase().includes(query) || 
-            genre.abbreviation.toLowerCase().includes(query)
+            genre.name.toLowerCase().includes(query)
         );
     }, [searchQuery]);
 
@@ -37,8 +36,7 @@ const Filter = () => {
         
         const query = searchQuery.toLowerCase().trim();
         return moodsData.moods.filter(mood => 
-            mood.name.toLowerCase().includes(query) || 
-            mood.abbreviation.toLowerCase().includes(query)
+            mood.name.toLowerCase().includes(query) 
         );
     }, [searchQuery]);
 
