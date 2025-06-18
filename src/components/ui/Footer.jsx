@@ -17,7 +17,7 @@ const Footer = () => {
       {/* Redes Sociales */}
       <div className="flex space-x-6 md:space-x-9 mb-6">
         <a
-          href="https://www.instagram.com/filtr.cac/"
+          href=" https://www.instagram.com/somosfiltr"
           target="_blank"
           rel="noopener noreferrer"
           className="text-white text-5xl md:text-5xl transition transform hover:text-gray-300 hover:scale-120"

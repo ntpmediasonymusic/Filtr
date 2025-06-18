@@ -376,18 +376,18 @@ const SignUpForm = () => {
         type="submit"
         className="w-full py-2.5 sm:py-3 bg-[#ca249c] text-white font-semibold rounded-lg transition hover:opacity-90 text-sm sm:text-base"
       >
-        Crear cuenta
+        CREAR CUENTA
       </button>
 
       {/* Link “¿Ya tienes cuenta? Accede Aquí” */}
       <div className="text-center text-[#131517] mt-1 sm:mt-2">
-        <span className="text-sm sm:text-base">¿Ya tienes una cuenta?</span>
+        <span className="text-sm sm:text-base">Ya soy miembro FILTRCA</span>
         <br />
         <a
           href="/login"
           className="font-semibold underline underline-offset-2 text-[#131517] text-sm sm:text-base"
         >
-          Accede Aquí
+          Iniciar sesión
         </a>
       </div>
     </form>
