@@ -10,18 +10,30 @@ import { PiMusicNotes } from "react-icons/pi";
 import { register } from "../../../api/backendApi";
 import VerificationEmailSent from "./VerificationEmailSent";
 import ClipLoader from "react-spinners/ClipLoader";
+import RegionLink from "../../../router/RegionLink";
+import { useRegion } from "../../../router/RegionContext";
 
 const SignUpForm = () => {
+  const { region } = useRegion();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [country, setCountry] = useState("");
+  const [country, setCountry] = useState(
+    region === "cr"
+      ? "Costa Rica"
+      : region === "do"
+      ? "República Dominicana"
+      : region === "pa"
+      ? "Panamá"
+      : ""
+  );
   const [birthdate, setBirthdate] = useState("");
   const [phone, setPhone] = useState("");
   const [listening, setListening] = useState("");
-  const [optInSony, setOptInSony] = useState(true);
-  const [optInFiltr, setOptInFiltr] = useState(true);
+  const [optInSony, setOptInSony] = useState(false);
+  const [optInFiltr, setOptInFiltr] = useState(false);
+  const [checkboxPrivacyPolicy, setCheckboxPrivacyPolicy] = useState(false);
   const [showPwd, setShowPwd] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -36,13 +48,13 @@ const SignUpForm = () => {
 
   const countries = [
     "Costa Rica",
+    "República Dominicana",
     "Panamá",
     "El Salvador",
     "Guatemala",
     "Honduras",
     "Nicaragua",
     "Belice",
-    "República Dominicana",
     "México",
     "Colombia",
   ];
@@ -72,7 +84,10 @@ const SignUpForm = () => {
     if (!birthdate) errs.birthdate = "La fecha de nacimiento es obligatoria.";
     if (!phone) errs.phone = "El teléfono es obligatorio.";
     else if (!/^\d+$/.test(phone)) errs.phone = "Sólo números permitidos.";
+    else if (phone.length < 10) errs.phone = "El teléfono debe tener al menos 10 dígitos.";
+    else if (phone.length > 11) errs.phone = "El teléfono debe tener máximo 11 dígitos.";
     if (!listening) errs.listening = "Seleccione una opción.";
+    if (!checkboxPrivacyPolicy) errs.checkboxPrivacyPolicy = "Debes aceptar la política de privacidad.";
     return errs;
   };
 
@@ -368,6 +383,32 @@ const SignUpForm = () => {
             Centroamérica y El Caribe.
           </span>
         </label>
+        <div className="w-full">
+          <label className="flex items-start sm:items-center gap-2 text-xs sm:text-base">
+            <input
+              type="checkbox"
+              checked={checkboxPrivacyPolicy}
+              onChange={() => setCheckboxPrivacyPolicy((v) => !v)}
+              className="w-4 h-4 accent-[#ca249c] mt-0.5 sm:mt-0 flex-shrink-0"
+            />
+            <span className="leading-tight sm:leading-normal">
+              He leído y acepto la{" "}
+              <a
+                href="https://sonymusic.co.cr/politica-de-privacidad/"
+                target="_blank"
+                className="font-semibold underline underline-offset-2 text-[#ca249c] text-sm sm:text-base"
+              >
+                Política de Privacidad de Sony Music Centroamérica
+              </a>
+              .
+            </span>
+          </label>
+          {errors.checkboxPrivacyPolicy && (
+            <p className="mt-1 text-xs sm:text-sm text-red-600">
+              {errors.checkboxPrivacyPolicy}
+            </p>
+          )}
+        </div>
       </div>
 
       {/* Mostrar mensaje genérico de error del backend, si existe */}
@@ -376,23 +417,36 @@ const SignUpForm = () => {
       )}
 
       {/* Botón Principal */}
-      <button
-        type="submit"
-        className="w-full py-2.5 sm:py-3 bg-[#ca249c] text-white font-semibold rounded-lg transition hover:opacity-90 text-sm sm:text-base"
-      >
-        {isLoading ? <ClipLoader size={16} color="#FFFFFF" /> : "CREAR CUENTA"}
-      </button>
+      <div className="flex flex-col gap-1 sm:gap-2">
+        <button
+          type="submit"
+          className="w-full py-2.5 sm:py-3 bg-[#ca249c] text-white font-semibold rounded-lg transition hover:opacity-90 text-sm sm:text-base"
+        >
+          {isLoading ? (
+            <ClipLoader size={16} color="#FFFFFF" />
+          ) : (
+            "CREAR CUENTA"
+          )}
+        </button>
+        <a
+          href="https://sonymusic.co.cr/politica-de-privacidad/"
+          target="_blank"
+          className="font-semibold underline underline-offset-2 text-[#ca249c] text-sm sm:text-base text-center"
+        >
+          Política de Privacidad de Sony Music Centroamérica
+        </a>
+      </div>
 
       {/* Link “¿Ya tienes cuenta? Accede Aquí” */}
       <div className="text-center text-[#131517] mt-1 sm:mt-2">
         <span className="text-sm sm:text-base">Ya soy miembro FILTR</span>
         <br />
-        <a
-          href="/login"
+        <RegionLink
+          to="/login"
           className="font-semibold underline underline-offset-2 text-[#131517] text-sm sm:text-base"
         >
           Iniciar sesión
-        </a>
+        </RegionLink>
       </div>
     </form>
   );
